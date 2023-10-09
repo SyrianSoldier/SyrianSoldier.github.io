@@ -122,19 +122,18 @@ export default navbar([
   {
     text: "代码最佳实践",
     icon: "lightbulb",
-    prefix: "/guide/",
+    prefix: "/BestPractice/",
     children: [
       {
-        text: "Bar",
+        text: "设计模式",
         icon: "lightbulb",
-        prefix: "bar/",
-        children: ["baz", { text: "...", icon: "ellipsis", link: "" }],
+        link: "design-pattern/设计模式"
       },
       {
-        text: "Foo",
+        text: "前端性能优化",
         icon: "lightbulb",
-        prefix: "foo/",
-        children: ["ray", { text: "...", icon: "ellipsis", link: "" }],
+        prefix: "",
+        link: "performance/性能优化"
       },
     ],
   },
