@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>数据结构与算法</title>
+</head>
+
+<body>
+  <script>
+    // 位运算, 打印任意一个数32位的二进制
+    function print(num) {
+      let str = ''
+      for (let i = 31; i >= 0; i--) {
+        // 从32位开始看, 看看这一位上是不是0, 如果这一位是0, 则num&的结果就是0
+        let binary = num & (1 << i)
+        str += binary === 0 ? '0' : '1'
+      }
+      console.log(str)
+    }
+    print(10)
+
+
+  </script>
+</body>
+
+</html>

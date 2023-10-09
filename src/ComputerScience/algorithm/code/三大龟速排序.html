@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+
+    let arr = [3, 21, 2, 55, 43, 1]
+
+    function swap(a, b) {
+      let temp = arr[a]
+      arr[a] = arr[b]
+      arr[b] = temp
+    }
+
+    // 1. 冒泡排序
+    // 核心思想, n个数, 每次找出一个数放在最后一位, 找n-1次
+    //  每轮找时核心是两两比较, 大的后移
+    function bubblesort(arr) {
+      // 1. 边界判断
+      if (!Array.isArray(arr) || arr.length < 2) return
+
+      for (let i = 0; i < arr.length - 1; i++) {
+        for (let j = 0; j < arr.length - i; j++) {
+          if (arr[j] > arr[j + 1]) {
+            swap(j, j + 1)
+          }
+        }
+      }
+    }
+    // bubblesort(arr)
+
+    // 2. 选择排序
+    // 核心思想: n个数, 每次找出最小的放在最前面, 找n-1次
+    // 每次找时, 记录最小数的下标, 找完再交换
+
+    function selectsort(arr) {
+      if (!Array.isArray(arr) || arr.length < 2) return
+
+      for (let i = 0; i < arr.length - 1; i++) {
+        let min = i
+        for (j = i; j < arr.length; j++) {
+          if (arr[j] < arr[min]) {
+            min = j
+          }
+        }
+        swap(min, i)
+      }
+    }
+    // selectsort(arr)
+
+
+    // 3. 插入排序
+    // 核心思想: n个数,从一开始的每个数向前比较一次
+    function insertsort(arr) {
+      if (!Array.isArray(arr) || arr.length < 2) return
+
+      for (let i = 1; i <= arr.length - 1; i++) {
+        for (let pre = i - 1; pre >= 0 && arr[pre + 1] < arr[pre]; pre--) {
+          swap(pre, pre + 1)
+        }
+      }
+    }
+    insertsort(arr)
+    console.log(arr)
+  </script>
+</body>
+
+</html>

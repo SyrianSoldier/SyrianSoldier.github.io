@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    // 随机数
+    // 各语言都有实现随机数的方法
+    // js中的Math.random() 
+    // 返回[0,1)的小数, 对于在此区间的任意数x来说, 
+    // ## 验证 Math.random()是等概率的
+    let count = 0
+        allCount = 100000,
+        x = 0.5,
+        random = () => Math.random()
+
+    function getRandom() {
+      for (let i = 0; i < allCount; i++) {
+        if (random() < x) {
+          count++
+        }
+      }
+      // 求100000 次 出现0.2的概率
+      console.log(count / allCount)
+      console.log(x)
+    }
+    getRandom()
+
+
+    // ## 将
+  </script>
+</body>
+
+</html>
