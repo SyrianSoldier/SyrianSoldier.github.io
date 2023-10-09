@@ -2,13 +2,13 @@
 
 ## Wireshark欢迎页
 
-<img src="./imgs/ws/a1.png" width="900"/>
+<img src="./imgs/ws/a1.png" width="900">
 
 ## 确定抓包的网络
 
 > 运行 --> cmd --> 输入ipconfig 查看正在活动的网络
 
-<img src="./imgs/ws/a2.png" width="900"/>
+<img src="./imgs/ws/a2.png" width="900">
 
 ## 开启混杂抓包模式
 
@@ -60,15 +60,15 @@
 
 
 
-<img src="./imgs/ws/a3.png" width="900"/>
+<img src="./imgs/ws/a3.png" width="900">
 
 ## 抓取回环数据
 
 > 比如本地8080接口前端页面请求3000服务器数据. 想抓取这个数据怎么办
 
-<img src="./imgs/ws/b1.png" width="900"/>
+<img src="./imgs/ws/b1.png" width="900">
 
-<img src="./imgs/ws/b2.png" width="900"/>
+<img src="./imgs/ws/b2.png" width="900">
 
 
 
@@ -82,7 +82,7 @@
 
 右键点击要追踪的数据包
 
-<img src="./imgs/ws/c1.jpg" width="900"/>
+<img src="./imgs/ws/c1.jpg" width="900">
 
-<img src="./imgs/ws/c2.jpg" width="900"/>
+<img src="./imgs/ws/c2.jpg" width="900">
 

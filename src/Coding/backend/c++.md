@@ -526,7 +526,7 @@ int main()
 > 2.  开启本地调试
 > 3.  在菜单栏中控制程序的运行
 
-<img  src="./imgs/a1.jpg"/>
+<img  src="./imgs/a1.jpg">
 
 
 

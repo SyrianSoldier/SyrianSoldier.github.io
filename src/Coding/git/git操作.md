@@ -39,7 +39,7 @@ hotfix: 线上bug修复分支
 
 > Sourcetree是一个git 图形化软件, 不用使用CMD去操作git, 更加方便和对新手友好
 
-<img src="./imgs/sourcetree.png"/>
+<img src="./imgs/sourcetree.png">
 
 ### 操作本地仓库
 
@@ -47,51 +47,51 @@ hotfix: 线上bug修复分支
 
    假如有现成的项目如下, 想交给 sourcetree管理
 
-<img src="./imgs/demo1.png" width="700"/>
+<img src="./imgs/demo1.png" width="700">
 
 
 
-<img src="./imgs/d2.png" width="700"/>
+<img src="./imgs/d2.png" width="700">
 
-<img src="./imgs/d3.png" width="700"/>
+<img src="./imgs/d3.png" width="700">
 
-<img src="./imgs/d4.png" width="700"/>
+<img src="./imgs/d4.png" width="700">
 
 1. 未有本地仓库, 使用sourcetree创建并管理
 
-   <img src="./imgs/a1.png" width="700"/>
+   <img src="./imgs/a1.png" width="700">
 
-   <img src="./imgs/a2.png" width="700"/>
+   <img src="./imgs/a2.png" width="700">
 
 
 
 ### 修改提交作者信息和个性设置
 
-<img src="./imgs/b1.png" width="700"/>
+<img src="./imgs/b1.png" width="700">
 
-<img src="./imgs/b2.png" width="700"/>
+<img src="./imgs/b2.png" width="700">
 
-<img src="./imgs/b3.png" width="700"/>
+<img src="./imgs/b3.png" width="700">
 
 ### 文件暂存与提交
 
-<img src="./imgs/c1.png" width="700"/>
+<img src="./imgs/c1.png" width="700">
 
-<img src="./imgs/c2.png" width="700"/>
+<img src="./imgs/c2.png" width="700">
 
-<img src="./imgs/c3.png" width="700"/>
+<img src="./imgs/c3.png" width="700">
 
-<img src="./imgs/c4.png" width="700"/>
+<img src="./imgs/c4.png" width="700">
 
 ### 分支的创建
 
-<img src="./imgs/e.png" width="700"/>
+<img src="./imgs/e.png" width="700">
 
-<img src="./imgs/e1.png" width="700"/>
+<img src="./imgs/e1.png" width="700">
 
-<img src="./imgs/e2.png" width="700"/>
+<img src="./imgs/e2.png" width="700">
 
-<img src="./imgs/e3.png" width="700"/>
+<img src="./imgs/e3.png" width="700">
 
 ### 合并分支
 
@@ -101,19 +101,19 @@ hotfix: 线上bug修复分支
 >
 > 则. 目标分支是向前进的, 被合并分支不动.
 
-<img src="./imgs/f1.png" width="700"/>
+<img src="./imgs/f1.png" width="700">
 
-<img src="./imgs/f2.png" width="700"/>
+<img src="./imgs/f2.png" width="700">
 
 
 
 **sourcetree操作merge**
 
-<img src="./imgs/f3.png" width="700"/>
+<img src="./imgs/f3.png" width="700">
 
-<img src="./imgs/f4.png" width="700"/>
+<img src="./imgs/f4.png" width="700">
 
-<img src="./imgs/f5.png" width="700"/>
+<img src="./imgs/f5.png" width="700">
 
 
 
@@ -127,9 +127,9 @@ hotfix: 线上bug修复分支
 
 被合并前:
 
-<img src="./imgs/h1.png" width="700"/>
+<img src="./imgs/h1.png" width="700">
 
-<img src="./imgs/h2.png" width="700"/>
+<img src="./imgs/h2.png" width="700">
 
 **交互式rebase**
 
@@ -137,17 +137,17 @@ hotfix: 线上bug修复分支
 
 ### git远程仓库
 
-<img src="./imgs/aa1.png" width="700"/>
+<img src="./imgs/aa1.png" width="700">
 
-<img src="./imgs/aa2.png" width="700"/>
+<img src="./imgs/aa2.png" width="700">
 
-<img src="./imgs/aa3.png" width="700"/>
+<img src="./imgs/aa3.png" width="700">
 
-<img src="./imgs/aa4.png" width="700"/>
+<img src="./imgs/aa4.png" width="700">
 
-<img src="./imgs/aa5.png" width="700"/>
+<img src="./imgs/aa5.png" width="700">
 
-<img src="./imgs/aa6.png" width="700"/>
+<img src="./imgs/aa6.png" width="700">
 
 ### 回退版本
 
