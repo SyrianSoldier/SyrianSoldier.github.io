@@ -1,0 +1,759 @@
+<!doctype html>
+<html lang="zh-CN" data-theme="light">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <meta name="generator" content="VuePress 2.0.0-beta.67" />
+    <meta name="theme" content="VuePress Theme Hope" />
+    <meta property="og:url" content="https://vuepress-theme-hope-docs-demo.netlify.app/Coding/backend/c__.html"><meta property="og:site_name" content="文档演示"><meta property="og:title" content="C++"><meta property="og:description" content="VS操作 vs中如何格式化代码 在 Visual Studio 中，可以使用内置的格式化功能来格式化代码。以下是格式化代码的步骤： 1. 打开要格式化的文件。 2. 选择要格式化的代码部分。您可以选择整个文件或仅选择某个部分。 3. 打开“编辑”菜单，并选择“高级”->“格式化文档”或“格式化选定内容”。 4. 等待 Visual Studio 格式化..."><meta property="og:type" content="article"><meta property="og:locale" content="zh-CN"><meta property="og:updated_time" content="2023-10-09T03:50:32.000Z"><meta property="article:author" content="Mr.Hope"><meta property="article:modified_time" content="2023-10-09T03:50:32.000Z"><script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"C++","image":[""],"dateModified":"2023-10-09T03:50:32.000Z","author":[{"@type":"Person","name":"Mr.Hope","url":"https://mrhope.site"}]}</script><title>C++ | 文档演示</title><meta name="description" content="VS操作 vs中如何格式化代码 在 Visual Studio 中，可以使用内置的格式化功能来格式化代码。以下是格式化代码的步骤： 1. 打开要格式化的文件。 2. 选择要格式化的代码部分。您可以选择整个文件或仅选择某个部分。 3. 打开“编辑”菜单，并选择“高级”->“格式化文档”或“格式化选定内容”。 4. 等待 Visual Studio 格式化...">
+    <style>
+      :root {
+        --bg-color: #fff;
+      }
+
+      html[data-theme="dark"] {
+        --bg-color: #1d1e1f;
+      }
+
+      html,
+      body {
+        background: var(--bg-color);
+      }
+    </style>
+    <script>
+      const userMode = localStorage.getItem("vuepress-theme-hope-scheme");
+      const systemDarkMode =
+        window.matchMedia &&
+        window.matchMedia("(prefers-color-scheme: dark)").matches;
+
+      if (userMode === "dark" || (userMode !== "light" && systemDarkMode)) {
+        document.documentElement.setAttribute("data-theme", "dark");
+      }
+    </script>
+    <link rel="preload" href="/assets/style-8a5996d9.css" as="style"><link rel="stylesheet" href="/assets/style-8a5996d9.css">
+    <link rel="modulepreload" href="/assets/app-1e29bb60.js"><link rel="modulepreload" href="/assets/c__.html-ad79e490.js"><link rel="modulepreload" href="/assets/plugin-vue_export-helper-c27b6911.js"><link rel="modulepreload" href="/assets/c__.html-716f3984.js"><link rel="prefetch" href="/assets/index.html-2c3b5a3d.js" as="script"><link rel="prefetch" href="/assets/slides.html-3df6cc41.js" as="script"><link rel="prefetch" href="/assets/KK音标.html-989926a9.js" as="script"><link rel="prefetch" href="/assets/grammer.html-f3bb9e3b.js" as="script"><link rel="prefetch" href="/assets/词根词缀.html-58d918d0.js" as="script"><link rel="prefetch" href="/assets/2023-且将新火试新茶_诗酒趁年华.html-9c8b6419.js" as="script"><link rel="prefetch" href="/assets/东合.html-e3740e34.js" as="script"><link rel="prefetch" href="/assets/揭榜挂帅.html-15c75c60.js" as="script"><link rel="prefetch" href="/assets/美食.html-b3ebfab7.js" as="script"><link rel="prefetch" href="/assets/裸辞后的备考.html-96864e26.js" as="script"><link rel="prefetch" href="/assets/高数 - 副本.html-1a1c38f5.js" as="script"><link rel="prefetch" href="/assets/高数.html-68dde3c7.js" as="script"><link rel="prefetch" href="/assets/index.html-a7a57d6b.js" as="script"><link rel="prefetch" href="/assets/disable.html-031444a4.js" as="script"><link rel="prefetch" href="/assets/encrypt.html-0bade57e.js" as="script"><link rel="prefetch" href="/assets/markdown.html-5b1d6c6d.js" as="script"><link rel="prefetch" href="/assets/page.html-f3559153.js" as="script"><link rel="prefetch" href="/assets/index.html-fda97da6.js" as="script"><link rel="prefetch" href="/assets/设计模式.html-6acbf3cc.js" as="script"><link rel="prefetch" href="/assets/性能优化.html-cf425751.js" as="script"><link rel="prefetch" href="/assets/python.html-c9f05bc6.js" as="script"><link rel="prefetch" href="/assets/git操作.html-5209ae79.js" as="script"><link rel="prefetch" href="/assets/数据结构与算法.html-802e24fc.js" as="script"><link rel="prefetch" href="/assets/算法刷题.html-4bfffeb3.js" as="script"><link rel="prefetch" href="/assets/算法笔记重构.html-afc85d16.js" as="script"><link rel="prefetch" href="/assets/http.html-c16061a6.js" as="script"><link rel="prefetch" href="/assets/wireshark.html-cc953da2.js" as="script"><link rel="prefetch" href="/assets/计算机网络-刷题.html-e6393498.js" as="script"><link rel="prefetch" href="/assets/操作系统.html-aa3351bd.js" as="script"><link rel="prefetch" href="/assets/index.html-cfebe09f.js" as="script"><link rel="prefetch" href="/assets/disable.html-495e1a96.js" as="script"><link rel="prefetch" href="/assets/encrypt.html-1ce409a5.js" as="script"><link rel="prefetch" href="/assets/markdown.html-10138c01.js" as="script"><link rel="prefetch" href="/assets/page.html-af4087e4.js" as="script"><link rel="prefetch" href="/assets/index.html-0b5fcf55.js" as="script"><link rel="prefetch" href="/assets/面试八股文.html-fd8c81ed.js" as="script"><link rel="prefetch" href="/assets/index.html-c02f2615.js" as="script"><link rel="prefetch" href="/assets/baz.html-1a732994.js" as="script"><link rel="prefetch" href="/assets/index.html-b4ecd3c3.js" as="script"><link rel="prefetch" href="/assets/ray.html-5484da6e.js" as="script"><link rel="prefetch" href="/assets/Promise源码.html-a0beb557.js" as="script"><link rel="prefetch" href="/assets/async-await.html-80d7e391.js" as="script"><link rel="prefetch" href="/assets/typescript.html-8affe7d2.js" as="script"><link rel="prefetch" href="/assets/拖拽.html-3e7d4acc.js" as="script"><link rel="prefetch" href="/assets/react基础语法.html-ec092110.js" as="script"><link rel="prefetch" href="/assets/vue3语法.html-7653cabf.js" as="script"><link rel="prefetch" href="/assets/vuex.html-eeed6cfe.js" as="script"><link rel="prefetch" href="/assets/声明式渲染进阶.html-79e59dd1.js" as="script"><link rel="prefetch" href="/assets/自动注册全局组件.html-9d358df1.js" as="script"><link rel="prefetch" href="/assets/spliteChunks.html-13b91cb5.js" as="script"><link rel="prefetch" href="/assets/index.html-27dd1c2a.js" as="script"><link rel="prefetch" href="/assets/baz.html-8d4dace5.js" as="script"><link rel="prefetch" href="/assets/index.html-c173a40c.js" as="script"><link rel="prefetch" href="/assets/ray.html-d6479753.js" as="script"><link rel="prefetch" href="/assets/404.html-a857d8d8.js" as="script"><link rel="prefetch" href="/assets/index.html-6d516273.js" as="script"><link rel="prefetch" href="/assets/index.html-2653ceb3.js" as="script"><link rel="prefetch" href="/assets/index.html-b6616570.js" as="script"><link rel="prefetch" href="/assets/index.html-6867201f.js" as="script"><link rel="prefetch" href="/assets/index.html-554a7223.js" as="script"><link rel="prefetch" href="/assets/index.html-326ea5b5.js" as="script"><link rel="prefetch" href="/assets/index.html-025c081a.js" as="script"><link rel="prefetch" href="/assets/index.html-5bae3fe5.js" as="script"><link rel="prefetch" href="/assets/index.html-87a756de.js" as="script"><link rel="prefetch" href="/assets/index.html-0c6b7552.js" as="script"><link rel="prefetch" href="/assets/index.html-82de94b8.js" as="script"><link rel="prefetch" href="/assets/index.html-f1e31233.js" as="script"><link rel="prefetch" href="/assets/index.html-81b0e435.js" as="script"><link rel="prefetch" href="/assets/index.html-e3202ec0.js" as="script"><link rel="prefetch" href="/assets/index.html-1814e46b.js" as="script"><link rel="prefetch" href="/assets/index.html-fb7957e7.js" as="script"><link rel="prefetch" href="/assets/index.html-b826fe2e.js" as="script"><link rel="prefetch" href="/assets/index.html-8216ac7d.js" as="script"><link rel="prefetch" href="/assets/index.html-4d52b24e.js" as="script"><link rel="prefetch" href="/assets/index.html-b8f8ca86.js" as="script"><link rel="prefetch" href="/assets/slides.html-64de99d0.js" as="script"><link rel="prefetch" href="/assets/KK音标.html-2e3351ce.js" as="script"><link rel="prefetch" href="/assets/grammer.html-c9df8e6e.js" as="script"><link rel="prefetch" href="/assets/词根词缀.html-6b6488ca.js" as="script"><link rel="prefetch" href="/assets/2023-且将新火试新茶_诗酒趁年华.html-29ef9fad.js" as="script"><link rel="prefetch" href="/assets/东合.html-b595d985.js" as="script"><link rel="prefetch" href="/assets/揭榜挂帅.html-46930b2c.js" as="script"><link rel="prefetch" href="/assets/美食.html-acb2c5bf.js" as="script"><link rel="prefetch" href="/assets/裸辞后的备考.html-47435df7.js" as="script"><link rel="prefetch" href="/assets/高数 - 副本.html-47f126b4.js" as="script"><link rel="prefetch" href="/assets/高数.html-8cf06417.js" as="script"><link rel="prefetch" href="/assets/index.html-26eb05c0.js" as="script"><link rel="prefetch" href="/assets/disable.html-4c36a915.js" as="script"><link rel="prefetch" href="/assets/encrypt.html-9e332153.js" as="script"><link rel="prefetch" href="/assets/markdown.html-c6e0a390.js" as="script"><link rel="prefetch" href="/assets/page.html-fa9e7924.js" as="script"><link rel="prefetch" href="/assets/index.html-c363e136.js" as="script"><link rel="prefetch" href="/assets/设计模式.html-33126ec9.js" as="script"><link rel="prefetch" href="/assets/性能优化.html-3f9d8c4f.js" as="script"><link rel="prefetch" href="/assets/python.html-4e5a55e8.js" as="script"><link rel="prefetch" href="/assets/git操作.html-6cef4d1d.js" as="script"><link rel="prefetch" href="/assets/数据结构与算法.html-1bb6008a.js" as="script"><link rel="prefetch" href="/assets/算法刷题.html-5ce0a587.js" as="script"><link rel="prefetch" href="/assets/算法笔记重构.html-4443f364.js" as="script"><link rel="prefetch" href="/assets/http.html-53d81676.js" as="script"><link rel="prefetch" href="/assets/wireshark.html-b7f1bc98.js" as="script"><link rel="prefetch" href="/assets/计算机网络-刷题.html-2538f181.js" as="script"><link rel="prefetch" href="/assets/操作系统.html-4dba617e.js" as="script"><link rel="prefetch" href="/assets/index.html-6fd3f8f0.js" as="script"><link rel="prefetch" href="/assets/disable.html-2488a2de.js" as="script"><link rel="prefetch" href="/assets/encrypt.html-bee20b10.js" as="script"><link rel="prefetch" href="/assets/markdown.html-5437adaa.js" as="script"><link rel="prefetch" href="/assets/page.html-4e0ec8a2.js" as="script"><link rel="prefetch" href="/assets/index.html-58427608.js" as="script"><link rel="prefetch" href="/assets/面试八股文.html-109b9bd6.js" as="script"><link rel="prefetch" href="/assets/index.html-04e138a7.js" as="script"><link rel="prefetch" href="/assets/baz.html-c5eb1716.js" as="script"><link rel="prefetch" href="/assets/index.html-364b9d2b.js" as="script"><link rel="prefetch" href="/assets/ray.html-b53414ed.js" as="script"><link rel="prefetch" href="/assets/Promise源码.html-5b0410da.js" as="script"><link rel="prefetch" href="/assets/async-await.html-74f16030.js" as="script"><link rel="prefetch" href="/assets/typescript.html-689b2f64.js" as="script"><link rel="prefetch" href="/assets/拖拽.html-f45be26e.js" as="script"><link rel="prefetch" href="/assets/react基础语法.html-5a723e4e.js" as="script"><link rel="prefetch" href="/assets/vue3语法.html-dad8124b.js" as="script"><link rel="prefetch" href="/assets/vuex.html-6fa64759.js" as="script"><link rel="prefetch" href="/assets/声明式渲染进阶.html-44aac798.js" as="script"><link rel="prefetch" href="/assets/自动注册全局组件.html-6701d18e.js" as="script"><link rel="prefetch" href="/assets/spliteChunks.html-2e03f20d.js" as="script"><link rel="prefetch" href="/assets/index.html-5da01133.js" as="script"><link rel="prefetch" href="/assets/baz.html-6bb902b5.js" as="script"><link rel="prefetch" href="/assets/index.html-7457d96f.js" as="script"><link rel="prefetch" href="/assets/ray.html-44b687cf.js" as="script"><link rel="prefetch" href="/assets/404.html-6f90bb10.js" as="script"><link rel="prefetch" href="/assets/index.html-1e91d711.js" as="script"><link rel="prefetch" href="/assets/index.html-55f8d71b.js" as="script"><link rel="prefetch" href="/assets/index.html-4dd36c67.js" as="script"><link rel="prefetch" href="/assets/index.html-0b1a1eb5.js" as="script"><link rel="prefetch" href="/assets/index.html-85628643.js" as="script"><link rel="prefetch" href="/assets/index.html-0f67d58b.js" as="script"><link rel="prefetch" href="/assets/index.html-e0fb0010.js" as="script"><link rel="prefetch" href="/assets/index.html-9125c80a.js" as="script"><link rel="prefetch" href="/assets/index.html-7108f10e.js" as="script"><link rel="prefetch" href="/assets/index.html-93de85cf.js" as="script"><link rel="prefetch" href="/assets/index.html-857122b2.js" as="script"><link rel="prefetch" href="/assets/index.html-1f99557e.js" as="script"><link rel="prefetch" href="/assets/index.html-32656310.js" as="script"><link rel="prefetch" href="/assets/index.html-c30a649a.js" as="script"><link rel="prefetch" href="/assets/index.html-e281d7bb.js" as="script"><link rel="prefetch" href="/assets/index.html-8060277c.js" as="script"><link rel="prefetch" href="/assets/index.html-673ab6ab.js" as="script"><link rel="prefetch" href="/assets/index.html-0c2fa51c.js" as="script"><link rel="prefetch" href="/assets/index.html-eba8c897.js" as="script"><link rel="prefetch" href="/assets/giscus-0b7adcf8.js" as="script"><link rel="prefetch" href="/assets/auto-fe80bb03.js" as="script"><link rel="prefetch" href="/assets/index-2bf332f6.js" as="script"><link rel="prefetch" href="/assets/flowchart-c441f34d.js" as="script"><link rel="prefetch" href="/assets/mermaid.core-98dcc3d4.js" as="script"><link rel="prefetch" href="/assets/highlight.esm-75b11b9d.js" as="script"><link rel="prefetch" href="/assets/markdown.esm-9d5bc2ce.js" as="script"><link rel="prefetch" href="/assets/math.esm-70a288c8.js" as="script"><link rel="prefetch" href="/assets/notes.esm-a106bb2c.js" as="script"><link rel="prefetch" href="/assets/reveal.esm-1a4c3ae7.js" as="script"><link rel="prefetch" href="/assets/search.esm-7e6792e2.js" as="script"><link rel="prefetch" href="/assets/zoom.esm-b83b91d0.js" as="script"><link rel="prefetch" href="/assets/VuePlayground-02cd6813.js" as="script"><link rel="prefetch" href="/assets/photoswipe.esm-1464cdb9.js" as="script">
+  </head>
+  <body>
+    <div id="app"><!--[--><!--[--><!--[--><span tabindex="-1"></span><a href="#main-content" class="vp-skip-link sr-only">跳至主要內容</a><!--]--><div class="theme-container has-toc"><!--[--><header id="navbar" class="vp-navbar"><div class="vp-navbar-start"><button type="button" class="vp-toggle-sidebar-button" title="Toggle Sidebar"><span class="icon"></span></button><!--[--><!----><!--]--><!--[--><a class="vp-link vp-brand vp-brand" href="/"><img class="vp-nav-logo" src="/logo.svg" alt="文档演示"><!----><span class="vp-site-name hide-in-pad">文档演示</span></a><!--]--><!--[--><!----><!--]--></div><div class="vp-navbar-center"><!--[--><!----><!--]--><!--[--><nav class="vp-nav-links"><div class="nav-item hide-in-mobile"><div class="dropdown-wrapper"><button type="button" class="dropdown-title" aria-label="编程语言与技巧"><span class="title"><span class="font-icon icon fa-fw fa-sm fas fa-lightbulb" style=""></span>编程语言与技巧</span><span class="arrow"></span><ul class="nav-dropdown"><li class="dropdown-item"><h4 class="dropdown-subtitle"><span>前端技术</span></h4><ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a aria-label="JavaScript" class="vp-link nav-link nav-link" href="/Coding/frontend/js.html"><!---->JavaScript<!----></a></li><li class="dropdown-subitem"><a aria-label="Vue" class="vp-link nav-link nav-link" href="/Coding/frontend/vue.html"><!---->Vue<!----></a></li><li class="dropdown-subitem"><a aria-label="React" class="vp-link nav-link nav-link" href="/Coding/frontend/react/"><!---->React<!----></a></li><li class="dropdown-subitem"><a aria-label="Webpack" class="vp-link nav-link nav-link" href="/Coding/frontend/webpack/"><!---->Webpack<!----></a></li></ul></li><li class="dropdown-item"><h4 class="dropdown-subtitle"><span>后端技术</span></h4><ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a aria-label="C++" class="vp-link nav-link active nav-link active" href="/Coding/backend/c__.html"><!---->C++<!----></a></li><li class="dropdown-subitem"><a aria-label="Python" class="vp-link nav-link nav-link" href="/Coding/backend/python.html"><!---->Python<!----></a></li></ul></li><li class="dropdown-item"><h4 class="dropdown-subtitle"><span>Git</span></h4><ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a aria-label="git操作" class="vp-link nav-link nav-link" href="/Coding/git/git%E6%93%8D%E4%BD%9C.html"><!---->git操作<!----></a></li></ul></li></ul></button></div></div><div class="nav-item hide-in-mobile"><div class="dropdown-wrapper"><button type="button" class="dropdown-title" aria-label="计算机科学与技术"><span class="title"><span class="font-icon icon fa-fw fa-sm fas fa-lightbulb" style=""></span>计算机科学与技术</span><span class="arrow"></span><ul class="nav-dropdown"><li class="dropdown-item"><a aria-label="数据结构与算法" class="vp-link nav-link nav-link" href="/ComputerScience/algorithm.html"><!---->数据结构与算法<!----></a></li><li class="dropdown-item"><a aria-label="操作系统" class="vp-link nav-link nav-link" href="/ComputerScience/os.html"><!---->操作系统<!----></a></li><li class="dropdown-item"><a aria-label="计算机组成原理" class="vp-link nav-link nav-link" href="/ComputerScience/compositionPrinciple.html"><!---->计算机组成原理<!----></a></li><li class="dropdown-item"><a aria-label="计算机网络" class="vp-link nav-link nav-link" href="/ComputerScience/network.html"><!---->计算机网络<!----></a></li><li class="dropdown-item"><h4 class="dropdown-subtitle"><span>AI</span></h4><ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a aria-label="动手学人工智能" class="vp-link nav-link nav-link" href="/ComputerScience/AI/动手学人工智能.html"><!---->动手学人工智能<!----></a></li></ul></li></ul></button></div></div><div class="nav-item hide-in-mobile"><div class="dropdown-wrapper"><button type="button" class="dropdown-title" aria-label="代码最佳实践"><span class="title"><span class="font-icon icon fa-fw fa-sm fas fa-lightbulb" style=""></span>代码最佳实践</span><span class="arrow"></span><ul class="nav-dropdown"><li class="dropdown-item"><a aria-label="设计模式" class="vp-link nav-link nav-link" href="/BestPractice/design-pattern/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F.html"><span class="font-icon icon fa-fw fa-sm fas fa-lightbulb" style=""></span>设计模式<!----></a></li><li class="dropdown-item"><a aria-label="前端性能优化" class="vp-link nav-link nav-link" href="/BestPractice/performance/%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96.html"><span class="font-icon icon fa-fw fa-sm fas fa-lightbulb" style=""></span>前端性能优化<!----></a></li></ul></button></div></div><div class="nav-item hide-in-mobile"><a aria-label="英语" class="vp-link nav-link nav-link" href="/English/"><span class="font-icon icon fa-fw fa-sm fas fa-lightbulb" style=""></span>英语<!----></a></div><div class="nav-item hide-in-mobile"><a aria-label="数学" class="vp-link nav-link nav-link" href="/Math/"><span class="font-icon icon fa-fw fa-sm fas fa-lightbulb" style=""></span>数学<!----></a></div><div class="nav-item hide-in-mobile"><a aria-label="日记" class="vp-link nav-link nav-link" href="/Individual.html"><span class="font-icon icon fa-fw fa-sm fas fa-lightbulb" style=""></span>日记<!----></a></div></nav><!--]--><!--[--><!----><!--]--></div><div class="vp-navbar-end"><!--[--><!----><!--]--><!--[--><!----><div class="nav-item vp-repo"><a class="vp-repo-link" href="https://github.com/vuepress-theme-hope/vuepress-theme-hope" target="_blank" rel="noopener noreferrer" aria-label="GitHub"><svg xmlns="http://www.w3.org/2000/svg" class="icon github-icon" viewBox="0 0 1024 1024" fill="currentColor" aria-label="github icon" style="width:1.25rem;height:1.25rem;vertical-align:middle;"><path d="M511.957 21.333C241.024 21.333 21.333 240.981 21.333 512c0 216.832 140.544 400.725 335.574 465.664 24.49 4.395 32.256-10.07 32.256-23.083 0-11.69.256-44.245 0-85.205-136.448 29.61-164.736-64.64-164.736-64.64-22.315-56.704-54.4-71.765-54.4-71.765-44.587-30.464 3.285-29.824 3.285-29.824 49.195 3.413 75.179 50.517 75.179 50.517 43.776 75.008 114.816 53.333 142.762 40.79 4.523-31.66 17.152-53.377 31.19-65.537-108.971-12.458-223.488-54.485-223.488-242.602 0-53.547 19.114-97.323 50.517-131.67-5.035-12.33-21.93-62.293 4.779-129.834 0 0 41.258-13.184 134.912 50.346a469.803 469.803 0 0 1 122.88-16.554c41.642.213 83.626 5.632 122.88 16.554 93.653-63.488 134.784-50.346 134.784-50.346 26.752 67.541 9.898 117.504 4.864 129.834 31.402 34.347 50.474 78.123 50.474 131.67 0 188.586-114.73 230.016-224.042 242.09 17.578 15.232 33.578 44.672 33.578 90.454v135.85c0 13.142 7.936 27.606 32.854 22.87C862.25 912.597 1002.667 728.747 1002.667 512c0-271.019-219.648-490.667-490.71-490.667z"></path></svg></a></div><div class="nav-item hide-in-mobile"><button type="button" id="appearance-switch"><svg xmlns="http://www.w3.org/2000/svg" class="icon auto-icon" viewBox="0 0 1024 1024" fill="currentColor" aria-label="auto icon" style="display:block;"><path d="M512 992C246.92 992 32 777.08 32 512S246.92 32 512 32s480 214.92 480 480-214.92 480-480 480zm0-840c-198.78 0-360 161.22-360 360 0 198.84 161.22 360 360 360s360-161.16 360-360c0-198.78-161.22-360-360-360zm0 660V212c165.72 0 300 134.34 300 300 0 165.72-134.28 300-300 300z"></path></svg><svg xmlns="http://www.w3.org/2000/svg" class="icon dark-icon" viewBox="0 0 1024 1024" fill="currentColor" aria-label="dark icon" style="display:none;"><path d="M524.8 938.667h-4.267a439.893 439.893 0 0 1-313.173-134.4 446.293 446.293 0 0 1-11.093-597.334A432.213 432.213 0 0 1 366.933 90.027a42.667 42.667 0 0 1 45.227 9.386 42.667 42.667 0 0 1 10.24 42.667 358.4 358.4 0 0 0 82.773 375.893 361.387 361.387 0 0 0 376.747 82.774 42.667 42.667 0 0 1 54.187 55.04 433.493 433.493 0 0 1-99.84 154.88 438.613 438.613 0 0 1-311.467 128z"></path></svg><svg xmlns="http://www.w3.org/2000/svg" class="icon light-icon" viewBox="0 0 1024 1024" fill="currentColor" aria-label="light icon" style="display:none;"><path d="M952 552h-80a40 40 0 0 1 0-80h80a40 40 0 0 1 0 80zM801.88 280.08a41 41 0 0 1-57.96-57.96l57.96-58a41.04 41.04 0 0 1 58 58l-58 57.96zM512 752a240 240 0 1 1 0-480 240 240 0 0 1 0 480zm0-560a40 40 0 0 1-40-40V72a40 40 0 0 1 80 0v80a40 40 0 0 1-40 40zm-289.88 88.08-58-57.96a41.04 41.04 0 0 1 58-58l57.96 58a41 41 0 0 1-57.96 57.96zM192 512a40 40 0 0 1-40 40H72a40 40 0 0 1 0-80h80a40 40 0 0 1 40 40zm30.12 231.92a41 41 0 0 1 57.96 57.96l-57.96 58a41.04 41.04 0 0 1-58-58l58-57.96zM512 832a40 40 0 0 1 40 40v80a40 40 0 0 1-80 0v-80a40 40 0 0 1 40-40zm289.88-88.08 58 57.96a41.04 41.04 0 0 1-58 58l-57.96-58a41 41 0 0 1 57.96-57.96z"></path></svg></button></div><!----><!--]--><!--[--><!----><!--]--><button type="button" class="vp-toggle-navbar-button" aria-label="Toggle Navbar" aria-expanded="false" aria-controls="nav-screen"><span><span class="vp-top"></span><span class="vp-middle"></span><span class="vp-bottom"></span></span></button></div></header><!----><!--]--><!----><div class="toggle-sidebar-wrapper"><span class="arrow start"></span></div><aside id="sidebar" class="vp-sidebar"><!--[--><!----><!--]--><ul class="vp-sidebar-links"><li><!--[--><a aria-label="项目主页" class="vp-link nav-link vp-sidebar-link vp-sidebar-page nav-link vp-sidebar-link vp-sidebar-page" href="/"><span class="font-icon icon fa-fw fa-sm fas fa-home" style=""></span>项目主页<!----></a><ul class="vp-sidebar-sub-headers"></ul><!--]--></li><li><section class="vp-sidebar-group"><p class="vp-sidebar-heading clickable"><span class="font-icon icon fa-fw fa-sm fas fa-laptop-code" style=""></span><a aria-label="案例" class="vp-link nav-link vp-sidebar-title nav-link vp-sidebar-title" href="/demo/"><!---->案例<!----></a><!----></p><ul class="vp-sidebar-links"><li><!--[--><a aria-label="页面配置" class="vp-link nav-link vp-sidebar-link vp-sidebar-page nav-link vp-sidebar-link vp-sidebar-page" href="/demo/page.html"><span class="font-icon icon fa-fw fa-sm fas fa-file" style=""></span>页面配置<!----></a><ul class="vp-sidebar-sub-headers"></ul><!--]--></li><li><!--[--><a aria-label="Markdown 展示" class="vp-link nav-link vp-sidebar-link vp-sidebar-page nav-link vp-sidebar-link vp-sidebar-page" href="/demo/markdown.html"><span class="font-icon icon fa-fw fa-sm fab fa-markdown" style=""></span>Markdown 展示<!----></a><ul class="vp-sidebar-sub-headers"></ul><!--]--></li><li><!--[--><a aria-label="布局与功能禁用" class="vp-link nav-link vp-sidebar-link vp-sidebar-page nav-link vp-sidebar-link vp-sidebar-page" href="/demo/disable.html"><span class="font-icon icon fa-fw fa-sm fas fa-gears" style=""></span>布局与功能禁用<!----></a><ul class="vp-sidebar-sub-headers"></ul><!--]--></li><li><!--[--><a aria-label="密码加密的文章" class="vp-link nav-link vp-sidebar-link vp-sidebar-page nav-link vp-sidebar-link vp-sidebar-page" href="/demo/encrypt.html"><span class="font-icon icon fa-fw fa-sm fas fa-lock" style=""></span>密码加密的文章<!----></a><ul class="vp-sidebar-sub-headers"></ul><!--]--></li></ul></section></li><li><section class="vp-sidebar-group"><p class="vp-sidebar-heading"><span class="font-icon icon fa-fw fa-sm fas fa-book" style=""></span><span class="vp-sidebar-title">文档</span><!----></p><ul class="vp-sidebar-links"><li><!--[--><a aria-label="指南" class="vp-link nav-link vp-sidebar-link vp-sidebar-page nav-link vp-sidebar-link vp-sidebar-page" href="/guide/"><span class="font-icon icon fa-fw fa-sm fas fa-lightbulb" style=""></span>指南<!----></a><ul class="vp-sidebar-sub-headers"></ul><!--]--></li><li><section class="vp-sidebar-group"><button class="vp-sidebar-heading clickable" type="button"><span class="font-icon icon fa-fw fa-sm fas fa-lightbulb" style=""></span><span class="vp-sidebar-title">Bar 功能</span><span class="vp-arrow end"></span></button><!----></section></li><li><section class="vp-sidebar-group"><button class="vp-sidebar-heading clickable" type="button"><span class="font-icon icon fa-fw fa-sm fas fa-lightbulb" style=""></span><span class="vp-sidebar-title">Foo 功能</span><span class="vp-arrow end"></span></button><!----></section></li></ul></section></li><li><!--[--><a aria-label="幻灯片页" class="vp-link nav-link vp-sidebar-link vp-sidebar-page nav-link vp-sidebar-link vp-sidebar-page" href="/slides.html"><span class="font-icon icon fa-fw fa-sm fas fa-person-chalkboard" style=""></span>幻灯片页<!----></a><ul class="vp-sidebar-sub-headers"></ul><!--]--></li></ul><!--[--><!----><!--]--></aside><!--[--><main id="main-content" class="vp-page"><!--[--><!----><!----><nav class="vp-breadcrumb disable"></nav><div class="vp-page-title"><h1><!---->C++</h1><div class="page-info"><span class="page-author-info" aria-label="作者🖊" data-balloon-pos="down"><svg xmlns="http://www.w3.org/2000/svg" class="icon author-icon" viewBox="0 0 1024 1024" fill="currentColor" aria-label="author icon"><path d="M649.6 633.6c86.4-48 147.2-144 147.2-249.6 0-160-128-288-288-288s-288 128-288 288c0 108.8 57.6 201.6 147.2 249.6-121.6 48-214.4 153.6-240 288-3.2 9.6 0 19.2 6.4 25.6 3.2 9.6 12.8 12.8 22.4 12.8h704c9.6 0 19.2-3.2 25.6-12.8 6.4-6.4 9.6-16 6.4-25.6-25.6-134.4-121.6-240-243.2-288z"></path></svg><span><a class="page-author-item" href="https://mrhope.site" target="_blank" rel="noopener noreferrer">Mr.Hope</a></span><span property="author" content="Mr.Hope"></span></span><!----><span class="page-date-info" aria-label="写作日期📅" data-balloon-pos="down"><svg xmlns="http://www.w3.org/2000/svg" class="icon calendar-icon" viewBox="0 0 1024 1024" fill="currentColor" aria-label="calendar icon"><path d="M716.4 110.137c0-18.753-14.72-33.473-33.472-33.473-18.753 0-33.473 14.72-33.473 33.473v33.473h66.993v-33.473zm-334.87 0c0-18.753-14.72-33.473-33.473-33.473s-33.52 14.72-33.52 33.473v33.473h66.993v-33.473zm468.81 33.52H716.4v100.465c0 18.753-14.72 33.473-33.472 33.473a33.145 33.145 0 01-33.473-33.473V143.657H381.53v100.465c0 18.753-14.72 33.473-33.473 33.473a33.145 33.145 0 01-33.473-33.473V143.657H180.6A134.314 134.314 0 0046.66 277.595v535.756A134.314 134.314 0 00180.6 947.289h669.74a134.36 134.36 0 00133.94-133.938V277.595a134.314 134.314 0 00-133.94-133.938zm33.473 267.877H147.126a33.145 33.145 0 01-33.473-33.473c0-18.752 14.72-33.473 33.473-33.473h736.687c18.752 0 33.472 14.72 33.472 33.473a33.145 33.145 0 01-33.472 33.473z"></path></svg><span><!----></span><meta property="datePublished" content="2023-10-09T03:03:19.000Z"></span><!----><span class="page-reading-time-info" aria-label="阅读时间⌛" data-balloon-pos="down"><svg xmlns="http://www.w3.org/2000/svg" class="icon timer-icon" viewBox="0 0 1024 1024" fill="currentColor" aria-label="timer icon"><path d="M799.387 122.15c4.402-2.978 7.38-7.897 7.38-13.463v-1.165c0-8.933-7.38-16.312-16.312-16.312H256.33c-8.933 0-16.311 7.38-16.311 16.312v1.165c0 5.825 2.977 10.874 7.637 13.592 4.143 194.44 97.22 354.963 220.201 392.763-122.204 37.542-214.893 196.511-220.2 389.397-4.661 5.049-7.638 11.651-7.638 19.03v5.825h566.49v-5.825c0-7.379-2.849-13.981-7.509-18.9-5.049-193.016-97.867-351.985-220.2-389.527 123.24-37.67 216.446-198.453 220.588-392.892zM531.16 450.445v352.632c117.674 1.553 211.787 40.778 211.787 88.676H304.097c0-48.286 95.149-87.382 213.728-88.676V450.445c-93.077-3.107-167.901-81.297-167.901-177.093 0-8.803 6.99-15.793 15.793-15.793 8.803 0 15.794 6.99 15.794 15.793 0 80.261 63.69 145.635 142.01 145.635s142.011-65.374 142.011-145.635c0-8.803 6.99-15.793 15.794-15.793s15.793 6.99 15.793 15.793c0 95.019-73.789 172.82-165.96 177.093z"></path></svg><span>大约 24 分钟</span><meta property="timeRequired" content="PT24M"></span><!----><!----></div><hr></div><div class="toc-place-holder"><aside id="toc"><!--[--><!----><!--]--><div class="toc-header">此页内容<button type="button" class="print-button" title="打印"><svg xmlns="http://www.w3.org/2000/svg" class="icon print-icon" viewBox="0 0 1024 1024" fill="currentColor" aria-label="print icon"><path d="M819.2 364.8h-44.8V128c0-17.067-14.933-32-32-32H281.6c-17.067 0-32 14.933-32 32v236.8h-44.8C145.067 364.8 96 413.867 96 473.6v192c0 59.733 49.067 108.8 108.8 108.8h44.8V896c0 17.067 14.933 32 32 32h460.8c17.067 0 32-14.933 32-32V774.4h44.8c59.733 0 108.8-49.067 108.8-108.8v-192c0-59.733-49.067-108.8-108.8-108.8zM313.6 160h396.8v204.8H313.6V160zm396.8 704H313.6V620.8h396.8V864zM864 665.6c0 25.6-19.2 44.8-44.8 44.8h-44.8V588.8c0-17.067-14.933-32-32-32H281.6c-17.067 0-32 14.933-32 32v121.6h-44.8c-25.6 0-44.8-19.2-44.8-44.8v-192c0-25.6 19.2-44.8 44.8-44.8h614.4c25.6 0 44.8 19.2 44.8 44.8v192z"></path></svg></button></div><div class="toc-wrapper"><ul class="toc-list"><!--[--><li class="toc-item"><a class="vp-link toc-link level2 toc-link level2" href="/#vs操作">VS操作</a></li><li><ul class="toc-list"><!--[--><li class="toc-item"><a class="vp-link toc-link level3 toc-link level3" href="/#vs中如何格式化代码">vs中如何格式化代码</a></li><!----><!--]--><!--[--><li class="toc-item"><a class="vp-link toc-link level3 toc-link level3" href="/#vs中注释的快捷键">vs中注释的快捷键</a></li><!----><!--]--></ul></li><!--]--><!--[--><li class="toc-item"><a class="vp-link toc-link level2 toc-link level2" href="/#vs中只编译不运行的快捷键">vs中只编译不运行的快捷键</a></li><!----><!--]--><!--[--><li class="toc-item"><a class="vp-link toc-link level2 toc-link level2" href="/#c-基础模板">c++基础模板</a></li><!----><!--]--><!--[--><li class="toc-item"><a class="vp-link toc-link level2 toc-link level2" href="/#常量">常量</a></li><li><ul class="toc-list"><!--[--><li class="toc-item"><a class="vp-link toc-link level3 toc-link level3" href="/#宏常量">宏常量</a></li><!----><!--]--><!--[--><li class="toc-item"><a class="vp-link toc-link level3 toc-link level3" href="/#const-修饰的常量">const 修饰的常量</a></li><!----><!--]--></ul></li><!--]--><!--[--><li class="toc-item"><a class="vp-link toc-link level2 toc-link level2" href="/#bool类型的隐式转换">bool类型的隐式转换</a></li><!----><!--]--><!--[--><li class="toc-item"><a class="vp-link toc-link level2 toc-link level2" href="/#c-11初始化">c++11初始化</a></li><!----><!--]--><!--[--><li class="toc-item"><a class="vp-link toc-link level2 toc-link level2" href="/#c-11初始化晋级">c++11初始化晋级</a></li><!----><!--]--><!--[--><li class="toc-item"><a class="vp-link toc-link level2 toc-link level2" href="/#c-11原始字面量">c++11原始字面量</a></li><!----><!--]--><!--[--><li class="toc-item"><a class="vp-link toc-link level2 toc-link level2" href="/#goto语句">goto语句</a></li><!----><!--]--><!--[--><li class="toc-item"><a class="vp-link toc-link level2 toc-link level2" href="/#作用域">作用域</a></li><li><ul class="toc-list"><!--[--><li class="toc-item"><a class="vp-link toc-link level3 toc-link level3" href="/#全局作用域">全局作用域</a></li><!----><!--]--><!--[--><li class="toc-item"><a class="vp-link toc-link level3 toc-link level3" href="/#函数作用域">函数作用域</a></li><!----><!--]--><!--[--><li class="toc-item"><a class="vp-link toc-link level3 toc-link level3" href="/#块作用域">块作用域</a></li><!----><!--]--></ul></li><!--]--><!--[--><li class="toc-item"><a class="vp-link toc-link level2 toc-link level2" href="/#c-中的分号">c++中的分号</a></li><!----><!--]--><!--[--><li class="toc-item"><a class="vp-link toc-link level2 toc-link level2" href="/#static-修饰的静态变量">static 修饰的静态变量</a></li><!----><!--]--><!--[--><li class="toc-item"><a class="vp-link toc-link level2 toc-link level2" href="/#访问全局变量">:: 访问全局变量</a></li><!----><!--]--><!--[--><li class="toc-item"><a class="vp-link toc-link level2 toc-link level2" href="/#c-算数运算的细节">c++算数运算的细节</a></li><!----><!--]--><!--[--><li class="toc-item"><a class="vp-link toc-link level2 toc-link level2" href="/#函数分文件编写">函数分文件编写</a></li><!----><!--]--><!--[--><li class="toc-item"><a class="vp-link toc-link level2 toc-link level2" href="/#使用vs-debug程序">使用VS debug程序</a></li><!----><!--]--><!--[--><li class="toc-item"><a class="vp-link toc-link level2 toc-link level2" href="/#sizeof-测量变量-数据类型的内存大小">sizeof 测量变量/数据类型的内存大小</a></li><!----><!--]--><!--[--><li class="toc-item"><a class="vp-link toc-link level2 toc-link level2" href="/#c-的数据类型">c++ 的数据类型</a></li><!----><!--]--><!--[--><li class="toc-item"><a class="vp-link toc-link level2 toc-link level2" href="/#数据类型转换">数据类型转换</a></li><!----><!--]--><!--[--><li class="toc-item"><a class="vp-link toc-link level2 toc-link level2" href="/#类型别名">类型别名</a></li><!----><!--]--><!--[--><li class="toc-item"><a class="vp-link toc-link level2 toc-link level2" href="/#指针">指针</a></li><!----><!--]--><!--[--><li class="toc-item"><a class="vp-link toc-link level2 toc-link level2" href="/#指针操作">指针操作</a></li><!----><!--]--><!--[--><li class="toc-item"><a class="vp-link toc-link level2 toc-link level2" href="/#指针与常量">指针与常量</a></li><!----><!--]--><!--[--><li class="toc-item"><a class="vp-link toc-link level2 toc-link level2" href="/#任意指针">任意指针</a></li><!----><!--]--><!--[--><li class="toc-item"><a class="vp-link toc-link level2 toc-link level2" href="/#new和delete控制堆内存空间">new和delete控制堆内存空间</a></li><!----><!--]--><!--[--><li class="toc-item"><a class="vp-link toc-link level2 toc-link level2" href="/#空指针与野指针">空指针与野指针</a></li><!----><!--]--><!--[--><li class="toc-item"><a class="vp-link toc-link level2 toc-link level2" href="/#函数指针与回调函数">函数指针与回调函数</a></li><!----><!--]--><!--[--><li class="toc-item"><a class="vp-link toc-link level2 toc-link level2" href="/#一维数组声明-memset-memcpy函数">一维数组声明, memset, memcpy函数</a></li><!----><!--]--><!--[--><li class="toc-item"><a class="vp-link toc-link level2 toc-link level2" href="/#指针的加法-一维数组的运算表示法">指针的加法, 一维数组的运算表示法</a></li><!----><!--]--><!--[--><li class="toc-item"><a class="vp-link toc-link level2 toc-link level2" href="/#函数中形参为数组">函数中形参为数组</a></li><!----><!--]--><!--[--><li class="toc-item"><a class="vp-link toc-link level2 toc-link level2" href="/#防止new声明的数组空间溢出">防止new声明的数组空间溢出</a></li><!----><!--]--><!--[--><li class="toc-item"><a class="vp-link toc-link level2 toc-link level2" href="/#数组的qsort函数">数组的qsort函数</a></li><!----><!--]--><!--[--><li class="toc-item"><a class="vp-link toc-link level2 toc-link level2" href="/#malloc和-free函数">malloc和 free函数</a></li><!----><!--]--><!--[--><li class="toc-item"><a class="vp-link toc-link level2 toc-link level2" href="/#结构体">结构体</a></li><!----><!--]--><!--[--><li class="toc-item"><a class="vp-link toc-link level2 toc-link level2" href="/#二分查找">二分查找</a></li><!----><!--]--><!--[--><li class="toc-item"><a class="vp-link toc-link level2 toc-link level2" href="/#c风格字符串">C风格字符串</a></li><!----><!--]--><!--[--><li class="toc-item"><a class="vp-link toc-link level2 toc-link level2" href="/#二维数组">二维数组</a></li><!----><!--]--></ul><div class="toc-marker" style="top:-1.7rem;"></div></div><!--[--><!----><!--]--></aside></div><!----><div class="theme-hope-content"><h1 id="c" tabindex="-1"><a class="header-anchor" href="#c" aria-hidden="true">#</a> C++</h1><h2 id="vs操作" tabindex="-1"><a class="header-anchor" href="#vs操作" aria-hidden="true">#</a> VS操作</h2><h3 id="vs中如何格式化代码" tabindex="-1"><a class="header-anchor" href="#vs中如何格式化代码" aria-hidden="true">#</a> vs中如何格式化代码</h3><p>在 Visual Studio 中，可以使用内置的格式化功能来格式化代码。以下是格式化代码的步骤：</p><ol><li>打开要格式化的文件。</li><li>选择要格式化的代码部分。您可以选择整个文件或仅选择某个部分。</li><li>打开“编辑”菜单，并选择“高级”-&gt;“格式化文档”或“格式化选定内容”。</li><li>等待 Visual Studio 格式化代码。</li><li>查看代码格式是否符合您的要求。如果不符合，可以撤销格式化，或者尝试不同的格式化选项。</li></ol><p>另外，您也可以使用快捷键 Ctrl + K，Ctrl + D 来格式化整个文档，或者使用 Ctrl + K，Ctrl + F 来格式化选定的文本。如果您想要自定义代码格式化选项，可以打开“工具”菜单-&gt;“选项”，然后选择“文本编辑器”-&gt;“C#”-&gt;“代码样式”来进行设置。</p><h3 id="vs中注释的快捷键" tabindex="-1"><a class="header-anchor" href="#vs中注释的快捷键" aria-hidden="true">#</a> vs中注释的快捷键</h3><p>在 Visual Studio 中，有以下两种常用的快捷键可以注释代码：</p><ol><li>注释选定的行或代码块：选定要注释的行或代码块，然后按下快捷键 Ctrl + K，Ctrl + C。</li><li>取消选定行或代码块的注释：选定要取消注释的行或代码块，然后按下快捷键 Ctrl + K，Ctrl + U。</li></ol><p>需要注意的是，这些快捷键在不同的语言和文件类型中可能会有所不同，因此请确保您在正确的上下文中使用这些快捷键。另外，如果您希望自定义这些快捷键，可以打开“工具”菜单-&gt;“选项”，然后选择“环境”-&gt;“键盘”，在搜索框中输入“注释”来查找并更改相应的快捷键设置。</p><h2 id="vs中只编译不运行的快捷键" tabindex="-1"><a class="header-anchor" href="#vs中只编译不运行的快捷键" aria-hidden="true">#</a> vs中只编译不运行的快捷键</h2><p>在 Visual Studio 中，可以使用以下快捷键只编译代码而不运行程序：</p><ol><li>编译当前项目：按下快捷键 <code>Ctrl + Shift + B</code>，即可编译当前项目。</li><li>编译当前打开的文件：选中当前打开的文件，然后按下快捷键 <code>Ctrl + F7</code>，即可编译当前文件。</li></ol><p>需要注意的是，这些快捷键在不同版本的 Visual Studio 中可能会有所不同，因此请根据您使用的版本和上下文选择相应的快捷键。另外，编译后的程序需要手动运行，可以通过在命令行窗口中输入程序的可执行文件名来运行程序。</p><h2 id="c-基础模板" tabindex="-1"><a class="header-anchor" href="#c-基础模板" aria-hidden="true">#</a> c++基础模板</h2><div class="language-c++ line-numbers-mode" data-ext="c++"><pre class="language-c++"><code>#include &lt;iostream&gt;
+using namespace std; // 使用命名空间std. 则cout就不用std::cout了
+
+int main()
+{
+	cout &lt;&lt; &quot;你好&quot; &lt;&lt; endl; //cout想控制台输出. endl代表一行结束. &lt;&lt; 分隔符
+}
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h2 id="常量" tabindex="-1"><a class="header-anchor" href="#常量" aria-hidden="true">#</a> 常量</h2><h3 id="宏常量" tabindex="-1"><a class="header-anchor" href="#宏常量" aria-hidden="true">#</a> 宏常量</h3><div class="language-c++ line-numbers-mode" data-ext="c++"><pre class="language-c++"><code>#include &lt;iostream&gt;
+using namespace std;
+
+//1. 宏常量不用声明类型. 不正确:#define double PI 3.1415926
+//2. 宏常量不用等号 不正确: #define PI = 3.1415926
+//3. 宏常量后不能使用分号.不正确: #define PI = 3.1415926;
+//4. 宏常量拥有全局作用域
+#define PI 3.1415926
+
+int main()
+{
+	cout &lt;&lt; PI &lt;&lt; endl;
+}
+
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h3 id="const-修饰的常量" tabindex="-1"><a class="header-anchor" href="#const-修饰的常量" aria-hidden="true">#</a> const 修饰的常量</h3><div class="language-c++ line-numbers-mode" data-ext="c++"><pre class="language-c++"><code>#include &lt;iostream&gt;
+using namespace std;
+
+int main()
+{
+	const double PI = 3.1415926; // 在数据类型前加const关键词
+	cout &lt;&lt; PI &lt;&lt; endl;
+}
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h2 id="bool类型的隐式转换" tabindex="-1"><a class="header-anchor" href="#bool类型的隐式转换" aria-hidden="true">#</a> bool类型的隐式转换</h2><div class="language-c++ line-numbers-mode" data-ext="c++"><pre class="language-c++"><code>#include &lt;iostream&gt;
+using namespace std;
+
+int main()
+{  
+	// 在c++中, false == 0, true == 1. 真值会被隐式转换为1, 假值会被隐式转换为0
+	const bool b1 = 0; // 0
+	const bool b2 = 1; // 1
+	const bool b3 = 12314; // 1
+	const bool b4 = &quot;12312&quot;; // 1
+	const bool b5 = true; // 1
+	const bool b6 = false; // 0
+	const bool b7 = NULL; // 0
+
+	cout &lt;&lt; &quot;b1: &quot; &lt;&lt; b1 &lt;&lt; &quot;\n&quot;
+		&lt;&lt; &quot;b2: &quot; &lt;&lt; b2 &lt;&lt; &quot;\n&quot;
+		&lt;&lt; &quot;b3: &quot; &lt;&lt; b3 &lt;&lt; &quot;\n&quot;
+		&lt;&lt; &quot;b4: &quot; &lt;&lt; b4 &lt;&lt; &quot;\n&quot;
+		&lt;&lt; &quot;b5: &quot; &lt;&lt; b5 &lt;&lt; &quot;\n&quot;
+		&lt;&lt; &quot;b6: &quot; &lt;&lt; b6 &lt;&lt; &quot;\n&quot;
+		&lt;&lt; &quot;b7: &quot; &lt;&lt; b7 &lt;&lt; &quot;\n&quot;
+		&lt;&lt; endl;
+}
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><div class="language-cpp line-numbers-mode" data-ext="cpp"><pre class="language-cpp"><code><span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+	<span class="token comment">// 在括号中会自动隐式转换</span>
+	<span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token number">100</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+		cout <span class="token operator">&lt;&lt;</span> <span class="token string">&quot;你好&quot;</span> <span class="token operator">&lt;&lt;</span> endl<span class="token punctuation">;</span>
+	<span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h2 id="c-11初始化" tabindex="-1"><a class="header-anchor" href="#c-11初始化" aria-hidden="true">#</a> c++11初始化</h2><blockquote><p>在linux环境下需要加 -std=c++11</p></blockquote><div class="language-c++ line-numbers-mode" data-ext="c++"><pre class="language-c++"><code>#include &lt;iostream&gt;
+using namespace std;
+
+int main()
+{  
+	// 小括号赋值
+	int num1(10);
+	bool flag(true);
+	string text(&quot;你好&quot;);
+
+	// 中括号赋值
+	double price{ 5.2 };
+	string html{ &quot;&lt;span&gt;你好&lt;/span&gt;&quot; };
+
+	cout&lt;&lt; 
+		num1 &lt;&lt; &quot;\n&quot; &lt;&lt;
+		flag &lt;&lt; &quot;\n&quot; &lt;&lt;
+		text &lt;&lt; &quot;\n&quot; &lt;&lt;
+		price &lt;&lt; &quot;\n&quot; &lt;&lt;
+		html &lt;&lt; &quot;\n&quot; &lt;&lt;
+	endl;
+}
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h2 id="c-11初始化晋级" tabindex="-1"><a class="header-anchor" href="#c-11初始化晋级" aria-hidden="true">#</a> c++11初始化晋级</h2><p>结构体中与类的初始化</p><div class="language-cpp line-numbers-mode" data-ext="cpp"><pre class="language-cpp"><code><span class="token keyword">struct</span> <span class="token class-name">Point</span> <span class="token punctuation">{</span>
+    <span class="token keyword">int</span> x<span class="token punctuation">,</span> y<span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+Point p1 <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">}</span><span class="token punctuation">;</span> <span class="token comment">// 结构体初始化</span>
+Point p2 <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">;</span>     <span class="token comment">// 所有成员初始化为默认值</span>
+
+<span class="token keyword">class</span> <span class="token class-name">Person</span> <span class="token punctuation">{</span>
+<span class="token keyword">public</span><span class="token operator">:</span>
+    std<span class="token double-colon punctuation">::</span>string name<span class="token punctuation">;</span>
+    <span class="token keyword">int</span> age<span class="token punctuation">;</span>
+    <span class="token function">Person</span><span class="token punctuation">(</span><span class="token keyword">const</span> std<span class="token double-colon punctuation">::</span>string<span class="token operator">&amp;</span> n<span class="token punctuation">,</span> <span class="token keyword">int</span> a<span class="token punctuation">)</span> <span class="token operator">:</span> <span class="token function">name</span><span class="token punctuation">(</span>n<span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token function">age</span><span class="token punctuation">(</span>a<span class="token punctuation">)</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+Person person <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token string">&quot;Alice&quot;</span><span class="token punctuation">,</span> <span class="token number">30</span><span class="token punctuation">}</span><span class="token punctuation">;</span> <span class="token comment">// 类初始化，调用构造函数</span>
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>返回值中的应用</p><div class="language-cpp line-numbers-mode" data-ext="cpp"><pre class="language-cpp"><code><span class="token keyword">struct</span> <span class="token class-name">Person</span> <span class="token punctuation">{</span>
+	string name<span class="token punctuation">;</span>
+	<span class="token keyword">int</span> age<span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+Person <span class="token function">getPerson</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+	<span class="token keyword">return</span> <span class="token punctuation">{</span> <span class="token string">&quot;张三&quot;</span><span class="token punctuation">,</span> <span class="token number">17</span> <span class="token punctuation">}</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><div class="language-cpp line-numbers-mode" data-ext="cpp"><pre class="language-cpp"><code><span class="token keyword">struct</span> <span class="token class-name">Vector2D</span> <span class="token punctuation">{</span>
+    <span class="token keyword">double</span> x<span class="token punctuation">,</span> y<span class="token punctuation">;</span>
+
+    Vector2D <span class="token keyword">operator</span><span class="token operator">+</span><span class="token punctuation">(</span><span class="token keyword">const</span> Vector2D<span class="token operator">&amp;</span> other<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> <span class="token punctuation">{</span>x <span class="token operator">+</span> other<span class="token punctuation">.</span>x<span class="token punctuation">,</span> y <span class="token operator">+</span> other<span class="token punctuation">.</span>y<span class="token punctuation">}</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h2 id="c-11原始字面量" tabindex="-1"><a class="header-anchor" href="#c-11原始字面量" aria-hidden="true">#</a> c++11原始字面量</h2><blockquote><p>更方便的描述字符串</p></blockquote><p>语法:</p><p>``string str1 = R “表述(raw string)表述”`</p><p>特点:</p><ol><li>可以换行, 无视转义反斜杠</li><li>括号两旁的注释字符串必须相同</li></ol><div class="language-c++ line-numbers-mode" data-ext="c++"><pre class="language-c++"><code>int main()
+{
+	
+	// 支持换行, span必须是两对, 五十反斜杠
+	string str1 = R&quot;span( 
+		&lt;span&gt;
+			你好
+		&lt;/span&gt;	
+	)span&quot;;
+
+	cout &lt;&lt; str1 &lt;&lt; endl;
+}
+
+void main() {
+	string str = R&quot;(\n)&quot;; // 无视反斜杠, 两侧注释可以省略
+	cout &lt;&lt; str &lt;&lt; endl; // 输出\n
+}
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h2 id="goto语句" tabindex="-1"><a class="header-anchor" href="#goto语句" aria-hidden="true">#</a> goto语句</h2><div class="language-c++ line-numbers-mode" data-ext="c++"><pre class="language-c++"><code>#include &lt;iostream&gt;
+using namespace std;
+
+// c++中可以给起行号
+int main()
+{
+row1:
+	cout &lt;&lt; &quot;这是第一行&quot; &lt;&lt; endl;
+	goto row3;  // 跳转到第三行
+row2:
+	cout &lt;&lt; &quot;这是第二行&quot; &lt;&lt; endl;
+row3:
+	cout &lt;&lt; &quot;这是第三行&quot; &lt;&lt; endl;
+}
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h2 id="作用域" tabindex="-1"><a class="header-anchor" href="#作用域" aria-hidden="true">#</a> 作用域</h2><h3 id="全局作用域" tabindex="-1"><a class="header-anchor" href="#全局作用域" aria-hidden="true">#</a> 全局作用域</h3><div class="language-c++ line-numbers-mode" data-ext="c++"><pre class="language-c++"><code>#include &lt;iostream&gt;
+using namespace std;
+
+// 全局作用域
+int MAX_AGE = 20000;
+
+int main()
+{
+	cout &lt;&lt; MAX_AGE &lt;&lt; endl;
+}
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h3 id="函数作用域" tabindex="-1"><a class="header-anchor" href="#函数作用域" aria-hidden="true">#</a> 函数作用域</h3><div class="language-c++ line-numbers-mode" data-ext="c++"><pre class="language-c++"><code>#include &lt;iostream&gt;
+using namespace std;
+
+void func1();
+void func2();
+
+int main()
+{
+	func1();
+	func2();
+}
+
+void func1()
+{
+	int a = 1;
+}
+
+void func2()
+{
+	cout &lt;&lt; a &lt;&lt; endl; // 报错不能访问另外函数中a
+}
+
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h3 id="块作用域" tabindex="-1"><a class="header-anchor" href="#块作用域" aria-hidden="true">#</a> 块作用域</h3><div class="language-c++ line-numbers-mode" data-ext="c++"><pre class="language-c++"><code>#include &lt;iostream&gt;
+using namespace std;
+
+int main()
+{
+	if (true)
+	{
+		int a = 1;
+	};
+
+	cout &lt;&lt; a &lt;&lt; endl; // 不能访问a
+}
+
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h2 id="c-中的分号" tabindex="-1"><a class="header-anchor" href="#c-中的分号" aria-hidden="true">#</a> c++中的分号</h2><p>在 C++ 中，语句以分号（;）结尾。一般来说，除了以下几种情况，所有语句都需要以分号结尾：</p><ol><li><p>类的定义</p><p>类的定义中，不需要在最后的右括号后加分号。</p></li><li><p>函数定义</p><p>函数定义的末尾不需要加分号，只需要在函数体的末尾加上右花括号即可。</p></li><li><p>条件编译指令</p><p>条件编译指令中，不需要在末尾加上分号。</p></li></ol><p>例如：</p><div class="language-text line-numbers-mode" data-ext="text"><pre class="language-text"><code>cppCopy code
+#ifdef DEBUG
+    std::cout &lt;&lt; &quot;Debugging is enabled.&quot; &lt;&lt; std::endl;
+#endif
+
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><ol start="4"><li><p>初始值设定项</p><p>在变量定义时，如果使用初始值设定项（使用 = 符号赋值），则不需要在末尾加上分号。例如：</p></li></ol><div class="language-text line-numbers-mode" data-ext="text"><pre class="language-text"><code>cppCopy code
+int a = 1, b = 2;
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div></div></div><ol start="5"><li><p>跳出语句</p><p>跳出语句（如 break、continue 和 return）在语句末尾不需要加分号，因为它们本身就是语句的结束符。</p><p>总之，大多数情况下，C++ 中的语句都需要以分号结尾，只有上述特殊情况下才不需要。</p></li></ol><h2 id="static-修饰的静态变量" tabindex="-1"><a class="header-anchor" href="#static-修饰的静态变量" aria-hidden="true">#</a> static 修饰的静态变量</h2><blockquote><p>函数内的静态变量只能被该函数访问.</p></blockquote><div class="language-c++ line-numbers-mode" data-ext="c++"><pre class="language-c++"><code>#include &lt;iostream&gt;
+using namespace std;
+
+void fn1();
+
+int main()
+{
+	fn1(); // 1
+	fn1(); // 2
+	fn1(); // 3
+}
+
+void fn1()
+{
+	static int a = 1;
+	cout &lt;&lt; a++ &lt;&lt; endl;
+}
+
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h2 id="访问全局变量" tabindex="-1"><a class="header-anchor" href="#访问全局变量" aria-hidden="true">#</a> :: 访问全局变量</h2><div class="language-c++ line-numbers-mode" data-ext="c++"><pre class="language-c++"><code>#include &lt;iostream&gt;
+using namespace std;
+
+void fn1();
+
+int main()
+{
+	fn1(); 
+}
+
+int a = 2;
+void fn1()
+{
+	// 在变量前加 ::变量名, 代表访问全局变量
+	int a = 1;
+	cout &lt;&lt; a &lt;&lt; endl; // 输出1 
+	cout &lt;&lt; ::a &lt;&lt; endl; // 输出2 
+}
+
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h2 id="c-算数运算的细节" tabindex="-1"><a class="header-anchor" href="#c-算数运算的细节" aria-hidden="true">#</a> c++算数运算的细节</h2><p><strong>除数不要为0</strong></p><ol><li>整型除法(包括取模运算), 被除数为0, 程序异常退出</li><li>浮点数除法, 被除数为0, 结果无限大</li></ol><div class="language-c++ line-numbers-mode" data-ext="c++"><pre class="language-c++"><code>#include &lt;iostream&gt;
+using namespace std;
+
+
+int main()
+{
+	int a = 1;
+	int b = 0;
+	cout &lt;&lt; a / b &lt;&lt; endl; // 程序异常退出
+}
+
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><div class="language-c++ line-numbers-mode" data-ext="c++"><pre class="language-c++"><code>#include &lt;iostream&gt;
+using namespace std;
+
+
+int main()
+{
+	int a = 1;
+	double b = 0; // 浮点数0
+	cout &lt;&lt; a / b &lt;&lt; endl; // 输infinite
+}
+
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p><strong>除法运算的类型</strong></p><ol><li>整数与浮点数运算 = 浮点数</li><li>整数 / 整数 = 整数</li></ol><div class="language-c++ line-numbers-mode" data-ext="c++"><pre class="language-c++"><code>#include &lt;iostream&gt;
+using namespace std;
+
+
+int main()
+{
+	int a = 1;
+	double b = 0.1;
+	cout &lt;&lt; a + b &lt;&lt; endl; // 1.1
+  	cout &lt;&lt; a * b &lt;&lt; endl; // 0.1
+  	cout &lt;&lt; 200 / 3 &lt;&lt; endl;  // 输出66 整型
+}
+
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h2 id="函数分文件编写" tabindex="-1"><a class="header-anchor" href="#函数分文件编写" aria-hidden="true">#</a> 函数分文件编写</h2><blockquote><p>函数在实际开发中一般分文件编写</p></blockquote><ol><li><p>.h 文件是头文件, 存放函数/结构体/类的定义和引入其他的头文件</p></li><li><p>.cpp文件是程序文件, 存放函数/结构体/类的实现, 和引入自己的头文件</p></li><li><p>主程序在使用时候只需要引入对应的头文件</p></li><li><p>引入系统头文件使用#include&lt;文件名&gt; 引入自定义头文件使用#include &quot;文件名&quot;</p></li></ol><p>hello.h头文件</p><div class="language-c++ line-numbers-mode" data-ext="c++"><pre class="language-c++"><code>#pragma once
+#include &lt;iostream&gt;
+using namespace std;
+
+void sayHello();
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>hello.cpp 文件</p><div class="language-c++ line-numbers-mode" data-ext="c++"><pre class="language-c++"><code>#include &quot;hello.h&quot;;
+
+void sayHello()
+{
+	cout &lt;&lt; &quot;你好&quot; &lt;&lt; endl;
+}
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>main函数</p><div class="language-c++ line-numbers-mode" data-ext="c++"><pre class="language-c++"><code>#include &lt;iostream&gt;
+#include &quot;hello.h&quot;
+using namespace std;
+
+
+int main()
+{
+	sayHello();
+}
+
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h2 id="使用vs-debug程序" tabindex="-1"><a class="header-anchor" href="#使用vs-debug程序" aria-hidden="true">#</a> 使用VS debug程序</h2><blockquote><ol><li>在断点程序前√红圆圈</li><li>开启本地调试</li><li>在菜单栏中控制程序的运行</li></ol></blockquote><img src="/assets/a1-009559a7.jpg"><h2 id="sizeof-测量变量-数据类型的内存大小" tabindex="-1"><a class="header-anchor" href="#sizeof-测量变量-数据类型的内存大小" aria-hidden="true">#</a> sizeof 测量变量/数据类型的内存大小</h2><ol><li>可以测量数据类型本身: sizeof(int)</li><li>可以测量变量/字面量: sizeof(a) sizeof(10)</li><li>测量变量/字面量时可以不加(), 但是测量数据类型本身必须加() : sizeof(a) 或者 sizeof a 都可以</li><li>得到的是所占内存的字节数, 数据类型是int</li><li>相同数据类型在不同操作系统中所占内存大小 <mark>可能</mark> 不同</li></ol><h2 id="c-的数据类型" tabindex="-1"><a class="header-anchor" href="#c-的数据类型" aria-hidden="true">#</a> c++ 的数据类型</h2><p>c++中基本数据类型分成四大种</p><ol><li>整数型</li><li>字符型</li><li>布尔型</li><li>浮点型</li></ol><p>基础知识:</p><ol><li>bit == 位. 计算机靠二进制存储数据, 如 001, 其中每一位就称为1bit, 1bit只有两种可能, 0或者1</li><li>byte == 字节. 字节是计算机存储容量的一种计量单位. 一字节有8位/bit. 举例如: 0000 0000</li></ol><p>整数型</p><ul><li>根据数值的大小分有三种short, int, long, 以及加上unsigned代表对应的无符号的数据类型. 共计6种</li><li>c++11推出了long long表示更大的整数类型.</li></ul><p>整数类型所占内存大小</p><table><thead><tr><th>数据类型</th><th>解释</th><th>所占字节</th><th>取值范围</th><th>备注</th></tr></thead><tbody><tr><td>unsigned short</td><td>无符号short</td><td>2</td><td>[0, 65535]</td><td>1个byte == 8bit. 那么2字节有16位, 共能存储 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>2</mn><mrow><msup><mrow></mrow><mn>16</mn></msup><mo>=</mo><mn>65536</mn></mrow></mrow><annotation encoding="application/x-tex">2{^{16} = 65536}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8141em;"></span><span class="mord">2</span><span class="mord"><span class="mord"><span></span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">16</span></span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mord">65536</span></span></span></span></span>个数字, 故取值范围为 [0, 65535]</td></tr><tr><td>short</td><td>有符号short</td><td>2</td><td>[-32768, 32767]</td><td>因为带符号, 最高位代表符号位.故正数能存储 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>2</mn><mrow><msup><mrow></mrow><mn>15</mn></msup><mo>=</mo><mn>32768</mn></mrow></mrow><annotation encoding="application/x-tex">2{^{15} = 32768}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8141em;"></span><span class="mord">2</span><span class="mord"><span class="mord"><span></span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">15</span></span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mord">32768</span></span></span></span></span> 个数字, 负数也能存储<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>2</mn><mrow><msup><mrow></mrow><mn>15</mn></msup><mo>=</mo><mn>32768</mn></mrow></mrow><annotation encoding="application/x-tex">2{^{15} = 32768}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8141em;"></span><span class="mord">2</span><span class="mord"><span class="mord"><span></span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">15</span></span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mord">32768</span></span></span></span></span>个数字. 给取值范围为[-32768, 32767]</td></tr><tr><td>int</td><td>有符号int</td><td>4</td><td>--略--</td><td>-- 略---</td></tr><tr><td>unsigned int</td><td>无符号int</td><td>4</td><td>--略--</td><td>-- 略---</td></tr><tr><td>long</td><td>有符号long</td><td>32位操作系统 4字节;64位操作系统 8字节;</td><td>--略--</td><td>-- 略---</td></tr><tr><td></td><td></td><td></td><td></td><td></td></tr><tr><td>unsigned long</td><td>无符号long</td><td>32位操作系统 4字节;64位操作系统 8字节;</td><td>--略--</td><td>-- 略---</td></tr><tr><td>long long</td><td>有符号long long</td><td>8</td><td>--略--</td><td>-- 略---</td></tr></tbody></table><p>字符型</p><ol><li>字符型所占1字节. 有符号signed char范围为[-128, 127], 无符号字符unsigned范围为[0, 255]</li><li>字符型本质是将字符转为对应的ASCII码整数, 存储这个整数</li><li>字符可以强转成整形</li><li>在c++中可以写c风格(char[])的字符串, 也可以写c++风格字符串(string)</li></ol><div class="language-c++ line-numbers-mode" data-ext="c++"><pre class="language-c++"><code>int main()
+{
+	char a = 97; // 输出a, 证明char本质是ASCII码存储
+	cout &lt;&lt; a &lt;&lt; endl; 
+}
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><div class="language-c++ line-numbers-mode" data-ext="c++"><pre class="language-c++"><code>int main()
+{
+	char str1[]  = &quot;我是字符串&quot;; // c风格字符串, char数组
+	string str2 = &quot;我是字符串2&quot;; // c++风格字符串
+}
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>布尔型</p><ol><li>布尔型所占1字节</li><li>布尔型底层用0代表false, 用1代表true</li></ol><p>浮点型</p><ol><li>float 所占4字节, 有效位数为7位</li><li>double所占8字节, 有效位数15位</li><li>long double 所占字节与有效位数不低于double, VS中占8字节, Linux占16字节</li><li>有效位数记忆小技巧: 2 * 字节数 - 1</li><li>有效数既包括小数点前的数, 也包括小数点后的数</li></ol><h2 id="数据类型转换" tabindex="-1"><a class="header-anchor" href="#数据类型转换" aria-hidden="true">#</a> 数据类型转换</h2><blockquote><p>c++中的数据类型转换分为两种</p><ol><li>自动数据类型转换</li><li>强制数据类型转换</li></ol></blockquote><p><strong>自动类型转换</strong></p><ol><li><p>多种数据类型运算, 向高类型转换</p><div class="language-c++ line-numbers-mode" data-ext="c++"><pre class="language-c++"><code>int main()
+{
+	char a(&#39;a&#39;); // 97
+	int b(10); // 10
+	double c(20.0);// 20.0
+
+	// 朝更高精度计算, 输出127.000000000000
+	cout &lt;&lt; sizeof (a + b + c) &lt;&lt; endl; // 8字节, double数据类型
+}
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div></li><li><p>整形和浮点数运算必得浮点数, 即使整形所占字节大. 优先级比第一条规则高</p><div class="language-c++ line-numbers-mode" data-ext="c++"><pre class="language-c++"><code>int main()
+{
+	long long num1 = 1000; //占8字节
+	float num2 = 3.2; // 占4字节
+
+	cout &lt;&lt; num1 - num2 &lt;&lt; endl; // 996.8
+	cout &lt;&lt; sizeof(num1 - num2) &lt;&lt; endl; // 4字节, 即float
+}
+
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div></li><li><p>声明与字面量类型不同时候会自动转化类型, 以声明为主</p><div class="language-c++ line-numbers-mode" data-ext="c++"><pre class="language-c++"><code>
+int main()
+{
+	int a = 3.1415;
+
+	cout &lt;&lt; a &lt;&lt; endl; // 输出3, 将浮点数字面量转成了int, 并且丢失了精度
+	cout &lt;&lt; sizeof(a) &lt;&lt; endl; 
+}
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>​</p></li></ol><p><strong>强制类型转换</strong></p><p>在类型前可以强制类型转换</p><div class="language-c++ line-numbers-mode" data-ext="c++"><pre class="language-c++"><code>int main()
+{
+	int a = (int)3.1415;
+
+	cout &lt;&lt; a &lt;&lt; endl; 
+}
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h2 id="类型别名" tabindex="-1"><a class="header-anchor" href="#类型别名" aria-hidden="true">#</a> 类型别名</h2><blockquote><p>给系统的类型起别名, 方便使用</p></blockquote><p>作用1: 类型写的字符太多了, 很麻烦, 可以用类型别名定义标识符</p><div class="language-c++ line-numbers-mode" data-ext="c++"><pre class="language-c++"><code>int main()
+{
+	// 无符号整形
+	typedef unsigned int uint;
+	// 长整形
+	typedef long long llong;
+	// 无符号长整形
+	typedef unsigned long long ullong;
+
+	uint a = 255;
+	llong b = 655;
+	ullong c = 2000;
+
+	cout &lt;&lt; a &lt;&lt; endl;
+	cout &lt;&lt; b &lt;&lt; endl;
+	cout &lt;&lt; c &lt;&lt; endl;
+}
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>作用2: 屏蔽不同系统的类型所占内存大小, 做兼容</p><div class="language-c++ line-numbers-mode" data-ext="c++"><pre class="language-c++"><code>int main()
+{
+	// 在windows中longlong占8字节, 64位
+	typedef long long int64_t; // 定义1
+
+	// 在linux中long占8字节, 64位
+	typedef long int64_t; // 定义2
+
+	// 在程序中只使用int64_t, 在windows下引入第一个定义, 在linux下引入第二个定义
+	// 就可以消除在windows上使用long为4字节, 在linux下使用long为8字节可能带来的风险
+}
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h2 id="指针" tabindex="-1"><a class="header-anchor" href="#指针" aria-hidden="true">#</a> 指针</h2><blockquote><p>指针是变量所占内存的第一个内存地址, 比如一个int所占4字节, 指针保存的就i是int第一个字节的内存地址</p></blockquote><ol><li><p>取地址符号: &amp;变量. 即可取出变量的内存地址, 16进制保存</p><div class="language-c++ line-numbers-mode" data-ext="c++"><pre class="language-c++"><code>int main()
+{
+	int a = 10;
+	cout &lt;&lt; &amp;a &lt;&lt; endl; // 0000009868CFFAD4
+}
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>​</p></li><li><p>指针语法: 数据类型 * 名称 = 内存地址</p><div class="language-c++ line-numbers-mode" data-ext="c++"><pre class="language-c++"><code>int main()
+{
+	int b = 200;
+	int* a = &amp;b; // 指针只能保存内存地址, 所以要先取地址再赋值
+
+	cout &lt;&lt; a &lt;&lt; endl; //000000FBCD12F8E4
+}
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>​</p></li><li><p>指针大小</p><ul><li>32位操作系统下, 指针永远占4字节, 无论什么数据类型</li><li>64位操作系统下, 指针永远占8字节, 无论什么数据类型</li></ul><div class="language-c++ line-numbers-mode" data-ext="c++"><pre class="language-c++"><code>int main()
+{
+    int b = 200;
+	int* a = &amp;b; 
+
+	cout &lt;&lt; sizeof a &lt;&lt; endl; //输出8; int为4字节, 但是指针的内存在64操作系统下不管什么数据类型都占8字节
+}
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>​</p></li><li><p>cout 输出指针会导致输出字符串, 可以采用void * 强转, 或者转为long long十进制</p></li></ol><h2 id="指针操作" tabindex="-1"><a class="header-anchor" href="#指针操作" aria-hidden="true">#</a> 指针操作</h2><p><strong>通过指针修改数据</strong></p><div class="language-c++ line-numbers-mode" data-ext="c++"><pre class="language-c++"><code>#include &lt;iostream&gt;
+using namespace std;
+
+int main()
+{ 
+	int num = 10;
+	int* num_ptr = &amp;num;
+	*num_ptr = 20; // 通过指针修改数据
+	cout &lt;&lt; num &lt;&lt; endl;  //20
+}
+
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p><strong>函数地址传递VS值传递</strong></p><div class="language-c++ line-numbers-mode" data-ext="c++"><pre class="language-c++"><code>void func(int num1, int* num2)
+{
+	num1 = 200;
+	cout &lt;&lt; &quot;num1:&quot; &lt;&lt; num1 &lt;&lt; endl; //值传递
+	*num2 = 200;
+	cout &lt;&lt; &quot;num2:&quot; &lt;&lt; num2 &lt;&lt; endl; //引用传递
+}
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h2 id="指针与常量" tabindex="-1"><a class="header-anchor" href="#指针与常量" aria-hidden="true">#</a> 指针与常量</h2><p><strong>常量指针</strong></p><p>语法: const int* num1<br> 特点: 不能通过解引用修改值, 可以重新赋值<br> 应用特点: 函数中的形参指针, 表示不修改此指针中的值</p><div class="language-c++ line-numbers-mode" data-ext="c++"><pre class="language-c++"><code>void func(const int* num1)
+{	
+	int num2 = 200;
+	num1 = &amp;num2; // 可以重新赋值指针
+	*num1 = 200; // 编译器报错: 表达式必须是可修改的左值
+
+}
+int main()
+{
+	int num1 = 10;
+	func(&amp;num1);
+}
+
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p><strong>指针常量</strong></p><p>语法: int* const num</p><p>特点: 指针不能重新赋值, 可以通过解引用重新赋值. 而且初始化的时候必须赋初始值</p><div class="language-javascript line-numbers-mode" data-ext="js"><pre class="language-javascript"><code>int <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+	int num1 <span class="token operator">=</span> <span class="token number">10</span><span class="token punctuation">;</span>
+	<span class="token comment">// int* const num2; // 不初始化报错</span>
+	int<span class="token operator">*</span> <span class="token keyword">const</span> num2 <span class="token operator">=</span> <span class="token operator">&amp;</span>num1<span class="token punctuation">;</span>
+	<span class="token operator">*</span>num2 <span class="token operator">=</span> <span class="token number">200</span><span class="token punctuation">;</span> <span class="token comment">// 可以解引用赋值</span>
+	num2 <span class="token operator">=</span> <span class="token constant">NULL</span><span class="token punctuation">;</span> <span class="token comment">// 不能对指针重新赋值</span>
+<span class="token punctuation">}</span>
+
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p><strong>常指针常量</strong></p><p>语法: const int* const num</p><p>特点: 既不能给指针重新赋值, 也不通过解引用重新赋值. 而且初始化的时候必须赋初始值</p><h2 id="任意指针" tabindex="-1"><a class="header-anchor" href="#任意指针" aria-hidden="true">#</a> 任意指针</h2><p>语法: void* 指针名</p><p>特点: 任意指针可以是任意的数据类型的指针., 但解引用且必须强制类型转换成具体类型</p><p>应用场景: 不适合写死的函数的形参指针</p><div class="language-c++ line-numbers-mode" data-ext="c++"><pre class="language-c++"><code>#include &lt;iostream&gt;
+using namespace std;
+
+void func(void* ptr) 
+{
+	cout &lt;&lt; R&quot;(ptr的内存地址是: )&quot; &lt;&lt; ptr &lt;&lt; endl;
+	// *ptr = 10; // 不能直接解引用, 需要强制类型转换
+	*(int*)ptr = 200; // 先强转为具体类型, 再解引用
+}
+int main()
+{
+	int num1 = 10;
+	func(&amp;num1);
+	cout &lt;&lt; num1 &lt;&lt; endl;
+}
+
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h2 id="new和delete控制堆内存空间" tabindex="-1"><a class="header-anchor" href="#new和delete控制堆内存空间" aria-hidden="true">#</a> new和delete控制堆内存空间</h2><div class="language-c++ line-numbers-mode" data-ext="c++"><pre class="language-c++"><code>#include &lt;iostream&gt;
+using namespace std;
+
+
+int main()
+{
+	int* num1 = new int(10); 
+	delete num1; // 释放num1的内存空间
+}
+
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h2 id="空指针与野指针" tabindex="-1"><a class="header-anchor" href="#空指针与野指针" aria-hidden="true">#</a> 空指针与野指针</h2><p><strong>空指针</strong></p><p>定义: 指针指向的地址为空的指针</p><p>特点: 0和NULL和nullptr都可以作为空指针, 对空指针解引用会引发程序崩溃</p><p>应用: 为了保证程序的健壮, 在代码中增加对空指针的判断</p><div class="language-c++ line-numbers-mode" data-ext="c++"><pre class="language-c++"><code>int main()
+{
+	int* p1 = NULL;
+	int* p2 = 0;
+	int* p3 = nullptr; // c11新增初始化空指针的方式
+}
+
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p><strong>野指针</strong></p><p>定义: 没有明确指向地址的指针</p><p>特点: 对野指针解引用 <mark>可能</mark> 会导致程序崩溃</p><p>出现场景:</p><ol><li><p>未给指针赋初始值, 后面也忘了, 拿来就用</p><ul><li>解决方法: 赋值为空指针</li></ul></li><li><p>delete了指针, 但是忘了, 还继续用</p><ul><li>delete指针后, 让指针指向空</li></ul></li><li><p>函数返回了栈内变量的地址</p><ul><li>不返回就可以</li></ul></li><li><p>c++将arr[i]解释为指针, 当指针越界时候即为野指针</p></li></ol><h2 id="函数指针与回调函数" tabindex="-1"><a class="header-anchor" href="#函数指针与回调函数" aria-hidden="true">#</a> 函数指针与回调函数</h2><p>语法:</p><p>int (* callback)(int num1, int num2);</p><p>返回值类型 (指针变量名) (形参列表)</p><p>特点: 其中形参列表中的变量名可以省略.</p><div class="language-c++ line-numbers-mode" data-ext="c++"><pre class="language-c++"><code>#include &lt;stdio.h&gt;
+#include &lt;iostream&gt;
+using namespace std;
+
+
+void animation(int delay, void (*cb)(bool flag)) {
+	cout &lt;&lt; delay &lt;&lt; &quot;s后执行&quot; &lt;&lt; endl;
+	// cb(true); // c++风格回调
+	cb(true); // c++风格回调
+	(*cb)(true); // c风格回调
+}
+
+void cb(bool flag) {
+	if (flag) {
+		cout &lt;&lt; &quot;回调函数&quot; &lt;&lt; endl;
+	}
+}
+int main() {
+	animation(100, cb);
+	return 0;
+}
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h2 id="一维数组声明-memset-memcpy函数" tabindex="-1"><a class="header-anchor" href="#一维数组声明-memset-memcpy函数" aria-hidden="true">#</a> 一维数组声明, memset, memcpy函数</h2><p>memccpy(destination, source, size)</p><p>memset(destination, value, size)</p><div class="language-c++ line-numbers-mode" data-ext="c++"><pre class="language-c++"><code>#include &lt;iostream&gt;
+using namespace std;
+
+int main()
+{
+	int nums[5] = { 1,2,3,4,5 };
+
+	// 1. sizeof(数组)可以得到数组所占内存大小. 只对基本数据类型有效
+	for (int i = 0; i &lt; sizeof(nums) / sizeof(int); i++) 
+	{
+		int num = nums[i];
+		cout &lt;&lt; num &lt;&lt; endl;
+	}
+
+	int nums2[5] = {}; // 2. 数组空位默认用0填充
+	memcpy(nums2, nums, sizeof(nums)); // 复制数组的方法
+	memset(nums2,0, sizeof(nums)); // 清空数组的方法
+}
+
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h2 id="指针的加法-一维数组的运算表示法" tabindex="-1"><a class="header-anchor" href="#指针的加法-一维数组的运算表示法" aria-hidden="true">#</a> 指针的加法, 一维数组的运算表示法</h2><p><strong>指针的加法</strong></p><p>指针 + 1 = 原指针地址 + 1 * 该地址地址的存储的数据类型的大小</p><p>例子1</p><div class="language-c++ line-numbers-mode" data-ext="c++"><pre class="language-c++"><code>#include &lt;iostream&gt;
+using namespace std;
+
+
+int main() {
+	char* a = new char(&#39;中&#39;);
+
+	printf(&quot;a指针的内存地址为:%d\n&quot;,&amp;a);
+	printf(&quot;a指针+1的内存地址为:%d\n&quot;, &amp;a + 1); // &amp;a存储的是指针, 在64操作系统上, 指针占8B
+	// a指针的内存地址为:1339030520
+	// a指针 + 1的内存地址为:1339030528
+	return 0;
+}
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>例子2</p><div class="language-cpp line-numbers-mode" data-ext="cpp"><pre class="language-cpp"><code><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;iostream&gt;</span></span>
+<span class="token keyword">using</span> <span class="token keyword">namespace</span> std<span class="token punctuation">;</span>
+
+
+<span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+	<span class="token keyword">char</span> a <span class="token operator">=</span> <span class="token char">&#39;中&#39;</span><span class="token punctuation">;</span>
+
+	<span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">&quot;a指针的内存地址为:%d\n&quot;</span><span class="token punctuation">,</span><span class="token operator">&amp;</span>a<span class="token punctuation">)</span><span class="token punctuation">;</span>
+	<span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">&quot;a指针+1的内存地址为:%d\n&quot;</span><span class="token punctuation">,</span> <span class="token operator">&amp;</span>a <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token comment">// &amp;a存储的是字符,占1B</span>
+   <span class="token comment">// a指针的内存地址为:154138564</span>
+   <span class="token comment">// a指针 + 1的内存地址为 : 154138565</span>
+	<span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p><strong>一维数组的运算表示法</strong></p><p>c++将数组名解释为数组的首地址, 除了sizeof(数组名)时候, 返回数组的总地址</p><p>*<em>数组[n] == <em>(数组名 + n) 即利用加法得到地址再解引用</em></em></p><div class="language-c++ line-numbers-mode" data-ext="c++"><pre class="language-c++"><code>#include &lt;iostream&gt;
+using namespace std;
+
+
+int main() {
+	// nums[2]为数组的下标表示法, *(nums+2)为数组的指针运算表示法
+	int arr[5] = { 1,2,3,4,5 };
+	printf(&quot;第一个元素是: %d\n&quot;, *arr);
+	printf(&quot;第二个元素是: %d\n&quot;,*(arr + 1));
+	printf(&quot;第三个元素是: %d\n&quot;, *(arr + 2));
+	printf(&quot;第四个元素是: %d\n&quot;, *(arr + 3));
+	printf(&quot;第五个元素是: %d\n&quot;, *(arr + 4));
+	return 0;
+}
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h2 id="函数中形参为数组" tabindex="-1"><a class="header-anchor" href="#函数中形参为数组" aria-hidden="true">#</a> 函数中形参为数组</h2><p>形参列表中的数组变量是数组指针的语法糖</p><p>void func (int arr[], int len){}</p><p>等价于</p><p>void func(int* arr, int len){}</p><p><strong>注意点: 形参为数组, 尽量传递数组的长度</strong>.</p><p>因为在函数中中的数组指针为指向数组首地址的指针, 不是数组名, 对其用sizeof得到的永远是数据类型所占内存的大小</p><div class="language-c++ line-numbers-mode" data-ext="c++"><pre class="language-c++"><code>#include &lt;iostream&gt;
+using namespace std;
+
+void func(int arr[], int len)
+{
+	//指针所占的内存大小: 如果操作系统是64位，则占8个字节；如果操作系统是32位，则占4个字节。
+	cout &lt;&lt; R&quot;(数组大小为: )&quot; &lt;&lt; sizeof(arr) &lt;&lt; endl; // Except: 4 * 4 = 16, Output: 8
+	cout &lt;&lt; R&quot;(数组长度为: )&quot; &lt;&lt; sizeof(len) &lt;&lt; endl; // Except: 4
+}
+int main()
+{
+	int nums[4] = { 1,2,3,4 }, len = sizeof(nums) / sizeof (int);
+
+	cout &lt;&lt; R&quot;(数组大小为: )&quot; &lt;&lt; sizeof(nums) &lt;&lt; endl; // Except: 4 * 4 = 16
+	cout &lt;&lt; R&quot;(数组长度为: )&quot; &lt;&lt; len &lt;&lt; endl; // Except: 4
+
+	func(nums, len);
+	
+}
+
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p><strong>不传递数组长度的解决办法</strong></p><ol><li><p><strong>使用特殊值来标识数组的末尾</strong>：有时候，你可以约定一种特殊的值（例如，0或-1）来表示数组的末尾，而不显式传递数组的长度。这种方法在C字符串中很常见，字符串以空字符 &#39;\0&#39; 结尾。</p><div class="language-cpp line-numbers-mode" data-ext="cpp"><pre class="language-cpp"><code><span class="token keyword">void</span> <span class="token function">func</span><span class="token punctuation">(</span><span class="token keyword">int</span> arr<span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+    <span class="token keyword">while</span> <span class="token punctuation">(</span>arr<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">!=</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token comment">// 在函数中使用arr来操作数组</span>
+        i<span class="token operator">++</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div></li><li><p><strong>使用标准库容器</strong>：如果你使用C++，可以使用标准库容器如<code>std::vector</code>，它们自动管理了数组的大小，无需显式传递长度。</p><div class="language-cpp line-numbers-mode" data-ext="cpp"><pre class="language-cpp"><code><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;vector&gt;</span></span>
+<span class="token keyword">void</span> <span class="token function">func</span><span class="token punctuation">(</span>std<span class="token double-colon punctuation">::</span>vector<span class="token operator">&lt;</span><span class="token keyword">int</span><span class="token operator">&gt;</span> <span class="token operator">&amp;</span>arr<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token comment">// 在函数中使用arr来操作数组</span>
+<span class="token punctuation">}</span>
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div></li></ol><h2 id="防止new声明的数组空间溢出" tabindex="-1"><a class="header-anchor" href="#防止new声明的数组空间溢出" aria-hidden="true">#</a> 防止new声明的数组空间溢出</h2><blockquote><p>可以在new时候跟(std::nothrow), 如果分配失败, 返回nullptr</p></blockquote><div class="language-c++ line-numbers-mode" data-ext="c++"><pre class="language-c++"><code>#include &lt;iostream&gt;
+using namespace std;
+
+
+int main()
+{
+	int* nums = new (std::nothrow) int[100000000000];
+	if (nums == nullptr) 
+	{
+		cout &lt;&lt; &quot;数组分配空间失败&quot; &lt;&lt; endl;
+	}
+	else
+	{
+		cout &lt;&lt; &quot;数组分配空间成功&quot; &lt;&lt; endl;
+	}
+}
+
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h2 id="数组的qsort函数" tabindex="-1"><a class="header-anchor" href="#数组的qsort函数" aria-hidden="true">#</a> 数组的qsort函数</h2><div class="language-c++ line-numbers-mode" data-ext="c++"><pre class="language-c++"><code>#include &lt;iostream&gt;
+using namespace std;
+
+int compare_func(const void* a, const void* b){
+	return *(int*)a - *(int*)b;
+};
+
+int main()
+{
+	int* nums = new int[5]{ 1,22,1,55,2 };
+
+	// qsort(排序数组指针, 数组的数量, 数组的大小, 比较函数)
+	
+	qsort(nums, 5, 4, compare_func);
+
+	for (int i = 0; i &lt; 5; i++)
+	{
+		cout &lt;&lt; *(nums + i) &lt;&lt; endl;
+	}
+}
+
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p><strong>静态数组与动态数组</strong></p><p>静态声明长度必须是常量, 动态声明长度可以使变量</p><ol><li><p><strong>静态数组声明：</strong></p><p>静态数组是在编译时期分配内存，其大小在声明时确定，无法动态改变。</p><p>例如：</p><div class="language-cpp line-numbers-mode" data-ext="cpp"><pre class="language-cpp"><code><span class="token keyword">int</span> numbers<span class="token punctuation">[</span><span class="token number">5</span><span class="token punctuation">]</span><span class="token punctuation">;</span> <span class="token comment">// 声明一个包含 5 个整数的数组</span>
+<span class="token keyword">double</span> values<span class="token punctuation">[</span><span class="token number">10</span><span class="token punctuation">]</span><span class="token punctuation">;</span> <span class="token comment">// 声明一个包含 10 个双精度浮点数的数组</span>
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div></div></div></li><li><p><strong>动态数组声明（使用动态内存分配）：</strong></p><p>动态数组是在运行时通过动态内存分配来创建的，其大小可以根据需要进行更改。在C++中，通常使用<code>new</code>和<code>delete</code>或者<code>std::vector</code>来管理动态数组。</p><p>使用 <code>new</code> 和 <code>delete</code>：</p><p>例如：</p><div class="language-cpp line-numbers-mode" data-ext="cpp"><pre class="language-cpp"><code><span class="token keyword">int</span><span class="token operator">*</span> dynamicArray <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token keyword">int</span><span class="token punctuation">[</span><span class="token number">20</span><span class="token punctuation">]</span><span class="token punctuation">;</span> <span class="token comment">// 创建包含 20 个整数的动态数组</span>
+<span class="token keyword">delete</span><span class="token punctuation">[</span><span class="token punctuation">]</span> dynamicArray<span class="token punctuation">;</span> <span class="token comment">// 释放内存</span>
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div></div></div><p>使用 <code>std::vector</code>（推荐的动态数组容器）：</p><p>例如：</p><div class="language-cpp line-numbers-mode" data-ext="cpp"><pre class="language-cpp"><code><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;vector&gt;</span></span>
+std<span class="token double-colon punctuation">::</span>vector<span class="token operator">&lt;</span><span class="token keyword">int</span><span class="token operator">&gt;</span> <span class="token function">dynamicVector</span><span class="token punctuation">(</span><span class="token number">10</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 创建一个包含 10 个整数的动态数组</span>
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div></div></div></li><li><p>二维数组的动态声明</p><p>vector:</p><div class="language-c++ line-numbers-mode" data-ext="c++"><pre class="language-c++"><code>#include &lt;vector&gt;
+std::vector&lt;std::vector&lt;dataType&gt;&gt; arrayName(rowCount, std::vector&lt;dataType&gt;(columnCount));
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div></div></div><p>两个指针</p><div class="language-c++ line-numbers-mode" data-ext="c++"><pre class="language-c++"><code>int** arr;
+int n = 10;
+arr = new int*[n];
+for (int i = 0; i &lt; n; i++) {
+    arr[i] = new int[n];
+}
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h2 id="指针形参与引用形参" tabindex="-1"><a class="header-anchor" href="#指针形参与引用形参" aria-hidden="true">#</a> 指针形参与引用形参</h2><ol><li><p><strong>指针形参 <code>int* num2</code>：</strong></p><p>这个形参是一个指向整数的指针。在函数内部，您可以通过解引用该指针来访问传递给函数的整数值。指针传递允许在函数内部修改指向的值，也可以在函数外部对传递的指针进行更改。</p><div class="language-cpp line-numbers-mode" data-ext="cpp"><pre class="language-cpp"><code><span class="token keyword">void</span> <span class="token function">func</span><span class="token punctuation">(</span><span class="token keyword">int</span><span class="token operator">*</span> num2<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token operator">*</span>num2 <span class="token operator">=</span> <span class="token number">42</span><span class="token punctuation">;</span> <span class="token comment">// 修改传递的整数值</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">int</span> num <span class="token operator">=</span> <span class="token number">10</span><span class="token punctuation">;</span>
+    <span class="token function">func</span><span class="token punctuation">(</span><span class="token operator">&amp;</span>num<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 传递整数的地址</span>
+    <span class="token comment">// 现在 num 的值变为 42</span>
+    <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div></li><li><p><strong>引用形参 <code>int &amp;num3</code>：</strong></p><p>这个形参是一个整数的引用。引用允许您在函数内部通过别名修改函数外部传递的值，实际上是原值的一个别名。与指针不同，引用不需要使用地址运算符（<code>&amp;</code>）进行传递，而且在函数内外部的语法上更为一致。</p><div class="language-cpp line-numbers-mode" data-ext="cpp"><pre class="language-cpp"><code><span class="token keyword">void</span> <span class="token function">func</span><span class="token punctuation">(</span><span class="token keyword">int</span> <span class="token operator">&amp;</span>num3<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    num3 <span class="token operator">=</span> <span class="token number">42</span><span class="token punctuation">;</span> <span class="token comment">// 修改传递的整数值</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">int</span> num <span class="token operator">=</span> <span class="token number">10</span><span class="token punctuation">;</span>
+    <span class="token function">func</span><span class="token punctuation">(</span>num<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 传递整数的引用</span>
+    <span class="token comment">// 现在 num 的值变为 42</span>
+    <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div></li></ol><p>总结: 引用形参实际上是传递了别名, 用取址符号取地址</p><p>​</p><p>​</p></li></ol><h2 id="malloc和-free函数" tabindex="-1"><a class="header-anchor" href="#malloc和-free函数" aria-hidden="true">#</a> malloc和 free函数</h2><p>在C和C++编程中，<code>malloc</code> 和 <code>free</code> 是用于动态内存分配和释放的函数。</p><ol><li><p><strong><code>malloc</code> 函数：</strong></p><p><code>malloc</code>（Memory Allocation）是C和C++中的函数，用于在运行时从堆（heap）中分配一块指定大小的内存空间。它接受一个参数，即要分配的内存大小（以字节为单位），并返回一个指向新分配内存的指针。</p><p>例如：</p><div class="language-c line-numbers-mode" data-ext="c"><pre class="language-c"><code><span class="token keyword">int</span><span class="token operator">*</span> ptr <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token keyword">int</span><span class="token operator">*</span><span class="token punctuation">)</span><span class="token function">malloc</span><span class="token punctuation">(</span><span class="token number">5</span> <span class="token operator">*</span> <span class="token keyword">sizeof</span><span class="token punctuation">(</span><span class="token keyword">int</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 分配足够存放 5 个整数的内存空间</span>
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div></div></div></li><li><p><strong><code>free</code> 函数：</strong></p><p><code>free</code> 函数用于释放通过 <code>malloc</code> 或相关函数分配的动态内存。当不再需要使用分配的内存块时，应该使用 <code>free</code> 将其归还给系统，以便系统可以重新利用这些内存块。</p><p>例如：</p><div class="language-c line-numbers-mode" data-ext="c"><pre class="language-c"><code><span class="token function">free</span><span class="token punctuation">(</span>ptr<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 释放之前分配的内存</span>
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div></div></div></li></ol><p>请注意以下几点：</p><ul><li><code>malloc</code> 分配的内存是在堆上，不同于栈上的局部变量，因此需要手动释放。</li><li>释放已经被释放的内存会导致未定义行为，因此确保只释放分配的内存一次。</li><li>在C++中，推荐使用 <code>new</code> 和 <code>delete</code> 运算符来执行动态内存分配和释放，它们提供了更好的类型安全性和更好的异常处理能力。</li></ul><p>示例（C++）：</p><div class="language-cpp line-numbers-mode" data-ext="cpp"><pre class="language-cpp"><code><span class="token keyword">int</span><span class="token operator">*</span> ptr <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token keyword">int</span><span class="token punctuation">[</span><span class="token number">5</span><span class="token punctuation">]</span><span class="token punctuation">;</span> <span class="token comment">// 动态分配一个包含 5 个整数的数组</span>
+<span class="token keyword">delete</span><span class="token punctuation">[</span><span class="token punctuation">]</span> ptr<span class="token punctuation">;</span> <span class="token comment">// 释放分配的内存</span>
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div></div></div><p>请注意，为了避免内存泄漏和不确定的行为，分配的内存应在不再使用时进行释放。</p><h2 id="结构体" tabindex="-1"><a class="header-anchor" href="#结构体" aria-hidden="true">#</a> 结构体</h2><p>在C++中，结构体（struct）是一种用户自定义的数据类型，它允许你组合不同类型的数据成员以表示一个复杂的数据结构。与C语言相比，C++的结构体更加强大，可以包含成员函数、构造函数、析构函数等。</p><p>以下是C++中结构体的一些用法示例：</p><ol><li><p><strong>定义结构体：</strong></p><div class="language-cpp line-numbers-mode" data-ext="cpp"><pre class="language-cpp"><code><span class="token keyword">struct</span> <span class="token class-name">Person</span> <span class="token punctuation">{</span>
+    std<span class="token double-colon punctuation">::</span>string name<span class="token punctuation">;</span>
+    <span class="token keyword">int</span> age<span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div></li><li><p><strong>声明结构体变量：</strong></p><div class="language-cpp line-numbers-mode" data-ext="cpp"><pre class="language-cpp"><code>Person person1<span class="token punctuation">;</span> <span class="token comment">// 声明一个Person类型的变量</span>
+person1<span class="token punctuation">.</span>name <span class="token operator">=</span> <span class="token string">&quot;Alice&quot;</span><span class="token punctuation">;</span>
+person1<span class="token punctuation">.</span>age <span class="token operator">=</span> <span class="token number">25</span><span class="token punctuation">;</span>
+
+Person person2 <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token string">&quot;Bob&quot;</span><span class="token punctuation">,</span> <span class="token number">30</span><span class="token punctuation">}</span><span class="token punctuation">;</span> <span class="token comment">// 声明并初始化结构体变量</span>
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div></li><li><p><strong>成员函数：</strong></p><p>在C++中，结构体可以包含成员函数。这就是与C语言中的结构体最大的不同之一。</p><div class="language-cpp line-numbers-mode" data-ext="cpp"><pre class="language-cpp"><code><span class="token keyword">struct</span> <span class="token class-name">Circle</span> <span class="token punctuation">{</span>
+    <span class="token keyword">double</span> radius<span class="token punctuation">;</span>
+    
+    <span class="token keyword">double</span> <span class="token function">getArea</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> <span class="token number">3.14159</span> <span class="token operator">*</span> radius <span class="token operator">*</span> radius<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+Circle myCircle<span class="token punctuation">;</span>
+myCircle<span class="token punctuation">.</span>radius <span class="token operator">=</span> <span class="token number">5.0</span><span class="token punctuation">;</span>
+<span class="token keyword">double</span> area <span class="token operator">=</span> myCircle<span class="token punctuation">.</span><span class="token function">getArea</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 调用成员函数</span>
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div></li><li><p><strong>构造函数：</strong></p><div class="language-cpp line-numbers-mode" data-ext="cpp"><pre class="language-cpp"><code><span class="token keyword">struct</span> <span class="token class-name">Point</span> <span class="token punctuation">{</span>
+    <span class="token keyword">int</span> x<span class="token punctuation">,</span> y<span class="token punctuation">;</span>
+
+    <span class="token comment">// 构造函数</span>
+    <span class="token function">Point</span><span class="token punctuation">(</span><span class="token keyword">int</span> _x<span class="token punctuation">,</span> <span class="token keyword">int</span> _y<span class="token punctuation">)</span> <span class="token operator">:</span> <span class="token function">x</span><span class="token punctuation">(</span>_x<span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token function">y</span><span class="token punctuation">(</span>_y<span class="token punctuation">)</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+Point <span class="token function">p1</span><span class="token punctuation">(</span><span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div></li><li><p><strong>访问控制：</strong></p><p>与类一样，结构体中的成员可以设置为<code>public</code>、<code>private</code> 或 <code>protected</code>，用于控制其在类外的可见性。</p><div class="language-cpp line-numbers-mode" data-ext="cpp"><pre class="language-cpp"><code><span class="token keyword">struct</span> <span class="token class-name">Rectangle</span> <span class="token punctuation">{</span>
+<span class="token keyword">private</span><span class="token operator">:</span>
+    <span class="token keyword">int</span> width<span class="token punctuation">,</span> height<span class="token punctuation">;</span>
+
+<span class="token keyword">public</span><span class="token operator">:</span>
+    <span class="token keyword">void</span> <span class="token function">setDimensions</span><span class="token punctuation">(</span><span class="token keyword">int</span> w<span class="token punctuation">,</span> <span class="token keyword">int</span> h<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        width <span class="token operator">=</span> w<span class="token punctuation">;</span>
+        height <span class="token operator">=</span> h<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+Rectangle r<span class="token punctuation">;</span>
+r<span class="token punctuation">.</span><span class="token function">setDimensions</span><span class="token punctuation">(</span><span class="token number">10</span><span class="token punctuation">,</span> <span class="token number">20</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 可以调用公有成员函数</span>
+<span class="token comment">// r.width = 5; // 不能直接访问私有成员</span>
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div></li><li><p><strong>运算符重载：</strong></p><p>与类一样，你也可以在结构体中重载运算符，实现特定的操作。</p><div class="language-cpp line-numbers-mode" data-ext="cpp"><pre class="language-cpp"><code><span class="token keyword">struct</span> <span class="token class-name">Vector2D</span> <span class="token punctuation">{</span>
+    <span class="token keyword">double</span> x<span class="token punctuation">,</span> y<span class="token punctuation">;</span>
+
+    Vector2D <span class="token keyword">operator</span><span class="token operator">+</span><span class="token punctuation">(</span><span class="token keyword">const</span> Vector2D<span class="token operator">&amp;</span> other<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> <span class="token punctuation">{</span>x <span class="token operator">+</span> other<span class="token punctuation">.</span>x<span class="token punctuation">,</span> y <span class="token operator">+</span> other<span class="token punctuation">.</span>y<span class="token punctuation">}</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+Vector2D v1 <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token number">2.0</span><span class="token punctuation">,</span> <span class="token number">3.0</span><span class="token punctuation">}</span><span class="token punctuation">;</span>
+Vector2D v2 <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token number">1.0</span><span class="token punctuation">,</span> <span class="token number">2.0</span><span class="token punctuation">}</span><span class="token punctuation">;</span>
+Vector2D result <span class="token operator">=</span> v1 <span class="token operator">+</span> v2<span class="token punctuation">;</span> <span class="token comment">// 运算符重载</span>
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div></li></ol><h2 id="二分查找" tabindex="-1"><a class="header-anchor" href="#二分查找" aria-hidden="true">#</a> 二分查找</h2><div class="language-c++ line-numbers-mode" data-ext="c++"><pre class="language-c++"><code>#include&lt;iostream&gt;
+using namespace std;
+
+int binary_search(int arr[], int length, int target) {
+  int left = 0;
+  int right = length - 1;
+  int mid;
+
+  while (left &lt;= right) {
+    mid = (left + right) / 2;
+
+    if (arr[mid] &gt; target)  right = mid - 1;
+    else if (arr[mid] &lt; target) left = mid + 1;
+    else return mid;
+  }
+};
+
+
+int main() {
+  int arr[] = { 1,2,3,4,5,6,7 };
+
+  cout &lt;&lt; binary_search(arr, sizeof(arr) / sizeof(int), 3);
+  return 0;
+};
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h2 id="c风格字符串" tabindex="-1"><a class="header-anchor" href="#c风格字符串" aria-hidden="true">#</a> C风格字符串</h2><ol><li><p>C风格字符串用char[]表示, 其最后一位必须为0</p></li><li><p>初始化字符串</p></li></ol><ul><li><p>错误的初始化方式: char name[11]; 未手动初始, 11位里都是垃圾字符</p></li><li><p>char name[11] = { 0 }. 将所有字符初始化为0, 其中第11位为C风格字符串的结尾0</p></li></ul><ol start="3"><li>清空字符串</li></ol><ul><li>memset(字符串, 填充值, 占用内存空间的大小)</li></ul><ol start="4"><li>字符串方法</li></ol><ul><li>拷贝: strcpy(目标字符, 源字符串)</li><li>指定拷贝: strncpy( 目标字符, 原字符串, 拷贝的位数 )</li><li>拼接: strcat( 目标字符, 原字符串 ), 将原字符串拼接到目标字符串后</li><li>指定拼接: strncat( 目标字符, 原字符串, 指定的位数 )</li></ul><h2 id="二维数组" tabindex="-1"><a class="header-anchor" href="#二维数组" aria-hidden="true">#</a> 二维数组</h2><div class="language-cpp line-numbers-mode" data-ext="cpp"><pre class="language-cpp"><code><span class="token comment">// int arr[行数][列数]</span>
+<span class="token keyword">int</span> arr<span class="token punctuation">[</span><span class="token number">4</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token number">4</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token punctuation">{</span>
+  <span class="token punctuation">{</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">2</span><span class="token punctuation">,</span><span class="token number">3</span><span class="token punctuation">,</span><span class="token number">4</span><span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token punctuation">{</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">2</span><span class="token punctuation">,</span><span class="token number">3</span><span class="token punctuation">,</span><span class="token number">4</span><span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token punctuation">{</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">2</span><span class="token punctuation">,</span><span class="token number">3</span><span class="token punctuation">,</span><span class="token number">4</span><span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token punctuation">{</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">2</span><span class="token punctuation">,</span><span class="token number">3</span><span class="token punctuation">,</span><span class="token number">4</span><span class="token punctuation">}</span><span class="token punctuation">,</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div></div><!----><footer class="page-meta"><div class="meta-item edit-link"><a href="https://github.com/vuepress-theme-hope/vuepress-theme-hope/edit/main/src/Coding/backend/c++.md" rel="noopener noreferrer" target="_blank" aria-label="在 GitHub 上编辑此页" class="nav-link label"><!--[--><svg xmlns="http://www.w3.org/2000/svg" class="icon edit-icon" viewBox="0 0 1024 1024" fill="currentColor" aria-label="edit icon"><path d="M430.818 653.65a60.46 60.46 0 0 1-50.96-93.281l71.69-114.012 7.773-10.365L816.038 80.138A60.46 60.46 0 0 1 859.225 62a60.46 60.46 0 0 1 43.186 18.138l43.186 43.186a60.46 60.46 0 0 1 0 86.373L588.879 565.55l-8.637 8.637-117.466 68.234a60.46 60.46 0 0 1-31.958 11.229z"></path><path d="M728.802 962H252.891A190.883 190.883 0 0 1 62.008 771.98V296.934a190.883 190.883 0 0 1 190.883-192.61h267.754a60.46 60.46 0 0 1 0 120.92H252.891a69.962 69.962 0 0 0-69.098 69.099V771.98a69.962 69.962 0 0 0 69.098 69.098h475.911A69.962 69.962 0 0 0 797.9 771.98V503.363a60.46 60.46 0 1 1 120.922 0V771.98A190.883 190.883 0 0 1 728.802 962z"></path></svg><!--]-->在 GitHub 上编辑此页<span><svg class="external-link-icon" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path><polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg><span class="external-link-icon-sr-only">open in new window</span></span><!----></a></div><div class="meta-item git-info"><div class="update-time"><span class="label">上次编辑于: </span><!----></div><div class="contributors"><span class="label">贡献者: </span><!--[--><!--[--><span class="contributor" title="email: summer@tradev-group.com">Summer</span><!--]--><!--]--></div></div></footer><!----><div id="comment" class="giscus-wrapper input-top" style="display:block;"><div class="loading-icon-wrapper" style="display:flex;align-items:center;justify-content:center;height:96px"><svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" preserveAspectRatio="xMidYMid" viewBox="25 25 50 50"><animateTransform attributeName="transform" type="rotate" dur="2s" keyTimes="0;1" repeatCount="indefinite" values="0;360"></animateTransform><circle cx="50" cy="50" r="20" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round"><animate attributeName="stroke-dasharray" dur="1.5s" keyTimes="0;0.5;1" repeatCount="indefinite" values="1,200;90,200;1,200"></animate><animate attributeName="stroke-dashoffset" dur="1.5s" keyTimes="0;0.5;1" repeatCount="indefinite" values="0;-35px;-125px"></animate></circle></svg></div></div><!----><!--]--></main><!--]--><footer class="vp-footer-wrapper"><div class="vp-footer">默认页脚</div><div class="vp-copyright">Copyright © 2023 Mr.Hope</div></footer></div><!--]--><!----><!--]--></div>
+    <script type="module" src="/assets/app-1e29bb60.js" defer></script>
+  </body>
+</html>
