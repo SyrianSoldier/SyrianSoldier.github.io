@@ -7,7 +7,7 @@ export default hopeTheme({
 
   author: {
     name: "Mr.Hope",
-    url: "https://mister-hope.com",
+    url: "https://mrhope.site",
   },
 
   iconAssets: "fontawesome-with-brands",
