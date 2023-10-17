@@ -6,13 +6,13 @@ export default hopeTheme({
   hostname: "https://vuepress-theme-hope-docs-demo.netlify.app",
 
   author: {
-    name: "Mr.Hope",
-    url: "https://mrhope.site",
+    name: "苏察哈尔灿hh",
+    url: "https://syriansoldier.github.io/",
   },
 
   iconAssets: "fontawesome-with-brands",
 
-  logo: "/logo.svg",
+  logo: "/assets/image/tx2.jpg",
 
   repo: "vuepress-theme-hope/vuepress-theme-hope",
 
@@ -28,6 +28,7 @@ export default hopeTheme({
 
   displayFooter: true,
 
+  // 权限文章
   encrypt: {
     config: {
       "/demo/encrypt.html": ["1234"],
