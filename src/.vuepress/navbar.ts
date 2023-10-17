@@ -150,6 +150,6 @@ export default navbar([
   {
     text: "日记",
     icon: "https://api.iconify.design/icon-park-outline/personal-privacy.svg",
-    link:"Individual"
+    link:"/Individual/"
   },
 ]);

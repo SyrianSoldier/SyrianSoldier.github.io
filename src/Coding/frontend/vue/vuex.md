@@ -6,7 +6,7 @@ tag:
   - vuex
 ---
 
-# vuex 的使用
+# Vuex语法
 
 `vuex 的使用`
 vuex 语法

@@ -31,7 +31,7 @@ export default hopeTheme({
   // 权限文章
   encrypt: {
     config: {
-      "/demo/encrypt.html": ["1234"],
+      "/Individual/": "weizekun"
     },
   },
 
