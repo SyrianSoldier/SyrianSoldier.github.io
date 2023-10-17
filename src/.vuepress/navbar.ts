@@ -148,7 +148,7 @@ export default navbar([
     link:"/Math/"
   },
   {
-    text: "日记",
+    text: "个人",
     icon: "https://api.iconify.design/icon-park-outline/personal-privacy.svg",
     link:"/Individual/"
   },
