@@ -7,7 +7,7 @@ tag:
   - generator
 ---
 
-# async/await原理
+#async/await原理
 
 `async/await进阶`
 async/await原理
