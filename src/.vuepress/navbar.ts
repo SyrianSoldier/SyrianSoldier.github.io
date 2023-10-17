@@ -5,7 +5,7 @@ export default navbar([
   // "/demo/",
   {
     text: "编程语言与技巧",
-    icon: "lightbulb",
+    icon: "laptop-code",
     prefix: "/Coding/",
     children: [
       {
@@ -86,7 +86,7 @@ export default navbar([
   },
   {
     text: "计算机科学与技术",
-    icon: "lightbulb",
+    icon: "https://api.iconify.design/teenyicons/computer-outline.svg",
     prefix: "/ComputerScience/",
     children: [
       // {
@@ -121,7 +121,7 @@ export default navbar([
   },
   {
     text: "代码最佳实践",
-    icon: "lightbulb",
+    icon: "https://api.iconify.design/medical-icon/i-family-practice.svg",
     prefix: "/BestPractice/",
     children: [
       {
@@ -139,17 +139,17 @@ export default navbar([
   },
   {
     text: "英语",
-    icon: "lightbulb",
+    icon: "https://api.iconify.design/icon-park-outline/english.svg",
     link:"/English/"
   },
   {
     text: "数学",
-    icon: "lightbulb",
+    icon: "https://api.iconify.design/bx/math.svg",
     link:"/Math/"
   },
   {
     text: "日记",
-    icon: "lightbulb",
+    icon: "https://api.iconify.design/icon-park-outline/personal-privacy.svg",
     link:"Individual"
   },
 ]);
