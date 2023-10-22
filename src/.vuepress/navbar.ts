@@ -67,7 +67,7 @@ export default navbar([
         children: [
           {
             text: "C++",
-            link: "C++"
+            link: "c++第二版笔记.md"
           },
           {
             text: "Python",
