@@ -2055,6 +2055,7 @@ int main() {
 在cpp中没有 ``interface`` 声明接口, 当一个类中只有纯虚函数时, 即可视作接口
 
 #### 5.19 虚析构函数
+> 多态时, 可能不能正确销毁子类对象. 虚析构函数的目的是正确的销毁的子类对象.
 
 ```cpp
 #include <iostream>
@@ -2352,6 +2353,12 @@ int main() {
 	string str = "hello, world";
 	str.replace(0,5,"你好");
 	cout << str << endl;
+	
+	// 字符串交換
+	string str1 = "123";
+	string str2 = "456";
+	str1.swap(str2);
+	cout << str2 << endl;
 	return 0;
 }
 ```
