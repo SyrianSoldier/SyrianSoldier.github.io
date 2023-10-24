@@ -2286,8 +2286,176 @@ int main() {
 **.hpp文件: **常用的做法是, 若编写的是一个泛型类, 则将类的定义和实现写在一个文件中, 该文件的后缀为``.hpp``
 
 
+### 文件操作
 
-### 六: STL
+#### 文本操作
+##### 写文本
+操作步骤: 
+1. 包含文件流头文件: ``#include<fstream>``
+2. 创建写文件流对象: ``ofstream ofs``
+3. 打开文件: ofs.open("文件路径", 打开方式)
+4. 写文件: ofs << "文本内容";
+5. 关闭文件流: ofs.close()
+
+| 打开方式            | 作用                        |
+|-----------------|---------------------------|
+| ``ios::in``     | 以读的方式打开文件                 |
+| ``ios::out``    | 以写的方式打开文件                 |
+| ``ios::trunc``  | 若当前路径已经存在文件, 则先删除该文件, 再打开 |
+| ``ios::ate``    | 从文件末尾处打开文件                |
+| ``ios::app``    | 以追加的方式打开文件                |
+| ``ios::binary`` | 以二进制的方式打开文件               |
+
+**多个打开方式同时使用时, 以 | 串联**
+
+**写文件**
+```cpp
+#include <iostream>
+#include <fstream>
+using namespace std;
+
+int main() {
+	ofstream ofs;
+	ofs.open("./study.txt", ios::out);
+	ofs << "你好啊李银河" << endl;
+	ofs.close();
+
+	return 0;
+}
+```
+
+**读文件**
+1. 包含文件流头文件: ``#include<fstream>``
+2. 创建写文件流对象: ``ifstream ifs``
+3. 打开文件: ifs.open("文件路径", 打开方式)
+4. 判断是否成功打开文件
+5. 写文件: 四种方式写文件
+6. 关闭文件流: ofs.close()
+
+```cpp
+   #include <iostream>
+#include <fstream>
+#include<string>
+using namespace std;
+
+int main() {
+	// 1. 创建读文件流
+	ifstream ifs;
+
+	// 2. 打开文件
+	ifs.open("./study.txt", ios::in);
+
+	// 3. 判断文件是否打开成功
+	if (!ifs.is_open()) {
+		cout << "打开文件失败" << endl;
+	};
+
+	// 4. 读取文件
+	// 4-1: 以字符缓冲区读取文件
+	char buffer[1024] = { 0 };
+	while (ifs >> buffer) { // 当文本读取完毕后, 会返回false
+		cout << buffer << endl;
+	}
+
+	// 4-2: 以字符缓冲区, 按行读取文件
+	char buffer[1024] = { 0 };
+	while (ifs.getline(buffer, sizeof(buffer))) {
+		cout << buffer << endl;
+	}
+
+	// 4-3: 以字符串读取
+	string buffer;
+	while (getline(ifs, buffer)) { // getline方式是string头文件里的, 必须添加string头文件
+		cout << buffer << endl;
+			 
+	} 
+
+
+	// 5. 关闭文件流
+	ifs.close();
+
+	return 0;
+}
+```
+
+#### 二进制操作
+1. 写二进制和写文本类似, 但打开方式必须指定``ios::binary``
+2. 写二进制意味着可以写入对象
+3. 写对象时, 对象字符串属性不能用string, 要用char, 否则可能会出问题
+4. 写文件用write函数
+
+```cpp
+#include <iostream>
+#include <fstream>
+#include<string>
+using namespace std;
+
+class Person {
+public:
+	char name[5] = "张三";
+	int age = 18;
+};
+
+int main() {
+	// 1. 创建读文件流
+	ofstream ofs;
+
+	// 2. 打开文件
+	ofs.open("binary.txt", ios::out | ios::binary);
+
+	// 3. 创建对象
+	Person p;
+	
+	// 4. 写文件
+	// 需要将二进制对象转为 const char* 的指针类型即字符常量指针
+	ofs.write((const char*) &p, sizeof(p));
+
+	// 5. 关闭文件流
+	ofs.close();
+
+	return 0;
+}
+```
+
+
+**读二进制对象**
+
+```cpp
+#include <iostream>
+#include <fstream>
+#include<string>
+using namespace std;
+
+class Person {
+public:
+	char name[5] = "张三";
+	int age = 18;
+};
+
+int main() {
+	// 1. 创建读文件流
+	ifstream ifs;
+
+	// 2. 打开文件
+	ifs.open("binary.txt", ios::out | ios::binary);
+    if (!ifs.is_open()) return;
+    
+	// 3. 创建对象
+	Person p;
+	
+	// 4. 读文件
+	ifs.read((char*) &p, sizeof(p)); // 读二进制时候是将对象强转为char* 类型, 
+	写二进制对象时是将对象强转为const char*
+
+	// 5. 关闭文件流
+	ifs.close();
+
+
+	cout << p.age << p.name << endl;
+	return 0;
+}
+```
+### 七: STL
 
 #### 6.1 string
 
