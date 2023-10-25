@@ -55,9 +55,9 @@
 2) 有效位数 = 2 * 空间大小 - 1. ( 只是为了简便记忆, 无实际意义 )
 
 | 数据类型 | 关键词         | 空间大小                        | 有效位数            |
-| ---- | ----------- | --------------------------- | --------------- |
+|------|-------------| --------------------------- | --------------- |
 | 单精度  | float       | 4B                          | 2 * 4 - 1 = 7位  |
-|      | doble       | 8B                          | 2 * 8 - 1 = 15位 |
+| 双精度  | double      | 8B                          | 2 * 8 - 1 = 15位 |
 | 多精度  | long double | Windows: 8B<br />Linux: 16B | 不低于15位          |
 
 
@@ -89,12 +89,11 @@ int main() {
 
    ```cpp
    int main() {
-     char a('a'); // 97
-     int b(10); // 10
-     double c(20.0);// 20.0
+     int a(10); // 4字节
+     char b(96); // 1字节
+	 long long c(3); // 8字节
 
-     // 朝更高精度计算, 输出127.000000000000
-     cout << sizeof (a + b + c) << endl; // 8字节, double数据类型
+	 cout << sizeof(a + b + c) << endl; // 输出8
    }
    ```
 
@@ -138,7 +137,7 @@ int main(){
 
 
 
-####1.5 输入与输出
+#### 1.5 输入与输出
 
 ```cpp
 #include<iostream>
@@ -344,7 +343,54 @@ row3:
 }
 ```
 
+#### 1.10 sizeof()
+> 计算变量（或数据类型）在当前系统中占用内存的字节数.sizeof 运算符可用于获取类、结构体、和其他用户自定义数据类型的大小
 
+1. 当测量基本数据类型时候, 获得是基本数据类型所占内存字节数, 如sizeof(int)
+2. 当测量复杂数据类型时候, 如对象, 结构体对象, 其内存字节数收到以下几点的约束
+   1. **成员变量的大小：** 类型的大小受到其成员变量大小的影响。一个类所占字节数不会低于所有成员变量所占内存字节数。
+   2. **内存对齐:**
+      大部分系统要求特定数据类型的变量在内存中的地址必须是特定值（通常是其大小的倍数）。这就是内存对齐。编译器会根据系统的要求，在成员变量之间或者类的末尾插入一些未使用的字节，以确保每个成员变量都位于正确的地址上。这样做是为了提高内存访问的效率。具体的对齐规则通常与平台和编译器有关。
+   3. **继承和虚函数表**： 
+   如果类继承自其他类（包括间接继承），子类的大小会包括所有基类的大小。如果类包含虚函数，通常会有一个指向虚函数表的指针（vptr）作为类的隐藏成员，占用额外的内存。
+   4. **空类的大小**： 即使类中没有任何成员变量，C++编译器通常也会为其分配一个字节的内存空间，以确保不同实例的地址不同。
+
+这些规则确保了用户自定义类型在内存中的布局是符合系统和编译器要求的。由于不同的编译器和系统可能有不同的对齐规则和优化策略，因此在实际编程中，如果需要确切地知道某个类型的大小，最好使用 sizeof 运算符进行查询，而不是手动计算，以确保跨平台的兼容性。
+```cpp
+#include <iostream>
+using namespace std;
+#include<string>
+
+struct MyStruct {
+	int x;
+	double y;
+
+	auto test() {
+		return x + y;
+	}
+};
+
+int main() {
+	// 计算基本数据类型
+	cout << sizeof(char) << endl;// 1
+
+	// 不能计算string的字符数大小
+	string str = "hello,world";
+	cout << sizeof(str) <<endl; // 计算的是string对象的大小, 通常包含指向动态分配的字符数组的指针、字符串的长度和容量等信息
+	cout << str.length() << str.size() << endl; // 正确计算字符的个数
+	
+	// 计算复杂数据类型
+	// 下面的结构体输出16字节的原因是填充了4字节
+	/*-------------------------------- -
+	| int(4 bytes) | padding(4 bytes) |
+	-------------------------------- -
+	|        double(8 bytes)          |
+	-------------------------------- -*/
+	MyStruct s;
+	cout << sizeof(s) << endl;
+	return 0;
+}
+```
 
 ### 二: 函数
 
@@ -462,7 +508,7 @@ int main(){
 
 
 
-#### 2.7 Lambda函数
+#### 2.7 Lambda函数与函数对象
 
 > lambda函数和JavaScript基本类似
 
@@ -480,6 +526,27 @@ int main(){
 // [&]：以引用方式捕获所有外部变量，lambda函数内部可以修改它们。
 // [var]：以传值方式捕获特定变量var。
 // [&var]：以引用方式捕获特定变量var。
+```
+
+```cpp
+#include <iostream>
+using namespace std;
+#include <functional>
+
+// 函数对象语法: function<返回值类型(参数列表)> 函数名
+void animation(function<void(bool)> callback) {
+	cout << "动画执行了2s" << endl;
+	callback(true);
+}
+
+int main() {
+	animation([](bool flag) {
+		if (flag) {
+			cout << "动画回调函数执行成功" << endl;
+		}
+	});
+	return 0;
+}
 ```
 
 
@@ -749,7 +816,7 @@ int main() {
   p + 1; // 指针加法: 地址 + n个源数据类型字节大小
 
 
-  int num_arr[4] = { 1,2,3,4 };
+  int num_arr[4] = { 1,2,3,4 }; // 数组名被解释为指针, 指向数组空间的第一字节的内存地址
   cout << num_arr << endl; // 输出数组: 输出数组首个元素的内存地址
   num_arr + 1; // 操作数组: 地址 + n个源数据类型字节大小
 
@@ -771,7 +838,11 @@ using namespace std;
 int main() {
   // 同一作用域: 使用增强for循环, 数组的定义和循环必须在同一作用域
   int arr[5] = { 1,2,3,4,5 };
-
+  
+  for (int i = 0; i < sizeof(arr) / sizeof(int); i++) {
+		cout << arr[i] << endl;
+  }
+	
   for (int e : arr) {
     cout << e << endl; // 变量迭代: 用变量迭代不能修改ele元素
   }
@@ -809,7 +880,11 @@ int main() {
   int size_of_element = sizeof(int);
   int len = sizeof(arr) / sizeof(int);
   qsort(arr, len, size_of_element, compare_func);
-
+ 
+  // Lamda表达式写法
+  qsort(arr, sizeof(arr)/sizeof(int), sizeof(int), [](const void* a, const void* b) {
+     return *(int*)a - *(int*)b;
+  }); 
 
   for (int e : arr) {
     cout << e << endl;
@@ -1383,7 +1458,7 @@ int main() {
 
 #### 5.12 友元
 
-**在类外访问: **友元允许在类外访问类的私有成员( 包括成员变量和成员函数 )
+**在类外访问:** 友元允许在类外访问类的私有成员( 包括成员变量和成员函数 )
 
 
 
@@ -1411,7 +1486,7 @@ void get_person_name(Person& p) {
 
 成员函数作友元的语法比较反直觉, 记下就好
 
-1)  **提前声明, 类内写定义, 类外写实现 ** 
+1)  **提前声明, 类内写定义, 类外写实现** 
 
 ```cpp
 // 1. 提前声明友元类 
@@ -1469,7 +1544,7 @@ private:
 
 **加号重载**
 
-1) **全局重载: **有两个参数, 第一个参数是运算的左值, 第二个参数是运算的右值
+1) **全局重载:** 有两个参数, 第一个参数是运算的左值, 第二个参数是运算的右值
 
 2) **类内重载**: 只有一个参数, 该参数是运算的右值
 
@@ -1860,7 +1935,8 @@ int main() {
 
 
 
-4) **成员冲突:**冲突可能来自父类和子类的冲突, 以及多继承中相同名的成员冲突. 当父类和子类成员冲突以子类为主, 成员冲突也可以通过::显式的声明访问父类的属性. 
+4) **成员冲突:** 冲突可能来自父类和子类的冲突, 以及多继承中相同名的成员冲突. 当父类和子类成员冲突以子类为主, 
+   成员冲突也可以通过::显式的声明访问父类的属性. 
 
 ````cpp
 #include <iostream>
@@ -1885,7 +1961,7 @@ int main() {
 
 
 
-5) 菱形继承与虚继承:
+5) **菱形继承与虚继承:**
 
 **菱形继承**: 下图的菱形继承, 菱形继承的问题是假如动物的某成员, 被马和驴同时继承, 那么该属性被传递到骡子时, 骡子无法区分这个成员是从马继承过来的还是驴继承过来的.
 
@@ -1932,7 +2008,7 @@ int main() {
 
 #### 5.15 多态
 
-1) **前提:**多态的前提是继承
+1) **前提:** 多态的前提是继承
 
 2) **相互转换类型:** 多态指子类对象与父类对象相互转换类型, 也就是说子类对象可以使用父类的类型, 父类的对象也可以使用子类的类型, 从而一个对象拥有多种不同的形态
 
@@ -2094,7 +2170,7 @@ int main() {
 
 #### 5.20 结构体
 
-结构体和类的基本一致, 只有亮点有区别
+结构体和类的基本一致, 只有两点有区别
 
 1) **默认访问权限:** 结构体默认访问权限是public, class的默认访问权限是private
 
@@ -2163,7 +2239,13 @@ int main() {
 
 **函数模版的特化**
 
-语法: ``template<> 返回值 函数名<特化的类型>(...args){...}``
+**语法:** 
+```cpp
+template<> 
+返回值 函数名<特化的类型1, 特化的类型2...>(...args){...}
+```
+
+**示例**
 
 ```cpp
 #include <iostream>;
@@ -2192,8 +2274,9 @@ auto add<Person, Person>(Person p1, Person p2) {
 }
 
 int main() {
-	add(1, 2);
-	add(new Person(18), new Person(20));
+	Person p1(18);
+	Person p1(20);
+	cout << add(p1, p2) << endl;
 	return 0;
 }
 ```
@@ -2283,10 +2366,10 @@ int main() {
 
 **分文件编写:** 泛型类不**建议**分文件编写, 即将类的定义写在``.h``文件, 类方法的实现写在``.cpp``文件, 否则会可能出现报错.
 
-**.hpp文件: **常用的做法是, 若编写的是一个泛型类, 则将类的定义和实现写在一个文件中, 该文件的后缀为``.hpp``
+**.hpp文件:** 常用的做法是, 若编写的是一个泛型类, 则将类的定义和实现写在一个文件中, 该文件的后缀为``.hpp``
 
 
-### 文件操作
+### 六: 文件操作
 
 #### 文本操作
 ##### 写文本
@@ -2506,7 +2589,7 @@ int main() {
 	string str = "hello,";
 	cout << str + "world" << endl; // 使用+拼接字符串, 必须有一个变量参与, 不能都是是字面量
   
-	// append: (source_str:string, count?:int) => string&  len缺省时, 从0开始
+	// append: (source_str:string) => string& 
 	string str = "";
 	str.append("hello",2);
 	cout << str << endl;
@@ -2556,14 +2639,22 @@ int main() {
 
 	// for循环
 	// 正向遍历
+	int idx = 0;
 	for (vector<int>::iterator i = arr.begin(); i != arr.end(); i++) {
-		cout << *i << endl;
+		cout << "数据是: " << *i << "下标是:" << idx << endl;
+		idx++;
 	}
 
 	// 反向遍历
+	int idx = arr.size() - 1;
 	for (vector<int>::reverse_iterator i = arr.rbegin(); i != arr.rend(); ++i) {
-		cout << *i << endl;
+		cout << "数据是: " << *i << "下标是:" << idx << endl;
+		idx--;
 	}
+	// 使用size_t和size()遍历. c++17标准
+	for (std::size_t i = 0; i < vec.size(); ++i) {
+       cout << "Element at index " << i << ": " << vec[i] << endl;
+    }
 
 	// 增强for循环
 	for (int& el: arr) {
@@ -2579,49 +2670,60 @@ int main() {
 
 **vector常用``api``**
 
-| Api说明           | 示例                                       | 函数签名                                     |
-| --------------- | ---------------------------------------- | ---------------------------------------- |
-| length          | `arr.size()`                             |                                          |
-| 深拷贝             | `vector<int> arr2 = arr1;`, 重载的=运算符默认是深拷贝 |                                          |
-| push 与 pop      | `arr2.push_back(element); arr2.pop_back();` |                                          |
-| shift 与 unshift | `unshift: arr2.insert(arr1.begin(), 1); shift: arr2.erase(arr1.begin());` |                                          |
-| 删除元素            | `arr.erase(arr.begin() + 2);`            | `(delete_idx:iterator) => iterator`      |
-|                 | `arr.insert(arr1.end(), arr2.begin(), arr2.end());` | `(target_begin: iterator, src_begin: iterator, src_end: iterator ) => iterator` |
-| map             | 见下方示例代码                                  | 注意: 需要`#include<algorithm>`              |
-| filter          | 见下方示例代码                                  | 注意: 需要`#include<algorithm>`              |
-| find            | 见下方示例代码                                  | 注意: 需要`#include<algorithm>`              |
-| sort            | `sort(arr11.begin(), arr11.end());`      | 注意: 需要`#include<algorithm>`              |
-|                 | `arr.empty()`                            | 判断是数组否为空                                 |
-| front           | `arr.front()`                            | 返回第一个元素                                  |
-| back()          | `arr.back()`                             | 返回最后一个元素                                 |
-| clear()         | `arr.clear()`                            | 清空元素                                     |
-| swap()          | `arr.swap()`                             |                                          |
+| Api说明           | 示例                                                                     | 函数签名                                        |
+|-----------------|------------------------------------------------------------------------|---------------------------------------------|
+| length          | `arr.size()`                                                           |                                             |
+| 深拷贝             | `vector<int> arr2 = arr1;`, 重载的=运算符默认是深拷贝                              |                                             |
+| push 与 pop      | `arr2.push_back(element); arr2.pop_back();`                            |                                             |
+| shift 与 unshift | `unshift: arr2.insert(arr1.begin(), 1); shift: arr2.erase(arr1.begin());` |                                             |
+| 删除元素            | `arr.erase(arr.begin() + 2);`                                          | `(delete_idx:iterator) => iterator`         |
+| 插入元素            | `arr.insert(arr1.begin(), 2);`                        | `(begin: iterator, Element:e ) => iterator` |
+| map             | 见下方示例代码                                                                | 注意: 需要`#include<algorithm>`                 |
+| filter          | 见下方示例代码                                                                | 注意: 需要`#include<algorithm>`                 |
+| find            | 见下方示例代码                                                                | 注意: 需要`#include<algorithm>`                 |
+| sort            | `sort(arr11.begin(), arr11.end());`                                    | 注意: 需要`#include<algorithm>`                 |
+| empty           | `arr.empty()`                                                          | 判断是数组否为空                                    |
+| front           | `arr.front()`                                                          | 返回第一个元素                                     |
+| back()          | `arr.back()`                                                           | 返回最后一个元素                                    |
+| clear()         | `arr.clear()`                                                          | 清空元素                                        |
+| swap()          | `vector<int> arr = { 1,2,3,4 };`<br/>``vector<int> arr2 = {0};``<br/>``arr.swap(arr2);``          | 交换两个vector容器, 两个vector容器的泛型需要相同             |
 
 示例代码
 
 ```cpp
 #include<algorithm>
 // map函数
-vector<int> arr7 = { 1,2,3,4,5 };
-vector<int> arr8 = { };
-transform(arr7.begin(), arr7.end(), back_inserter(arr8), [&](int ele) -> int {
-  return ele * 10;
-});
+ vector<int> arr1 = { 1,2,3,4 };
+ vector<int> arr2;
+
+ // back_inserter(被拷贝的数组)
+ // transform(被数组开始, 数组结束, ..., Lamda表达式)
+ transform(arr1.begin(), arr1.end(), back_inserter(arr2), [](int e) {
+     return e * 100;
+ });
 
 // filter函数: 使用copy_if函数, 满足条件的会被删除
-vector<int> arr9 = { 1,2,3,4,5 };
-vector<int>arr10 = {};
-remove_copy_if(arr9.begin(), arr9.end(), back_inserter(arr10), [&](int e) {
-  return e == 3;
-});
+ vector<int> arr1 = { 1,2,3,4 };
+ vector<int> arr2;
+
+ // back_inserter(被拷贝的数组)
+ // transform(被数组开始, 数组结束, ..., Lamda表达式)
+ remove_copy_if(arr1.begin(), arr1.end(), back_inserter(arr2), [](int e) {
+     return e == 2;
+ });
+
 
 // find函数
-vector<int> arr11 = { 1, 2, 3, 4, 5 };
-int target = 3;
+vector<int>::iterator it = find(arr1.begin(), arr1.end(), 2);
+bool isFind = !(it == arr1.end());
 
-auto it = find(arr11.begin(), arr11.end(), target); 
-bool isFind = !(arr11.end() == it); // 是否找到了
-int find_index = distance(arr11.begin(), it); // 找到的下标
+if (isFind) {
+  int idx = distance(arr1.begin(), it);
+  cout << "已经找到该元素, 下标为: " << idx << endl;
+}
+else {
+  cout << "未找到该元素" << endl;
+}
 
 ```
 
@@ -2631,7 +2733,31 @@ int find_index = distance(arr11.begin(), it); // 找到的下标
 
 deque是双端队列, api名称与vector基本一致, 唯一区别的是增加了push_front() 和 pop_front() api, 前者是头部入队列, 后者是头部出队列
 
+```cpp
+#include <iostream>;
+#include<deque>
+#include<algorithm>
+using namespace std;
 
+template<class T>
+void printDeque(deque<T> q) {
+	for (size_t i = 0; i < q.size(); i++) {
+		cout << "下标为: " << i << ",元素为: " << q[i] << endl;
+	}
+}
+int main() {
+	deque<int> q = { 1,2,3 };
+	// 首尾添加/删除元素
+	q.push_front(11);
+	q.push_back(11);
+	q.pop_back();
+	q.pop_front();
+   
+	printDeque(q);
+
+	return 0;
+}
+```
 
 #### 6.4 stack
 
