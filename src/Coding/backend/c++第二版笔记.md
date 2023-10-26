@@ -973,11 +973,33 @@ int main() {
 #### 4.5 动态数组
 
 ```cpp
-double* create_double_array(int len) {
-  // int[len] = {0} // 错误的声明
-  double* arr = new double[len]; // 手动声明堆内存
+#include <iostream>
+#include <fstream>
+#include<string>
+using namespace std;
 
-  return arr;
+class Person {
+public:
+	string name;
+	Person(string name): name(name) {};
+};
+
+int main() {
+	int size = 5;
+
+	// 静态数组
+	//int arr[size] = { 1,2,3,4,5 }; // 该种声明方式为静态声明数组, 数组长度在编译时确定, 数组长度不能使用变量
+	
+	// 动态数组
+	// 动态数组的长度可以使用变量也可以使用字面量
+	int* arr = new int[size]{ 1,2,3,4,5 };
+
+	// 动态数组 + class
+	Person* p = new Person[2]{
+		Person("张三"),
+		Person("李四")
+	};
+	return 0;
 }
 ```
 
@@ -2370,6 +2392,99 @@ int main() {
 
 
 ### 六: 文件操作
+#### IO流类谱
+1. ios为所有标准输入输出类的父类, 同时它是一个抽象类(虚基类)
+2. ios的子类有istream标准输入流和ostream标准输出流
+3. ifstream是istream的子类, 提供文件的输入流
+4. ofstream是ostream的子类, 提供文件的输出流
+5. iostream提供标准输入输出流.
+6. fstrean提供文件输入输出流.
+
+<img src="./imgs/io流.jpg" width="700">
+
+#### 插入运算符和提取运算符
+**插入运算符**
+1. 插入运算符用<<表示
+2. 语法为 ``所有标准输出流(如cout, ofstream) << 基本数据类型或者字符串``
+
+**提取运算符**
+1. 插入运算符用>>表示
+2. 语法为 ``所有标准输入流(如cin, ifstream) << 基本数据类型或者字符串``
+3. 插入运算符提取数据时候, 会忽略空格. 如提取'1 2 3 4 5'时只会提取`12345`
+
+#### 格式化输出
+需要包含``#include<iomanip>`` manip是manipulation的缩写, 意为操作
+**控制域宽**
+```cpp
+#include <iostream>;
+#include<iomanip>
+using namespace std;
+
+
+int main() {
+ // 如果字符大于设置的宽度, 字符不会被截断
+ // 如果字符小于设置的宽度, 右对齐且用空格填充
+ // 格式控制符只作用于本行输出
+ 
+ // 方式一: 
+ cout << setw(5) << 5 << endl; //    5
+ cout << setw(1) << 5000 << endl;//5000
+
+ // 方式二:
+ cout.width(5);
+ cout << 5 << endl;//    5
+
+ return 0;
+}
+```
+
+**控制填充符**
+```cpp
+#include <iostream>;
+#include<iomanip>
+using namespace std;
+
+
+int main() {
+ // 填充字符一但设置, 会对后面所有的输出影响, 直到下一次修改填充符
+ 
+ // 方式一: 
+ cout << setfill('*') << setw(5) << 5 << endl; //****5
+ cout << setw(5) << 5 << endl; //****5 
+ 
+ // 方式二:
+ cout.fill('=');
+ cout << setw(5) << 5 << endl;
+
+
+ return 0;
+}
+```
+
+**精度控制**
+```cpp
+#include <iostream>;
+#include<iomanip>
+using namespace std;
+
+
+int main() {
+ // 精度一但修改, 生命周期一直到再次修改输出精度
+
+ double price = 1.2212123; // double的精度是15, 但输出时系统默认为6
+ 
+ cout << price << endl; // 系统默认精度为6: 1.22121
+
+ // 方式1:
+ cout << setprecision(8) << price << endl; // 调整精度为8, 1.2212123
+
+
+ cout.precision(2);
+ cout << price << endl; // 1.2
+
+ return 0;
+}
+```
 
 #### 文本操作
 ##### 写文本
@@ -2416,7 +2531,7 @@ int main() {
 6. 关闭文件流: ofs.close()
 
 ```cpp
-   #include <iostream>
+#include <iostream>
 #include <fstream>
 #include<string>
 using namespace std;
@@ -2436,24 +2551,17 @@ int main() {
 	// 4. 读取文件
 	// 4-1: 以字符缓冲区读取文件
 	char buffer[1024] = { 0 };
-	while (ifs >> buffer) { // 当文本读取完毕后, 会返回false
+	while (!ifs.eof()) { // 当文本读取完毕后, 会返回false
+		ifs >> buffer;
 		cout << buffer << endl;
 	}
 
 	// 4-2: 以字符缓冲区, 按行读取文件
 	char buffer[1024] = { 0 };
-	while (ifs.getline(buffer, sizeof(buffer))) {
+	while (!ifs.eof()) {
+	    ifs.getline(buffer, sizeof(buffer);
 		cout << buffer << endl;
 	}
-
-	// 4-3: 以字符串读取
-	string buffer;
-	while (getline(ifs, buffer)) { // getline方式是string头文件里的, 必须添加string头文件
-		cout << buffer << endl;
-			 
-	} 
-
-
 	// 5. 关闭文件流
 	ifs.close();
 
@@ -2490,8 +2598,8 @@ int main() {
 	Person p;
 	
 	// 4. 写文件
-	// 需要将二进制对象转为 const char* 的指针类型即字符常量指针
-	ofs.write((const char*) &p, sizeof(p));
+	// 需要将二进制对象转为 char* 的指针类型即字符常量指针
+	ofs.write((char*) &p, sizeof(p));
 
 	// 5. 关闭文件流
 	ofs.close();
@@ -2527,8 +2635,7 @@ int main() {
 	Person p;
 	
 	// 4. 读文件
-	ifs.read((char*) &p, sizeof(p)); // 读二进制时候是将对象强转为char* 类型, 
-	写二进制对象时是将对象强转为const char*
+	ifs.read((char*) &p, sizeof(p));
 
 	// 5. 关闭文件流
 	ifs.close();
@@ -2538,6 +2645,48 @@ int main() {
 	return 0;
 }
 ```
+
+#### io流读写位置指针操作
+**seekg和seekp:** 
+1. g:get, p: put. seek: 寻找.
+2. seekg是输入流调整指针位置的api
+3. seekp是输出流调整指针位置的api
+
+**tellg和tellp**
+1. 语法: ``streampos n =流对象.tellg``
+2. tellg返回当前输入流的指针位置的api
+3. tellp返回当前输出流的指针位置的api
+
+<img src="./imgs/seek.jpg" width="484">
+
+1. 将3长度的Person数组写入persons.txt文件中
+<img src="./imgs/a.jpg" width="484">
+2. 请读取刚写入的persons数组中的第二个person对象
+<img src="./imgs/b.jpg" width="484">
+
+#### 练习题
+假如有hello.txt文件, 请将每一行的文字前加上行号
+
+```cpp
+
+int main() {
+	ifstream ifs;
+	ifs.open("./persons.txt", ios::in | ios::binary);
+
+	Person p1, p3;
+	ifs.read((char*)&p1, sizeof(p1)); // 读取第一个同学
+
+
+	ifs.seekg(2 * sizeof(Person), ios::beg); // 移动指针到person数组第二个对象处
+	ifs.read((char*)&p3, sizeof(p3)); // 读取第二个person对象
+
+	ifs.close();
+
+	cout << p1.name << p3.name << endl;
+	return 0;
+}
+```
+
 ### 七: STL
 
 #### 6.1 string
