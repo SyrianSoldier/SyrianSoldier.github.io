@@ -1,4 +1,4 @@
-# 英语语法
+#  英语语法
 
 
 
@@ -1281,17 +1281,17 @@ I saw that **the rabbit ate a carrot.** 我看见这兔子吃了根胡萝卜 the
 
 不确定信息的宾语从句
 
-I saw whether the rabbit ate the carrot. 我看到兔子是否吃了胡萝卜
+I saw **whether** the rabbit ate the carrot. 我看到兔子是否吃了胡萝卜
 
-I saw who ate the carrot.  我看到了谁吃胡萝卜
+I saw **who** ate the carrot.  我看到了谁吃胡萝卜
 
-I saw what the rabbit ate. 
+I saw **what** the rabbit ate. 
 
-I saw where the rabbit ate the carrot. 
+I saw **where** the rabbit ate the carrot. 
 
-I saw when the rabbit ate the carrot. 
+I saw **when** the rabbit ate the carrot. 
 
-I saw how the rabbit ate the carrot. 
+I saw **how** the rabbit ate the carrot. 
 
 
 
@@ -1443,7 +1443,7 @@ You can call me **what you like**. 你可以叫我你想叫我的(你可随便�
 
 修饰动词
 
-"Tom **often** goes **to the park** to play with his friends after school."
+"Tom **often** goes **to the park** to play with his friends **after school**."
 
 1. "often" - 表示频率的副词，修饰动词"goes"，说明了**动作发生的频率**。
 2. "to the park" - 表示地点的介词短语，修饰动词"goes"，说明了**动作发生的地点**。
