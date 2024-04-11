@@ -951,8 +951,8 @@ The room **remained**(保留, 一直) empty. 这房间一直是空的. 将空的
 | ----------- | -------- |
 | 是 (be)      | 存在、等同、归属 |
 | 变成 (become) | 变化、转变    |
-| 显得 (seem)   | 看起来、似乎   |
 | 变得 (get)    | 变得、变成    |
+| 显得 (seem)   | 看起来、似乎   |
 | 感觉 (feel)   | 感觉、觉得    |
 | 呈现 (appear) | 出现、呈现    |
 | 保持 (remain) | 保持、仍然是   |
@@ -1804,7 +1804,7 @@ since/as引导的从句, 一般只能放在主句之前
 
 #### 目的副词从句
 
-引导词: **in order** (就为了)
+引导词: **in order that**  (就为了)
 
 **In order that** I could finish the video in time,
 I pulled an all-nighter.
