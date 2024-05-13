@@ -2723,6 +2723,28 @@ those rabbits
 
 ---
 
+| 不定代词      | 含义                                       | 例句                                       |
+| --------- | ---------------------------------------- | ---------------------------------------- |
+| many      | 许多,很多<br>只能描述可数名词                        | many rabbits 很多兔子                        |
+| much      | 很多,许多<br>只能描述不可数名词                       | much water 很多水                           |
+| a few     | 一些<br>只能描述可数名词的复数                        | a few carrots 一些胡萝卜                      |
+| few       | 几乎没有<br>只能描述可数名词                         | few carrots 很少（几个）胡萝卜                    |
+| a little  | 一些<br>只能描述不可数名词                          | a little water 一点水                       |
+| little    | 几乎没有<br>只能描述不可数名词                        | little water 很少水                         |
+| some      | 一些<br>一般用在肯定句中                           | Some water is needed.需要一些水               |
+| any       | 一些(用在否定句中)<br>任何(用在肯定句中)                 | The rabbit can eat any carrot.兔子可以吃任何一个胡萝卜 |
+| each      | 两者或两个以上的每一个<br>each可以单独做主语, 代表每一个,every不可以 | There are many carrots. Each is big.这有很多胡萝卜.每个都很大 |
+| every     | 三者或三者以上的每一个                              | Every carrot is big. 每个胡萝卜都很大            |
+| either    | 两者中的每一个<br>either做主语, 谓语动词要用单数           | Give the rabbit this or that carrot.Either is good.给兔子这根或那根胡萝卜，（两者中）哪一个都很好 |
+| neither   | 两者中每一个都不<br>neither做主语, 谓语动词要用单数         | Don't give the rabbit this or that carrot.Neither is good.不要给兔子这根或那根胡萝卜.（两者中）哪一个都不好 |
+| both      | 两者..都<br>both做主语谓语动词要用复数                 | Both of the two rabbits are cute.两只兔子都很可爱 |
+| all       | 三者即以上都<br>all做主语谓语动词要用复数                 | All of the rabbits are cute. 全部兔子都很可爱    |
+| other     | 另外的                                      | Other carrots are here.其他的胡萝卜在这儿         |
+| the other | 两者之中的另一个                                 | This carrot is bigger than the other carrot.这根胡萝卜比另一根胡萝卜大 |
+| another   | 三者或三者以上的另一个                              | The rabbit doesn't like this carrot.Give him another carrot. 兔子不喜欢这个胡萝卜，给他另一个 |
+| one       | 一个<br>one指上文提及的同类事物中, 同类但不同物体            | The rabbit doesn't like this carrot.Give him another one.(不定代词) 兔子不喜欢这个胡萝卜，给他另一个 |
+| it        | 一个<br>it指上文提及的事物, 同类也同物体                 | It is the same carrot.它是同一个胡萝卜           |
+
 **复合不定代词**
 
 指: every-, some-, any- ,no-和其他代词复合而成的不定代词
