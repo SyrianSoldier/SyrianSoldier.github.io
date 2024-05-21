@@ -73,6 +73,10 @@ export default navbar([
             text: "Python",
             link: "python",
           },
+          {
+            text: "Java",
+            link: "Java",
+          },
         ],
       },
       {
@@ -111,7 +115,6 @@ export default navbar([
       },
       {
         text: "AI",
-        icon: "lightbulb",
         link: "AI/"
       },
     ],
