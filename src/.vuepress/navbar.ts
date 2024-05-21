@@ -112,10 +112,7 @@ export default navbar([
       {
         text: "AI",
         icon: "lightbulb",
-        prefix: "AI/",
-        children: [
-          { text: "动手学人工智能", link: "动手学人工智能" }
-        ],
+        link: "AI/"
       },
     ],
   },
