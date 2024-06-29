@@ -320,7 +320,35 @@ while aa == 10:
     print("a等于10")
 ```
 
+## 4. PIP
+> pip是python的包管理工具
 
+### 4.1 pip的基本使用
+1. 查看python的安装路径： 可以在环境变量中查看
+2. 手动切换到python/Scripts目录在该目录下下载包
+3. 下载:尝试使用``pip install ipython``下载包(下载的为python的另一个解释器)
+
+### 4.2 pip的命令
+
+pip install/uninstall
+pip list -- 显示已安装的包
+pip freeze 以特定格式显示已安装的包
+
+### 4.3 修改pip下载镜像源(国内镜像源)
+
+pip install 包名 -i 镜像源地址
+
+清华：https://pypi.tuna.tsinghua.edu.cn/simple
+
+阿里云：http://mirrors.aliyun.com/pypi/simple/
+
+中国科技大学 https://pypi.mirrors.ustc.edu.cn/simple/
+
+华中理工大学：http://pypi.hustunique.com/
+
+山东理工大学：http://pypi.sdutlinux.org/
+
+**豆瓣：http://pypi.douban.com/simple/** 推荐使用
 
 
 
