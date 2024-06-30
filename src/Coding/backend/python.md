@@ -60,6 +60,7 @@ print("Your name is", name) # 输出 Your name is Sucan
 | 字符串-string  | 1) **单双引号**: 不区分单双引号<br />2) **三引号**: Python将三对引号解释为可换行的文本<br />3) **元字符**: Python将``r""`` 解释为元字符串, 元字符串即纯文本, 内部没有任何转义字符.                                              |
 | 布尔型-boolean | 1) **True和False:<br/>** 含有True 和 False两个关键词<br /> 2) **and, not与or**:  and 等同于 &&, not 等同于 ! , or 等同于 \                                                                |\| |
 | 列表型-list    | 即js中的数组                                          <br/>                                                                                                                 |
+| 字典-map      | 即js中的对象.python中的key一定要写引号,否则会识别为变量                                   <br/>                 <br/>                                                                       |
 
 
 查看数据类型
@@ -67,6 +68,18 @@ print("Your name is", name) # 输出 Your name is Sucan
 name = "你好"
 print(type(name))
 ```
+
+
+数据类型转换
+```python
+print(int("123")) #123将字符串转换成为整数
+print(int(123.78)) #123将浮点数转换成为整数, !!将小数掉后面全舍去(向下取整)!!
+print(int(True)) #1布尔值True转换成为整数是1
+print(int(False)) #0布尔值False转换成为整数是0
+print(str(1111))
+print(bool(123)) #python也遵循真假值转换的规则, 真值转为True, 假值转为False
+```
+
 ### 3.2 字符串编码
 
 
@@ -213,6 +226,11 @@ print('%+2.1f%%' % r) # +18.1%
 | ``chr: (num: number) => string`` | 获取数字编码对应的字符 | ``chr(97)`` # output: 'a' |
 | ``len: (str: bytes || string) => number`` | 若str是字节字符串, 返回字节数.<br />若str是字符串,返回字符数 |                           |
 
+
+字符串的拼接
+print("123" + "234") # 输出: 123234
+print("123"+ 123) #不允许!, python字符串的拼接需要两边都需要是字符串
+
 ### 3.6 list
 
 list与JavaScript中的数组基本是一致的
@@ -312,6 +330,10 @@ while aa == 10:
 
 多行注释: \`\`\` 注释内容 \`\`\`
 
+### 3.11 算数运算符
+只记录和其他语言不相同的语法
+a//b   整除: a和b做除法, 答案向下取整
+a**b   指数: a的b次方
 ## 四: PIP
 > pip是python的包管理工具
 
