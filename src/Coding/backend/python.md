@@ -390,6 +390,34 @@ print(hobbys[:3])  # 从0-2的切片
 print(hobbys[3:])  # 从3-结束的切片 
 
 ```
+
+### 3.13 字典
+```python
+# 读取
+person = {"name": "张三", "age": 18}
+
+print(person["name"])  # 方式一: 获取不存在的key值, 会报错KeyError
+print(person.get("age"))  # 方式二: 获取不存在的key值, 返回None
+print(preson.name)  # 强调不能通过.的方式访问key
+
+# 遍历
+for key in person.keys() # 遍历所有的key
+for value in person.values() # 遍历所有的value
+for key,value in person.items() # 遍历所有的key和value
+for item in person.items() # 遍历对象的每一个键值对, item一个key和value的元祖
+
+# 改
+person["name"] = "法外狂徒"
+
+# 增
+person["sex"] = "男"
+
+# 删
+del person["name"]
+del person # 删除整个对象, 清空内存
+
+person.clear() #情况所有key-value, 但保存字典对象结构()
+```
 ## 四: PIP
 > pip是python的包管理工具
 
