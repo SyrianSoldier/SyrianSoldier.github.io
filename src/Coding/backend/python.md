@@ -224,7 +224,16 @@ print('%+2.1f%%' % r) # +18.1%
 |--------------------|--| ------------------------- |
 | ``ord: (str: string) => number`` | 获取字符串的数字编码 | ``ord('A')`` # output: 65 |
 | ``chr: (num: number) => string`` | 获取数字编码对应的字符 | ``chr(97)`` # output: 'a' |
-| ``len: (str: bytes || string) => number`` | 若str是字节字符串, 返回字节数.<br />若str是字符串,返回字符数 |                           |
+| ``len: (str: bytes || string) => number`` | 若str是字节字符串, 返回字节数.<br/>若str是字符串,返回字符数 |     ``len(strs)``       |
+| ``find: (c:char) => int`` | 返回字符串某字符在串中出现第一次的索引 | ``str.find(char)`` |
+|``startswith:(str:string)=>boolean`` | 判断字符串是否以某个字符开始 | ``str.starswith(char)``|
+|``endswith:(str:string)=>boolean`` | 判断字符串是否以某个字符结束 | ``str.endswith(char)``|
+|``count:(str:string)=>int`` | 统计字符串中某字符出现的次数 | ``str.count(char)``|
+|``replace:(oldstr:string,newstr)=>string`` | 替换字符串中子串 | ``str.replace(str1,str2)``|
+|``splite:(str: 分隔符)=>list`` | 以分隔符切割字符串,返回值为列表 | ``str.splite(str)``|
+|``upper:()=>string`` | 将字符串转为大小写 | ``str.upper()``|
+|``lower:()=>string`` | 将字符串转为小写 | ``str.lower()``|
+|``strip:()=>string`` | 去除收尾空格 | ``str.strip()``|
 
 
 字符串的拼接
@@ -248,11 +257,25 @@ print(hobby[-1], hobby[-2])  # python中的索引具备JavaScript的at方法的�
 # 索引越界
 print(hobby[3])  # IndexError: list index out of range
 
-# 追加, 插入, 删除末尾元素, 删除指定位置元素
+# 增删改查APIs
+#增
 hobby.append("烫头")
 hobby.insert(1, "--插入--")
-hobby.pop()
+hobby.extend(hobby2) #合并两个list
+
+# 删除
+del hobbys[1] # 根据索引删除
+
+hobby.pop()  # 删除最后一个元素
 hobby.pop(1)  # 删除第一个元素
+
+hobby.remove("烫头") # 根据值删除
+
+#查
+if food in hobby_list # 判断元素是否在列表中
+if food not in hobby_list # 判断元素是否不在列表中
+
+
 
 ```
 
