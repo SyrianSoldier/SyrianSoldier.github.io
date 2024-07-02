@@ -520,6 +520,7 @@ try:
 except Exception as e:
     print(e) # name 'a' is not defined
 ```
+
 ## 四: PIP
 > pip是python的包管理工具
 
