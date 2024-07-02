@@ -309,13 +309,33 @@ if a > 100:  # TypeError: '>' not supported between instances of 'str' and 'int'
 ``for循环``
 
 ```python
+# 循环字符串
+for c in "china":
+    print(c)
+
+# 循环数组
 for age in [0, 1, 2, 3, 4]:
     print(age)
 
-# 下面的代码等价于上面的代码
-# range(len), 生成 0 到 len - 1的整数序列
+
+# 循环range
+
+# range(len), 生成 [0,len-1], 如range(5), 生成[0,1,2,3,4]的整数序列
 for age in range(5):
-    print(age)
+    print(age) #0,1,2,3,4
+ 
+# range(起始值, 结束值),生成[起始值, 结束值-1]的整数序列
+for age in range(2,5):
+   print(age) # 2,3,4
+   
+# rage(起始值,结束值,步长) 生成从起始值开始按照补长一直增加到结束值的序列
+for age in range(1,5,3):
+   print(age) # 1 4 
+   
+# 遍历列表的下标
+a_list = ["张三","李四","王二麻子"]
+for index in range(len(a_list)): # 'int' object is not iterable. 整数是无法遍历的, 需要放进range里
+   print(index)
 ```
 
 ``while循环``
@@ -334,6 +354,7 @@ while aa == 10:
 只记录和其他语言不相同的语法
 a//b   整除: a和b做除法, 答案向下取整
 a**b   指数: a的b次方
+
 ## 四: PIP
 > pip是python的包管理工具
 
