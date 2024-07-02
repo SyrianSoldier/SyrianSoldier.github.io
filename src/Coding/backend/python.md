@@ -513,6 +513,13 @@ hobby_list = json.load(fs) # 读取的是整个文件流
 fs.close()
 ```
 
+### 异常与捕获
+```python
+try:
+    print(a)
+except Exception as e:
+    print(e) # name 'a' is not defined
+```
 ## 四: PIP
 > pip是python的包管理工具
 
