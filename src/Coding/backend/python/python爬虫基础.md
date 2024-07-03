@@ -160,3 +160,24 @@ content = json.loads(response.read().decode("utf-8"))
 print(content)
 
 ```
+
+
+### Cookie与反爬
+[Cookie的知识](https://www.bilibili.com/video/BV1SL4y1i7ZL/?spm_id_from=333.337.search-card.all.click&vd_source=20bf77d62633a13b190b5fb3785b2e34)
+
+可以这样观察set-cookie的过程
+
+1. 在chrome浏览器设置里手动清除cookie
+2. 重启浏览器, 打开百度
+3. 摁下f12,打开控制台
+4. 打开B站后, 可以在network中观察html中响应头有set-cookie, 在后续的请求的请求头中中有Cookie
+
+**注: 访问一个html, 可能涉及到其他请求(请求其他css,js,图片), 假如在html返回的响应头里有set-cookie, 
+那么在该页面的所有后续请求头中都有cookie字段. 并且若set-cookie字段设置的是持久性cookie,
+直到过期时间到达或用户手动删除它们前, 重启浏览器并再次访问该网页时，这些 Cookie依然会被携带**
+
+cookie中多存储身份信息(账号密码等)
+
+```python
+# 具体代码和post请求百度没什么区别, 就是要注意, 有些API需要在请求头里携带Cookie访问, 不带访问不通
+```
