@@ -1,6 +1,7 @@
 # python爬虫基础
 ## urllib
-> urllib是python内置的HTTP请求库
+> urllib是python内置的HTTP请求库, 企业中一般使用Requests库. 前者的好处是内置无需下载, 更接近底层, 能处理更多的细节.
+> 缺点是繁琐, 一些场景需要手动处理. Requests库是基于urllib和其他库集成的二次封装, 功能更强大
 
 ### 打开并读取网站: url.request.urlopen
 **使用url.request访问获取百度html**
@@ -44,7 +45,9 @@ for header, value in headers.items():
 ```
 ## 下载网页资源: url.request.retrieve
 
-**** urlretrieve类型
+### urlretrieve的使用
+
+**urlretrieve类型**
 ```typescript
 type ReportHook = (cout/*已下载的块儿数*/: number, blockSize/*每块的字节数*/: number, totalSize/*总字节数*/:number) => void
 
@@ -76,5 +79,42 @@ def result_progress(dowloaded_count, block_size, total_size):
 
 url = "https://vdept3.bdstatic.com/mda-mfuf163rfmkn36i7/cae_h264_nowatermark/1624963807373246350/mda-mfuf163rfmkn36i7.mp4?v_from_s=hkapp-haokan-hbf&auth_key=1719986700-0-0-3e228fbf951dc8715b925045260484b0&bcevod_channel=searchbox_feed&pd=1&cr=0&cd=0&pt=3&logid=0300230982&vid=10554454971571011271&klogid=0300230982&abtest=101830_2-102148_1-17451_1-3000225_1"
 urlretrieve(url, "./test.mp4", result_progress)
+
+```
+
+### Reqeust的使用-带参数(data,headers..)的请求
+
+```python
+from urllib.request import Request, urlopen
+
+# 1. 生成请求对象
+url = "http://www.baidu.com"
+headers = {
+    "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36"
+}
+request_obj = Request(url=url, headers=headers)  # 这里必须指定关键词, 因为参数顺序不同
+
+# 2.发起请求
+response = urlopen(
+    request_obj
+)  # urlopen第一个参数可以传string的url, 也可以传一个Request对象
+
+# 3. 读取,解码,并打印请求数据
+print(response.read().decode("utf-8"))
+
+```
+
+
+### URL编码与quote函数
+> js中发送请求不需要对url进行URL编码,是因为浏览器对每个请求有默认的编码功能. 但是url.
+> request既没有浏览器环境, 也没有对URL进行过多的处理, 所以发送请求时需要对URL特殊处理 
+
+url.parse.quote函数是一个进行URL编码的函数
+```python
+from urllib.parse import quote
+
+url = quote("https://www.baidu.com/s?wd=周杰伦")
+
+print(url)
 
 ```
