@@ -104,7 +104,6 @@ print(response.read().decode("utf-8"))
 
 ```
 
-
 ### URL编码与quote函数
 > js中发送请求不需要对url进行URL编码,是因为浏览器对每个请求有默认的编码功能. 但是url.
 > request既没有浏览器环境, 也没有对URL进行过多的处理, 所以发送请求时需要对URL特殊处理 
@@ -128,5 +127,36 @@ from urllib.parse import urlencode
 # 输出: name=zhangsan&age=18
 params = urlencode({"name": "zhangsan", "age": 18})
 print(params)
+
+```
+
+
+### post请求获取百度翻译的结果
+
+```python
+from urllib.parse import urlencode, quote
+from urllib.request import Request, urlopen
+import json
+
+# 1.生成请求对象
+params = Request(
+    method="POST",  # 区分大小写
+    url="https://fanyi.baidu.com/sug",
+    headers={
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36"
+    },
+    # 在network可知该请求的编码格式application/x-www-form-urlencoded, 即将key-value的键值对放在请求体传输
+    # 故要先要将字典转为键值对字符串, 然后又因为data参数被要求时字节字符串格式, 还需要进行编码(注:python中编码就是将字符串转为字节字符串)
+    data=urlencode({"kw": "英雄"}).encode("utf-8"),
+)
+
+# 2. 发送请求
+response = urlopen(params)
+
+# 3. 解析响应结果(读取结果-->解码-->反序列化)
+content = json.loads(response.read().decode("utf-8"))
+
+
+print(content)
 
 ```
