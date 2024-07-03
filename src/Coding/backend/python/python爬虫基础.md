@@ -254,3 +254,29 @@ if __name__ == "__main__":
         write_to_local(response, page)
 
 ```
+
+
+### URLError和HTTPError
+
+```python
+from urllib.request import Request, urlopen
+
+from urllib.error import URLError, HTTPError
+
+
+try:
+    response = urlopen(
+        Request(
+            url="http://ww25.asdasdasd.com/asd/asd?subid1=20240704-0056-3809-a1e6-ba15b98ac1f8",
+            method="GET",
+            headers={},
+        )
+    )
+    content = response.read().decode("utf-8")
+    print(content)
+except HTTPError as e:  # 注: URLError是HTTPError的子类, 要放在下面, 否则捕获不到
+    print(f"HTTP错误, 返回非200的错误状态码, 如4xx,5xx错误\n{e.code}-{e.reason}")
+except URLError as e:
+    print(f"URL错误, 比如写错url了以及相关异常\n{e.reason}")
+
+```
