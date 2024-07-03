@@ -130,7 +130,6 @@ print(params)
 
 ```
 
-
 ### post请求获取百度翻译的结果
 
 ```python
@@ -161,7 +160,6 @@ print(content)
 
 ```
 
-
 ### Cookie与反爬
 [Cookie的知识](https://www.bilibili.com/video/BV1SL4y1i7ZL/?spm_id_from=333.337.search-card.all.click&vd_source=20bf77d62633a13b190b5fb3785b2e34)
 
@@ -181,3 +179,7 @@ cookie中多存储身份信息(账号密码等)
 ```python
 # 具体代码和post请求百度没什么区别, 就是要注意, 有些API需要在请求头里携带Cookie访问, 不带访问不通
 ```
+
+
+
+
