@@ -43,9 +43,8 @@ for header, value in headers.items():
     print(f"{header}: {value}")
 
 ```
-## 下载网页资源: url.request.retrieve
 
-### urlretrieve的使用
+### 下载网页资源: urlretrieve的使用
 
 **urlretrieve类型**
 ```typescript
@@ -183,8 +182,31 @@ cookie中多存储身份信息(账号密码等)
 
 
 
-### 抓取豆瓣电影并写入本地
+### 抓取豆瓣电影数据与with..as, json.dump函数的使用
 
 ```python
+from urllib.request import Request, urlopen
+import json
+
+# 请求豆瓣排行榜json数据
+request = Request(
+    method="GET",
+    url="https://movie.douban.com/j/chart/top_list?type=5&interval_id=100%3A90&action=&start=0&limit=20",
+    headers={
+        "Cookie": 'll="108199"; bid=joYJqLtAFmc; _pk_ref.100001.4cf6=%5B%22%22%2C%22%22%2C1720010142%2C%22https%3A%2F%2Fwww.baidu.com%2Flink%3Furl%3DgeqoiqwgS4ibGjiAr8nYk3cLx8Q1HWuOlIQBnplGe7JI_elYLMCibOSJKSztGGOL%26wd%3D%26eqid%3D8a8432090076b0c50000000666854591%22%5D; _pk_id.100001.4cf6=bdafaa71f9526788.1720010142.; _pk_ses.100001.4cf6=1; __utma=30149280.1925336388.1720010142.1720010142.1720010142.1; __utmb=30149280.0.10.1720010142; __utmc=30149280; __utmz=30149280.1720010142.1.1.utmcsr=baidu|utmccn=(organic)|utmcmd=organic; __utma=223695111.953958908.1720010142.1720010142.1720010142.1; __utmb=223695111.0.10.1720010142; __utmc=223695111; __utmz=223695111.1720010142.1.1.utmcsr=baidu|utmccn=(organic)|utmcmd=organic; __yadk_uid=BxVw4c21gdefs9ixMeeF35TouPBfNMPp; ap_v=0,6.0; __gads=ID=bc3fcc74dca25807:T=1720010144:RT=1720010144:S=ALNI_MYALClZEvttEHotijTk5ybe2ylgyA; __gpi=UID=00000e711c3b870f:T=1720010144:RT=1720010144:S=ALNI_MajElrbN12fwkIO-TZmDpNq1RrNoA; __eoi=ID=5385e667ebffc925:T=1720010144:RT=1720010144:S=AA-AfjZKj-nXxGfGuqpcgM4vO36O; FCNEC=%5B%5B%22AKsRol9DOu7T43N5oXMqg1XKMyizjh143xpfZ-jVf-6Qsu8nZad2Tvvdk4n4JO80kVWakMtZhZkqoIYS1sOheX7OMubsC3Ov6ejvQccjWlgwo0j0JlUdrCGdCDJ7WskCSuc_26msUt1zV34cdKghyBFjYxz2vgArGw%3D%3D%22%5D%5D; _cc_id=c172068aa4674a2ecae791f749719777; panoramaId_expiry=1720096551300',
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36",
+    },
+)
+
+# 2. 提取json对象
+content = json.loads(urlopen(request).read().decode("utf-8"))
+
+# 写入本地文件
+# with...as... 可以打开文件流, 并且自动捕获可能出现的异常, 自动在代码块结束后关闭文件流
+with open("./movies.json", "w", encoding="utf-8") as fs:
+
+    # json.dump函数可以向文件写入json数据的同时, 将json数据格式化
+    # json.dump(jsonObject:json对象, fileObject:可写入的文件对象, indent: 缩进, ensure_ascii:设置成false可以正确显示汉字 )
+    json.dump(content, fs, ensure_ascii=False, indent=4)
 
 ```
