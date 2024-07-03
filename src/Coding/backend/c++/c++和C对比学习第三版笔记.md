@@ -55,7 +55,7 @@
 2) 有效位数 = 2 * 空间大小 - 1. ( 只是为了简便记忆, 无实际意义 )
 
 | 数据类型 | 关键词         | 空间大小                        | 有效位数            |
-|------|-------------| --------------------------- | --------------- |
+| ---- | ----------- | --------------------------- | --------------- |
 | 单精度  | float       | 4B                          | 2 * 4 - 1 = 7位  |
 | 双精度  | double      | 8B                          | 2 * 8 - 1 = 15位 |
 | 多精度  | long double | Windows: 8B<br />Linux: 16B | 不低于15位          |
@@ -91,9 +91,9 @@ int main() {
    int main() {
      int a(10); // 4字节
      char b(96); // 1字节
-	 long long c(3); // 8字节
+    long long c(3); // 8字节
 
-	 cout << sizeof(a + b + c) << endl; // 输出8
+    cout << sizeof(a + b + c) << endl; // 输出8
    }
    ```
 
@@ -151,6 +151,18 @@ int main() {
 	return 0;
 };
 ```
+
+C语言
+```c
+#include <stdio.h> 
+
+int main() {
+
+	printf("hello, world"); // printf包含在stdio.h文件中
+};
+```
+
+
 
 注意: 布尔型的变量只能输入0或者1
 
@@ -372,7 +384,7 @@ row3:
    2. **内存对齐:**
       大部分系统要求特定数据类型的变量在内存中的地址必须是特定值（通常是其大小的倍数）。这就是内存对齐。编译器会根据系统的要求，在成员变量之间或者类的末尾插入一些未使用的字节，以确保每个成员变量都位于正确的地址上。这样做是为了提高内存访问的效率。具体的对齐规则通常与平台和编译器有关。
    3. **继承和虚函数表**： 
-   如果类继承自其他类（包括间接继承），子类的大小会包括所有基类的大小。如果类包含虚函数，通常会有一个指向虚函数表的指针（vptr）作为类的隐藏成员，占用额外的内存。
+     如果类继承自其他类（包括间接继承），子类的大小会包括所有基类的大小。如果类包含虚函数，通常会有一个指向虚函数表的指针（vptr）作为类的隐藏成员，占用额外的内存。
    4. **空类的大小**： 即使类中没有任何成员变量，C++编译器通常也会为其分配一个字节的内存空间，以确保不同实例的地址不同。
 
 这些规则确保了用户自定义类型在内存中的布局是符合系统和编译器要求的。由于不同的编译器和系统可能有不同的对齐规则和优化策略，因此在实际编程中，如果需要确切地知道某个类型的大小，最好使用 sizeof 运算符进行查询，而不是手动计算，以确保跨平台的兼容性。
@@ -512,7 +524,7 @@ int main(){
 
 **开始调试**
 
-<img  src="./imgs/a1.jpg" width="650"/>
+<img  src="../imgs/a1.jpg" width="650"/>
 
 **调试按钮**
 
@@ -524,7 +536,7 @@ int main(){
 
 **条件断点**
 
-<img  src="./imgs/condition_debug.png" width="750"/>
+<img  src="../imgs/condition_debug.png" width="750"/>
 
 
 
@@ -2421,7 +2433,7 @@ int main() {
 5. iostream提供标准输入输出流.
 6. fstrean提供文件输入输出流.
 
-<img src="./imgs/io流.jpg" width="700">
+<img src="../imgs/io流.jpg" width="700">
 
 #### 插入运算符和提取运算符
 **插入运算符**
@@ -2517,7 +2529,7 @@ int main() {
 5. 关闭文件流: ofs.close()
 
 | 打开方式            | 作用                        |
-|-----------------|---------------------------|
+| --------------- | ------------------------- |
 | ``ios::in``     | 以读的方式打开文件                 |
 | ``ios::out``    | 以写的方式打开文件                 |
 | ``ios::trunc``  | 若当前路径已经存在文件, 则先删除该文件, 再打开 |
@@ -2678,12 +2690,12 @@ int main() {
 2. tellg返回当前输入流的指针位置的api
 3. tellp返回当前输出流的指针位置的api
 
-<img src="./imgs/seek.jpg" width="484">
+<img src="../imgs/seek.jpg" width="484">
 
 1. 将3长度的Person数组写入persons.txt文件中
-<img src="./imgs/a.jpg" width="484">
+  <img src="./imgs/a.jpg" width="484">
 2. 请读取刚写入的persons数组中的第二个person对象
-<img src="./imgs/b.jpg" width="484">
+  <img src="./imgs/b.jpg" width="484">
 
 #### 练习题
 假如有hello.txt文件, 请将每一行的文字前加上行号
@@ -2840,23 +2852,23 @@ int main() {
 
 **vector常用``api``**
 
-| Api说明           | 示例                                                                     | 函数签名                                        |
-|-----------------|------------------------------------------------------------------------|---------------------------------------------|
-| length          | `arr.size()`                                                           |                                             |
-| 深拷贝             | `vector<int> arr2 = arr1;`, 重载的=运算符默认是深拷贝                              |                                             |
-| push 与 pop      | `arr2.push_back(element); arr2.pop_back();`                            |                                             |
-| shift 与 unshift | `unshift: arr2.insert(arr1.begin(), 1); shift: arr2.erase(arr1.begin());` |                                             |
-| 删除元素            | `arr.erase(arr.begin() + 2);`                                          | `(delete_idx:iterator) => iterator`         |
-| 插入元素            | `arr.insert(arr1.begin(), 2);`                        | `(begin: iterator, Element:e ) => iterator` |
-| map             | 见下方示例代码                                                                | 注意: 需要`#include<algorithm>`                 |
-| filter          | 见下方示例代码                                                                | 注意: 需要`#include<algorithm>`                 |
-| find            | 见下方示例代码                                                                | 注意: 需要`#include<algorithm>`                 |
-| sort            | `sort(arr11.begin(), arr11.end());`                                    | 注意: 需要`#include<algorithm>`                 |
-| empty           | `arr.empty()`                                                          | 判断是数组否为空                                    |
-| front           | `arr.front()`                                                          | 返回第一个元素                                     |
-| back()          | `arr.back()`                                                           | 返回最后一个元素                                    |
-| clear()         | `arr.clear()`                                                          | 清空元素                                        |
-| swap()          | `vector<int> arr = { 1,2,3,4 };`<br/>``vector<int> arr2 = {0};``<br/>``arr.swap(arr2);``          | 交换两个vector容器, 两个vector容器的泛型需要相同             |
+| Api说明           | 示例                                       | 函数签名                                     |
+| --------------- | ---------------------------------------- | ---------------------------------------- |
+| length          | `arr.size()`                             |                                          |
+| 深拷贝             | `vector<int> arr2 = arr1;`, 重载的=运算符默认是深拷贝 |                                          |
+| push 与 pop      | `arr2.push_back(element); arr2.pop_back();` |                                          |
+| shift 与 unshift | `unshift: arr2.insert(arr1.begin(), 1); shift: arr2.erase(arr1.begin());` |                                          |
+| 删除元素            | `arr.erase(arr.begin() + 2);`            | `(delete_idx:iterator) => iterator`      |
+| 插入元素            | `arr.insert(arr1.begin(), 2);`           | `(begin: iterator, Element:e ) => iterator` |
+| map             | 见下方示例代码                                  | 注意: 需要`#include<algorithm>`              |
+| filter          | 见下方示例代码                                  | 注意: 需要`#include<algorithm>`              |
+| find            | 见下方示例代码                                  | 注意: 需要`#include<algorithm>`              |
+| sort            | `sort(arr11.begin(), arr11.end());`      | 注意: 需要`#include<algorithm>`              |
+| empty           | `arr.empty()`                            | 判断是数组否为空                                 |
+| front           | `arr.front()`                            | 返回第一个元素                                  |
+| back()          | `arr.back()`                             | 返回最后一个元素                                 |
+| clear()         | `arr.clear()`                            | 清空元素                                     |
+| swap()          | `vector<int> arr = { 1,2,3,4 };`<br/>``vector<int> arr2 = {0};``<br/>``arr.swap(arr2);`` | 交换两个vector容器, 两个vector容器的泛型需要相同          |
 
 示例代码
 
