@@ -118,3 +118,15 @@ url = quote("https://www.baidu.com/s?wd=周杰伦")
 print(url)
 
 ```
+
+### 将字典转为query参数
+> 将字典转为query参数的形式, 并且将生成的query参数进行url编码
+
+```python
+from urllib.parse import urlencode
+
+# 输出: name=zhangsan&age=18
+params = urlencode({"name": "zhangsan", "age": 18})
+print(params)
+
+```
