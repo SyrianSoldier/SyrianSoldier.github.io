@@ -327,3 +327,27 @@ with open("./ip2.json", "w", encoding="utf-8") as fp:
 ```
 
 
+
+
+## xpath
+
+### xpath chrome插件的安装
+> XPath是一门在XML和HTML文档中查找信息的语言，它用于在XML和HTML文档中对元素和属性进行遍历，广泛用于解析HTML数据。XPath几乎可以在所有语言中使用，例如Java和C语言。除了XPath，还有其他手段用于XML解析，如BeautifulSoup、lxml、DOM、SAX、JSDOM、DOM4J、minxml等。12
+极简插件搜索xpath helper搜索安装
+
+XPath Helper 可轻松提取、编辑和评估任何网页上的 XPath 查询。
+
+重要提示：安装此扩展后，必须重新加载任何现有标签页或重启 Chrome 浏览器，扩展才能正常工作。
+
+使用说明
+1. 打开一个新标签页并导航到任何网页。
+2. 点击 Ctrl-Shift-X（或 OS X 上的 Command-Shift-X），或点击工具栏上的 XPath Helper 按钮，打开 XPath Helper 控制台。
+3. 按住 Shift 键，将鼠标移到页面上的元素上。查询框将不断更新，显示鼠标指针下方元素的 XPath 查询，结果框将显示当前查询的结果。
+4. 如果需要，可直接在控制台中编辑 XPath 查询。结果框将立即反映您的更改。
+5. 重复步骤 (2) 关闭控制台。
+
+如果控制台挡住了您的视线，请按住 Shift 键，然后将鼠标移到控制台上，控制台就会移动到页面的另一侧。
+
+提醒一点： 在渲染 HTML 表格时，Chrome 浏览器会在 DOM 中插入人为的<tbody>标记，因此这些标记会出现在该扩展提取的查询中。
+
+###
