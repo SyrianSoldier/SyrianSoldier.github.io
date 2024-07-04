@@ -31,8 +31,7 @@ export default hopeTheme({
   // 权限文章
   encrypt: {
     config: {
-      "/Individual/": "weizekun",
-      "/Individual/diary": "a19139386300"
+      "/Individual/": "a19139386300",
     },
   },
 
