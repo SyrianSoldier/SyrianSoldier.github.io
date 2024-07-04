@@ -180,8 +180,6 @@ cookie中多存储身份信息(账号密码等)
 ```
 
 
-
-
 ### 抓取豆瓣电影数据与with..as, json.dump函数的使用
 
 ```python
@@ -255,7 +253,7 @@ if __name__ == "__main__":
 
 ```
 
-
+ 
 ### URLError和HTTPError
 
 ```python
@@ -280,3 +278,50 @@ except URLError as e:
     print(f"URL错误, 比如写错url了以及相关异常\n{e.reason}")
 
 ```
+
+
+### HTTP中的referer字段
+
+HTTP Referer是 HTTP 请求头中的一个字段，用于指示当前请求的来源，即用户是从哪个页面点击过来的。
+这个字段可以帮助服务器了解用户的来源，从而进行流量分析、广告跟踪等。
+
+浏览器访问资源时, 通常会自动在请求头中加上referer字段
+
+一些网站会检查Referer字段, 如某图片防盗功能, 服务端可以通过检查referer,判断下载行为是从本网页发起的
+还是使用爬虫下载的.
+
+
+### 查询本机IP地址与配置(正向)代理服务器
+
+```python
+from urllib.request import Request, ProxyHandler, build_opener
+import json
+
+# 随便网上找个ip查询的接口,查询当前ip信息和归属地
+
+# 1. 需要购买代理服务器, 并将IP卸载这里(网上搜索代理服务器购买)
+proxy = "http://202.117.115.6:80"
+handler = ProxyHandler({"http": proxy})
+
+# 2. 固定写法, 记住
+opener = build_opener(handler)
+
+# 3. 不再使用urlopen发送请求, 直接使用opener.open发送请求
+response = opener.open(
+    Request(
+        url="https://www.cz88.net/api/cz88/ip/base?ip=",
+        headers={
+            "Cookie": "_ga=GA1.1.720837650.1720078542; Hm_lvt_5fe556ebe1c9d856695a9a35f4d18ce3=1720078542; AGL_USER_ID=b54f1e9e-738f-4934-bd6f-bb3537495e0c; __bid_n=1907caba8164912a79e90c; sajssdk_2015_cross_new_user=1; sensorsdata2015jssdkcross=%7B%22distinct_id%22%3A%221907caba844581-042f325b71912c-26001f51-1474560-1907caba845b8e%22%2C%22first_id%22%3A%22%22%2C%22props%22%3A%7B%22%24latest_traffic_source_type%22%3A%22%E8%87%AA%E7%84%B6%E6%90%9C%E7%B4%A2%E6%B5%81%E9%87%8F%22%2C%22%24latest_search_keyword%22%3A%22%E6%9C%AA%E5%8F%96%E5%88%B0%E5%80%BC%22%2C%22%24latest_referrer%22%3A%22https%3A%2F%2Fwww.baidu.com%2F%22%7D%2C%22identities%22%3A%22eyIkaWRlbnRpdHlfY29va2llX2lkIjoiMTkwN2NhYmE4NDQ1ODEtMDQyZjMyNWI3MTkxMmMtMjYwMDFmNTEtMTQ3NDU2MC0xOTA3Y2FiYTg0NWI4ZSJ9%22%2C%22history_login_id%22%3A%7B%22name%22%3A%22%22%2C%22value%22%3A%22%22%7D%2C%22%24device_id%22%3A%221907caba844581-042f325b71912c-26001f51-1474560-1907caba845b8e%22%7D; Hm_lpvt_5fe556ebe1c9d856695a9a35f4d18ce3=1720080328; SECKEY_ABVK=yqp54ZglfLi8IAuQTJIRjuX0Z4ntJOIol73pQQW6O4E%3D; BMAP_SECKEY=Oul9zDS5T4D5toNy4x8QnXkYLI_yUwOcyvTe0H3w3i840u1vjY-eKjwp9D29JLZ2bGol3aZwweShOvNAv4cwFdnid3P8Mt-b3tCKFTfCsMW0RKpCGkuUzBqY96QPnfCX2E7SA_BqPZBTIYUjkmrFyEwXWQU7hvoukO-sk3E7Vwey0EWghmaMJPgG5QXhatuB; _ga_SGEY66BFK5=GS1.1.1720078542.1.1.1720080359.0.0.0",
+            "Referer": "https://www.cz88.net/?keyword=695684574687&bd_vid=8137345353181552953",
+            "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36",
+        },
+    )
+)
+content = json.loads(response.read().decode("utf-8"))
+
+with open("./ip2.json", "w", encoding="utf-8") as fp:
+    json.dump(content, fp, ensure_ascii=False, indent=4)
+
+```
+
+
