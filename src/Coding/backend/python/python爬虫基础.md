@@ -292,6 +292,8 @@ HTTP Referer是 HTTP 请求头中的一个字段，用于指示当前请求的�
 
 
 ### 查询本机IP地址与配置(正向)代理服务器
+注: 建立代理池(多个代理ip的数组), 并在每次请求前使用random函数随机挑选一个代理ip访问目标网站, 可以降低爬虫
+被封禁IP的风险
 
 ```python
 from urllib.request import Request, ProxyHandler, build_opener
