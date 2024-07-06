@@ -253,7 +253,7 @@ if __name__ == "__main__":
 
 ```
 
- 
+
 ### URLError和HTTPError
 
 ```python
@@ -328,11 +328,42 @@ with open("./ip2.json", "w", encoding="utf-8") as fp:
 
 
 
-
 ## xpath
 
-### xpath chrome插件的安装
-> XPath是一门在XML和HTML文档中查找信息的语言，它用于在XML和HTML文档中对元素和属性进行遍历，广泛用于解析HTML数据。XPath几乎可以在所有语言中使用，例如Java和C语言。除了XPath，还有其他手段用于XML解析，如BeautifulSoup、lxml、DOM、SAX、JSDOM、DOM4J、minxml等。12
+### Xpath语言
+
+XPath 是一种用于在 XML 或 HTML 文档中查找信息的语言。它提供了丰富的语法来选择节点集。以下是一些在开发中常用的 XPath 表达式和语法示例：
+
+| 语法                                       | 描述                             |
+| ---------------------------------------- | ------------------------------ |
+| `//tag`                                  | 选择所有的 `tag` 节点                 |
+| `//tag[@attribute='value']`              | 选择具有特定属性值的 `tag` 节点            |
+| `//tag[contains(text(), 'text')]`        | 选择包含特定文本的 `tag` 节点             |
+| `/tag/subtag`                            | 选择 `tag` 的直接子节点 `subtag`       |
+| `//tag`                                  | 选择任意位置的 `tag` 节点               |
+| `(//tag)[1]`                             | 选择第一个 `tag` 节点                 |
+| `(//tag)[last()]`                        | 选择最后一个 `tag` 节点                |
+| `//tag[@attribute1='value1' and @attribute2='value2']` | 选择同时具有两个特定属性值的 `tag` 节点        |
+| `//tag[@attribute='value']/..`           | 选择具有特定属性的 `tag` 节点的父节点         |
+| `//tag[position()>=start and position()<=end]` | 选择索引范围内的 `tag` 节点              |
+| `//tag[position()<number]`               | 选择特定数量的 `tag` 节点               |
+| `//tag[text()='text']`                   | 选择文本内容完全匹配的 `tag` 节点           |
+| `//tag[contains(@attribute, 'value')]`   | 选择属性值包含特定文本的 `tag` 节点          |
+| `/parent/tag[position()=index]`          | 选择 `parent` 节点下特定位置的 `tag` 子节点 |
+| `//@attribute`                           | 选择所有的 `attribute` 属性           |
+| `//tag/child::subtag`                    | 选择 `tag` 的子节点 `subtag`         |
+| `/tag/parent::parenttag`                 | 选择 `tag` 的父节点 `parenttag`      |
+| `/tag/ancestor::ancestortag`             | 选择 `tag` 的祖先节点 `ancestortag`   |
+| `/tag/descendant::descendanttag`         | 选择 `tag` 的后代节点 `descendanttag` |
+| `/tag/following-sibling::siblingtag`     | 选择 `tag` 的兄弟节点 `siblingtag`    |
+
+### xpath chrome插件
+> XPath插件可以在chrome中输入Xpath语言, 并可以在控制台中查看查询的结果. 
+>
+> 也可以**根据选中的元素, 生成对应的Xpath语言**
+>
+> 
+
 极简插件搜索xpath helper搜索安装
 
 XPath Helper 可轻松提取、编辑和评估任何网页上的 XPath 查询。
@@ -342,7 +373,7 @@ XPath Helper 可轻松提取、编辑和评估任何网页上的 XPath 查询。
 使用说明
 1. 打开一个新标签页并导航到任何网页。
 2. 点击 Ctrl-Shift-X（或 OS X 上的 Command-Shift-X），或点击工具栏上的 XPath Helper 按钮，打开 XPath Helper 控制台。
-3. 按住 Shift 键，将鼠标移到页面上的元素上。查询框将不断更新，显示鼠标指针下方元素的 XPath 查询，结果框将显示当前查询的结果。
+3. **按住 Shift 键，将鼠标移到页面上的元素上。查询框将不断更新，显示鼠标指针下方元素的 XPath 查询，结果框将显示当前查询的结果。**
 4. 如果需要，可直接在控制台中编辑 XPath 查询。结果框将立即反映您的更改。
 5. 重复步骤 (2) 关闭控制台。
 
@@ -351,4 +382,147 @@ XPath Helper 可轻松提取、编辑和评估任何网页上的 XPath 查询。
 提醒一点： 在渲染 HTML 表格时，Chrome 浏览器会在 DOM 中插入人为的
 ``<tbody>``标记，因此这些标记会出现在该扩展提取的查询中。
 
-###
+### lxml
+
+> lxml完全兼容Xpath语言, 根据语法解析HTML结构.
+
+>[官方文档](https://lxml.de/apidoc/lxml.html) 
+
+1. 在虚拟环境中(详细见python高级)执行``pip install lxml``,并激活该环境
+2. 执行以下程序
+```python
+from lxml import html
+
+# 1. 读取本地文件
+with open("./index.html", "r", encoding="utf-8") as file:
+    content = file.read()
+
+# 2. 解析本地html文件
+# html.fromstring 是 lxml.html 模块中的一个函数，用于将 HTML 字符串解析为一个 Element 对象
+tree = html.fromstring(content)
+
+# 2. 寻找ul>li
+"""
+xpath()返回一个列表, 列表内是查询后的元素
+// : 查找任意后代节点
+/  : 查找子节点
+"""
+li_list_1 = tree.xpath("//body/ul/li")
+
+# 3. 输出ul>li的内容
+"""
+text: 获取或设置标签的文本内容。
+attrib: 获取或设置标签的属性字典。
+tag: 获取标签的名称。
+get(): 获取特定属性的值。
+set(): 设置特定属性的值。
+append(): 向标签中添加子元素。
+"""
+for li in li_list_1:
+    print(li.text, li.tag)
+
+# 查找id为my_li的标签, 并展示为一个数组
+"""
+属性查找: 标签[@id/class='名字']
+text(): 标签的innerText
+"""
+li_list2 = tree.xpath("//body//li[@id='my_li']/text()")
+print(li_list2)
+
+
+# 查找 id为my_li且class也为my_li的li标签
+"""
+1. //body可以省略
+2. 可以先查id再查class, 也可以反过来
+"""
+li_list3 = tree.xpath("//li[@id='my_li' and @class='my_li']")
+
+
+# 查询所有li元素中, id中包含_1的标签
+li_list4 = tree.xpath("//li[contains(@id,'_1')]/text()")
+print("4:", li_list4)
+```
+
+### 用lxml获取百度一下文本
+```
+from urllib.request import urlopen, Request
+from lxml.html import fromstring
+
+# 1. 获取html网页, 并转为字符串
+htmml_str = urlopen(Request(url="http://www.baidu.com")).read().decode("utf-8")
+
+# 2. 查询html中的元素
+# 使用xpath-helper插件辅助生成(注: 插件的语句并不一定完全准确, 如果查不出来手动修改下)
+xpath = "//input[@id='su']/@value"
+
+tree = fromstring(htmml_str)
+list = tree.xpath(xpath)
+print(list)
+
+```
+
+
+
+
+### 爬取图片
+```python
+from urllib.request import urlopen, Request
+from lxml.html import fromstring
+from urllib.request import urlretrieve
+from tqdm import tqdm  # 一个好看的进度条的库
+
+"""
+分析:
+   1. 请求html --> 通过xpath筛选所有图片 ---> 根据图片的src属性下载图片 
+   2. 经过观察可知该网站当前懒加载的方案是"用白色占位图当成src, 然后真实src记录在data-original属性内, 当懒加载时候做替换"
+"""
+
+src_xpath = "//img[@class='lazy']/@data-original"
+text_xpath = "//div[@class='bot-div']/a[@class='name']/text()"
+
+
+def get_html(page):
+    # 对页码做特殊处理
+    if page == 1:
+        page = ""
+    else:
+        page = f"_{page}"
+
+    response = urlopen(
+        Request(url=f"https://sc.chinaz.com/tupian/chouxiangtupian{page}.html")
+    )
+
+    return response.read().decode("utf-8")
+
+
+def get_imgs(html):
+    tree = fromstring(html)
+    imgs_srcs = tree.xpath(src_xpath)
+    imgs_texts = tree.xpath(text_xpath)
+
+    imgs = []
+    for index in range(0, len(imgs_srcs)):
+        imgs.append({"text": imgs_texts[index], "src": f"https:{imgs_srcs[index]}"})
+
+    return imgs
+
+
+def download_imgs(imgs):
+    # tqdm是一个进度条的库, 语法tqdm(迭代对象)
+    for img in tqdm(imgs, desc="Downloading Images"):
+        urlretrieve(img["src"], f"imgs/{img['text']}.jpg")
+
+
+start = int(input("请输入下载的开始页码: "))
+
+end = int(input("请输入下载的截止页码: "))
+
+for page in range(start, end + 1):
+    print(f"\n第{page}页开始下载....")
+    html = get_html(page)
+    imgs = get_imgs(html)
+    download_imgs(imgs)
+
+print("\n下载成功..")
+
+```
