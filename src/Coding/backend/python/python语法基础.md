@@ -533,7 +533,25 @@ except Exception as e:
 
 pip install/uninstall
 pip list -- 显示已安装的包
-pip freeze 以特定格式显示已安装的包
+pip freeze 以requirements.txt安装包
+
+其他命令:
+```shell
+查看某个安装包的信息 pip show selenium
+
+结果如下:
+Name: selenium
+Version: 4.22.0
+Summary: Official Python bindings for Selenium WebDriver
+Home-page: https://www.selenium.dev
+Author:
+Author-email:
+License: Apache 2.0
+Location: C:\Users\苏察哈尔灿\Desktop\python笔记\代码练习\envirment\Lib\site-packages
+Requires: certifi, trio, trio-websocket, typing_extensions, urllib3, websocket-client
+Required-by:
+```
+
 
 ### 4.3 修改pip下载镜像源(国内镜像源)
 
