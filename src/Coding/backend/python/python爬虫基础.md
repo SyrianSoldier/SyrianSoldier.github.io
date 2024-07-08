@@ -326,8 +326,6 @@ with open("./ip2.json", "w", encoding="utf-8") as fp:
 
 ```
 
-
-
 ## xpath
 
 ### Xpath语言
@@ -526,3 +524,98 @@ for page in range(start, end + 1):
 print("\n下载成功..")
 
 ```
+
+
+## jsonpath
+> jsonpath可以对JSON数据进行查找, 筛选，它支持多种编程语言，包括但不限于以下几种：python, js, java等
+
+### jsonpath的基本语法
+```python
+# 写一个jsonpath的示例代码
+import jsonpath
+
+# 示例json数据
+data = {
+    "store": {
+        "book": [
+            {
+                "category": "reference",
+                "author": "Nigel Rees",
+                "title": "Sayings of the Century",
+                "price": 8.95,
+            },
+            {
+                "category": "fiction",
+                "author": "Evelyn Waugh",
+                "title": "Sword of Honour",
+                "price": 12.99,
+            },
+            {
+                "category": "fiction",
+                "author": "Herman Melville",
+                "title": "Moby Dick",
+                "isbn": "0-553-21311-3",
+                "price": 8.99,
+            },
+        ],
+        "bicycle": {"color": "red", "price": 19.95},
+    }
+}
+# 使用jsonpath获取数据
+"""
+.. : 表示任意层级的任意节点
+$ : 表示根节点
+?() : 过滤表达式
+@ : 表示当前节点
+[] : 子元素操作符
+"""
+result = jsonpath.jsonpath(data, "$..book[?(@.price>10)]")
+print(result)
+
+```
+
+
+### beatifulsoup的使用
+> BeautifulSoup和lxml最大的区别的是语法简单, 类似css. 同样支持解析HTML
+
+| **API**                                  | **描述**                                  | **示例**                                   |
+| ---------------------------------------- | --------------------------------------- | ---------------------------------------- |
+| `BeautifulSoup(markup, parser)`          | 创建一个 BeautifulSoup 对象，解析 HTML 或 XML 文档。 | `soup = BeautifulSoup(response.content, 'html.parser')` |
+| `soup.find(name, attrs, recursive, text, **kwargs)` | 搜索第一个符合条件的元素。                           | `soup.find('a')`                         |
+| `soup.find_all(name, attrs, recursive, text, limit, **kwargs)` | 搜索所有符合条件的元素，返回一个列表。                     | `soup.find_all('a')`                     |
+| `soup.select(selector)`                  | 使用 CSS 选择器语法搜索元素，返回一个列表。                | `soup.select('div > p')`                 |
+| `soup.get_text(separator, strip)`        | 获取元素内的所有文本，返回一个字符串。                     | `soup.get_text()`                        |
+| `soup.attrs`                             | 获取或设置元素的所有属性，返回一个字典。                    | `soup.attrs`                             |
+| `soup['attribute']`                      | 获取或设置元素的指定属性。                           | `soup['href']`                           |
+| `soup.find_parent(name, attrs, **kwargs)` | 搜索第一个符合条件的父元素。                          | `soup.find_parent('div')`                |
+| `soup.find_parents(name, attrs, **kwargs)` | 搜索所有符合条件的父元素，返回一个列表。                    | `soup.find_parents('div')`               |
+| `soup.find_next_sibling(name, attrs, **kwargs)` | 搜索下一个符合条件的兄弟元素。                         | `soup.find_next_sibling('p')`            |
+| `soup.find_previous_sibling(name, attrs, **kwargs)` | 搜索上一个符合条件的兄弟元素。                         | `soup.find_previous_sibling('p')`        |
+| `soup.find_next(name, attrs, **kwargs)`  | 搜索下一个符合条件的元素。                           | `soup.find_next('a')`                    |
+| `soup.find_previous(name, attrs, **kwargs)` | 搜索上一个符合条件的元素。                           | `soup.find_previous('a')`                |
+| `soup.decompose()`                       | 将元素从文档中移除。                              | `soup.decompose()`                       |
+| `soup.prettify()`                        | 以缩进格式输出文档，便于阅读。                         | `print(soup.prettify())`                 |
+
+
+
+```python
+import requests
+from bs4 import BeautifulSoup
+
+# 发送HTTP请求获取网页内容
+url = 'https://example.com'
+response = requests.get(url)
+
+# 使用BeautifulSoup解析网页内容
+soup = BeautifulSoup(response.content, 'html.parser')
+
+# 提取标题
+title = soup.find('title').text
+print(f'Title: {title}')
+
+# 提取所有段落
+paragraphs = soup.find_all('p')
+for i, p in enumerate(paragraphs, start=1):
+    print(f'Paragraph {i}: {p.text}')
+```
+
