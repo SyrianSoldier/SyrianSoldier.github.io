@@ -619,3 +619,209 @@ for i, p in enumerate(paragraphs, start=1):
     print(f'Paragraph {i}: {p.text}')
 ```
 
+## selenium
+### 驱动
+驱动一般指硬件设备与操作系统之间的桥梁,  用于硬件设备和操作系统之间的通信.
+
+广义的驱动不仅包括硬件驱动, 还包括软件驱动, 如数据库驱动:JDBC驱动程序连接JAVA和数据库,提供了使用一系列java的api操作和
+控制数据库 ,如浏览器驱动程序连接各种编程语言和浏览器等
+
+WebDriver(浏览器驱动) 是一个 API 和协议，它定义了一个语言中立的接口，用于控制 web 浏览器的行为。每个浏览器都有一个特定的 WebDriver 实现，称为驱动程序。 
+
+### selenium的安装
+> selenium可以通过Webdriver和浏览器通讯, 实现模拟浏览器行为, 支持多种语言, 如python, java, javascript等
+[selenium官网](https://www.selenium.dev/zh-cn/documentation/)
+
+1. 安装对应浏览器的webdriver, 为selenium提供运行环境
+    - [下载对应chrome浏览器版本的chrome-webdriver](https://developer.chrome.com/docs/chromedriver/downloads?hl=zh-cn)
+    - 将下载好的webdriver放在项目根目录下会自动加载.
+2. 使用pip命令安装selenium库
+```bash 
+pip install selenium
+```
+3. 在代码中导入selenium库, 并指定浏览器驱动
+
+```python
+from selenium import webdriver
+
+driver = webdriver.Chrome()
+
+input()  # 这里是用于暂停程序，如果不暂停，程序会立即结束，无法看到浏览器打开的效果
+```
+
+4. 使用selenium库提供的API, 模拟浏览器行为, 如打开网页, 点击按钮, 输入文本等
+
+
+### selenium元素定位
+```python
+from selenium import webdriver
+from selenium.webdriver.common.by import By  # By是一个枚举, 可以通过By来指定定位方式
+
+driver = webdriver.Chrome()
+
+# 1. 打开页面
+driver.get("http://www.baidu.com")
+
+# 2. 定位元素
+# 注: 可以在浏览器开发者工具, 通过右键->检查, 找到元素, 然后右键->Copy->Copy Selector或Copy xpath, 复制定位方式
+e1 = driver.find_element(By.CSS_SELECTOR, "#su")
+e2 = driver.find_element(By.XPATH, '//*[@id="su"]')
+
+# 3. 向浏览器控制台输出e1,e2
+driver.execute_script("console.log(arguments[0], arguments[1])", e1, e2)
+
+# 4. 阻止浏览器自动关闭
+input()
+
+```
+
+### selenium模拟输入,点击行为
+```python
+from selenium import webdriver
+from selenium.webdriver.common.by import By  # By是一个枚举, 可以通过By来指定定位方式
+
+driver = webdriver.Chrome()
+
+# 1. 打开页面
+driver.get("http://www.baidu.com")
+
+# 2. 查找input框,并输入文本
+e1 = driver.find_element(By.CSS_SELECTOR, "#kw").send_keys("雷军")
+
+# 3.查找搜索按钮,并模拟点击
+e2 = driver.find_element(By.XPATH, '//*[@id="su"]').click()
+
+
+# 4. 阻止浏览器自动关闭
+input()
+
+```
+
+### selenium的APIs-两大对象
+#### WebDriver对象
+WebDriver对象代表一个浏览器实例，可以用来控制浏览器的行为，如打开网页、关闭网页、获取网页源代码等。
+```python
+# 窗口最大化
+driver.maximize_window()
+# 获取网页标题
+driver.title
+# 获取网页源代码
+driver.page_source
+# 执行js代码
+driver.execute_script("console.log('hello world')")
+# 截图并写入到本地
+with open("screenshot.png", "wb") as f:
+    f.write(driver.get_screenshot_as_png())
+```
+
+#### WebElement对象
+WebElement对象代表一个网页元素，可以用来获取元素的信息，如元素的文本、元素的属性等，也可以用来操作元素，如点击元素、输入文本等。
+
+```python
+# 获取元素
+element = driver.find_element(By.CSS_SELECTOR, "#kw")
+
+# 获取元素的文本
+element.text
+# 获取元素截图(只截图元素本身)
+element.screenshot("element.png")
+# 获取元素位置和大小
+element.rect
+# 改变css属性
+element.value_of_css_property("color")
+# 左键单击
+element.click()
+# 左键双击
+element.double_click()
+# 右键单击
+element.context_click()
+# 按下左键并保持
+element.click_and_hold()
+# 拖动
+element.drag_and_drop()
+# 滚动
+element.scroll_into_view()
+# 按键
+element.send_keys()
+
+```
+
+### chrome-handless(了解)
+chrome-handless可以让chrome浏览器在后台运行，不显示界面，运行效果与有界面相同，但是速度更快，且与selenium的api完全相同
+
+当使用selenium时, 如果出现性能问题, 卡顿等可以考虑使用chrome-handless优化性能(代码不写了)
+
+## requests库
+requests库是一个用于发送HTTP请求的Python库，企业一般用这个, urllib也可以, 但是requests库更简单, 更强大
+
+### requests基本用法
+```python
+import requests
+
+# 1. 发送get请求, 读取响应的json数据并打印
+response = requests.get("https://api.github.com/users/defunkt")
+print(response.json())
+
+# 2. 发送get请求, 读取响应的html页面并保存到本地
+response = requests.get("https://www.baidu.com")
+with open("baidu.html", "w", encoding="utf-8") as f:
+    f.write(response.text) # 以字符串的形式返回网页源码
+
+# 2. 发送get请求, 读取返回的图片, 并保存到本地
+response = requests.get("https://www.baidu.com/img/PCtm_d9c8750bed0b3c7d089fa7d55720d6cf.png")
+with open("baidu.png", "wb") as f:
+    f.write(response.content) # 返回响应的二进制
+
+# 3. 发送post请求, 并设置Authorization头, 并携带query参数和body参数
+response = requests.post({
+    "url": "https://api.github.com/some/endpoint",
+    "headers": {
+        "Authorization": "token ghp_XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"
+    },
+    # query参数
+    "params": {
+        "q": "python"
+    },
+    
+    # body参数
+    "json": {
+        "key": "value"
+    }})
+
+if response.status_code == 200:
+    print(response.json())
+
+# 4. 上传图片, 并获取服务器返回的图片地址
+with open("baidu.png", "rb") as f:
+    response = requests.post("https://api.github.com/some/endpoint", files={"file": f})
+    print(response.json()) # response.json()返回的是json格式的数据, 可以直接使用
+```
+
+### requests高级用法(代理,超时,session)
+```python
+import requests
+
+# 1. 设置代理
+response = requests.get({
+    "url": "https://www.baidu.com",
+    "proxies": {
+        "http": "http://127.0.0.1:1080",
+        "https": "http://127.0.0.1:1080"
+    }
+})
+print(response.text)
+
+# 2. 设置超时时间
+response = requests.get({
+    "url": "https://www.baidu.com",
+    "timeout": 5
+})
+print(response.text)
+
+```
+
+### session
+了解后端鉴权方案
+[1](https://www.cnblogs.com/paulwinflo/p/13553412.html)
+[2](https://zhuanlan.zhihu.com/p/677982758)
+[3](https://chatgpt.com/c/e3b6c312-2a42-400e-9e3e-c20dbb34ba9d)
