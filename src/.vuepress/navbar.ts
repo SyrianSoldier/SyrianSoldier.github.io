@@ -77,6 +77,10 @@ export default navbar([
             text: "Java",
             link: "Java",
           },
+          {
+            text: "prose",
+            link: "prose"
+          }
         ],
       },
       {
