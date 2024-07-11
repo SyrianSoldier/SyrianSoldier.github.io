@@ -820,8 +820,101 @@ print(response.text)
 
 ```
 
-### session
-了解后端鉴权方案
-[1](https://www.cnblogs.com/paulwinflo/p/13553412.html)
-[2](https://zhuanlan.zhihu.com/p/677982758)
-[3](https://chatgpt.com/c/e3b6c312-2a42-400e-9e3e-c20dbb34ba9d)
+### 爬取古诗文网用户登录信息
+**登录校验验证码逻辑**
+1. 访问登录页面, 访问验证码图片接口
+2. 验证码接口返回验证码图片, 并通过set-cookie将"验证码答案"字符串(已加密)存到Cookie中
+3. 登录时, 用户携带"账号", "密码","用户输入的验证码"等身份信息信息访问后端登录接口, 
+   并且浏览器自动将夹带在Cookie中"验证码的答案"字符串带给后端
+4. 后端把"账号","密码"跟用户信息数据库对比, 从Cookie中取出验证码答案, 和用户提交的"验证码大难"串对比看是否正确
+
+优点: 后端不存储验证码, 节省内存
+
+
+**OCR工具之tesseract**
+tesseract是一个google维护的开源的OCR工具, 可以识别图片中的文字(对中文识别效果不好) 
+
+[tesseract教程](https://www.bilibili.com/video/BV1Pi4y157Eh/?spm_id_from=333.337.search-card.all.click)
+
+[pytesseract参数](https://blog.csdn.net/CSDN_224022/article/details/137773262)
+```python
+import requests
+import pytesseract
+from PIL import Image
+import io
+
+# 请求验证码接口
+res_img = requests.get(url="https://so.gushiwen.cn/RandCode.ashx")
+res_img2 = Image.open(io.BytesIO(res_img.content))
+
+# 使用pytesseract识别验证码
+code = pytesseract.image_to_string(res_img2)
+print(code)
+
+```
+
+
+**隐藏表单**
+[html表单有隐藏域，python爬虫怎么post](https://docs.pingcode.com/ask/232304.html)
+
+
+```python
+import requests
+import pytesseract
+from PIL import Image
+import io
+from lxml import html
+
+session = requests.session()
+
+# 1-1请求验证码接口
+res_code = session.get(url="https://so.gushiwen.cn/RandCode.ashx")
+
+# 1-2:将二进制流转换为图片
+code_img = Image.open(io.BytesIO(res_code.content))
+
+# 1-3: 使用pytesseract识别验证码
+
+code = pytesseract.image_to_string(code_img, lang="eng", config="--oem 1 --psm 6")
+
+
+# 2-1: 请求登录页html
+res_html = session.get(
+    url="https://so.gushiwen.cn/user/login.aspx?from=http://so.gushiwen.cn/user/collect.aspx"
+)
+# 2-2: 解析html
+login_html = html.fromstring(res_html.text)
+
+# 2-3: 获取登录页的__VIEWSTATE和__VIEWSTATEGENERATOR(隐藏域)
+__VIEWSTATE = login_html.xpath('//input[@id="__VIEWSTATE"]/@value')[0]
+__VIEWSTATEGENERATOR = login_html.xpath('//input[@id="__VIEWSTATEGENERATOR"]/@value')[0]
+
+# 3: 登录
+res_login = session.post(
+    url="https://so.gushiwen.cn/user/login.aspx?from=http%3a%2f%2fso.gushiwen.cn%2fuser%2fcollect.aspx",
+    headers={
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36",
+    },
+    data={
+        "__VIEWSTATE": __VIEWSTATE,
+        "__VIEWSTATEGENERATOR": __VIEWSTATEGENERATOR,
+        "from": "https://www.gushiwen.cn/",
+        "email": "19139386300",
+        "pwd": "a123456",
+        "code": code,
+        "denglu": "登录",
+    },
+)
+
+
+with open("login.html", "w", encoding="utf-8") as f:
+    f.write(res_login.text)
+
+
+
+```
+
+
+
+## scrapy
+
