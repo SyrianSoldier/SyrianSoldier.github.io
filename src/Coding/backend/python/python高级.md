@@ -92,3 +92,32 @@ python中的pip也可以实现这个功能, 从而实现项目的多人协作
 2. 将项目git push到gitlab中
 3. 其他开发者执行 ``pip install -r requirements.txt`` 该命令会根据requirements.
    txt中记录的包版本下载对应的依赖包
+
+
+
+## 列表生成式
+列表生成式是 Python 中用于创建列表的一种简洁语法。
+
+它将创建列表的过程简化为单行表达式。
+
+列表生成式可以包含循环和条件语句。
+
+```python
+[expression for item in iterable if condition]
+```
+
+例子:
+将列表字符串转大写
+```python
+words = ["apple", "banana", "cherry", "date"]
+upper_words = [word.upper() for word in words]
+print(upper_words)
+# 输出: ['APPLE', 'BANANA', 'CHERRY', 'DATE']
+```
+生成不同页码的url
+```python
+start_urls = [
+    f"http://category.dangdang.com/pg{i}-cp01.54.06.00.00.00.html" for i in range(1, 101)
+]
+```
+## python 类
