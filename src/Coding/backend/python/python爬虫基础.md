@@ -630,7 +630,7 @@ WebDriver(浏览器驱动) 是一个 API 和协议，它定义了一个语言中
 
 ### selenium的安装
 > selenium可以通过Webdriver和浏览器通讯, 实现模拟浏览器行为, 支持多种语言, 如python, java, javascript等
-[selenium官网](https://www.selenium.dev/zh-cn/documentation/)
+> [selenium官网](https://www.selenium.dev/zh-cn/documentation/)
 
 1. 安装对应浏览器的webdriver, 为selenium提供运行环境
     - [下载对应chrome浏览器版本的chrome-webdriver](https://developer.chrome.com/docs/chromedriver/downloads?hl=zh-cn)
@@ -746,7 +746,8 @@ element.send_keys()
 
 ```
 
-### chrome-handless(了解)
+#### chrome-handless(了解)
+
 chrome-handless可以让chrome浏览器在后台运行，不显示界面，运行效果与有界面相同，但是速度更快，且与selenium的api完全相同
 
 当使用selenium时, 如果出现性能问题, 卡顿等可以考虑使用chrome-handless优化性能(代码不写了)
@@ -914,7 +915,437 @@ with open("login.html", "w", encoding="utf-8") as f:
 
 ```
 
-
-
 ## scrapy
 
+### scrapy安装和基本api
+> scrapy是一个基于python的爬虫框架, 提供了非常丰富的api, 可以方便的进行爬虫开发
+
+**1.scrapy安装:** 
+
+``pip install scrapy``
+
+**2.scrapy创建项目**
+在任意目录下, 输入该指令, 创建项目
+``scrapy startproject 项目名称``
+
+**3.创建爬虫文件**
+
+在项目的spider目录下输入以下指令, 创建爬虫文件
+
+``scrapy genspider 文件名 爬取网站的域名``
+
+例子: 
+``scrapy genspider baidu www.baidu.com``
+
+
+**4.爬虫文件结构**
+```python
+import scrapy
+
+class BaiduSpider(scrapy.Spider):
+    # 爬虫名称
+    name = "baidu"
+    # 爬虫允许的域名(根域名), 只能爬取该域名下的网页
+    allowed_domains = ["www.baidu.com"]
+    # 起始URL, 第一次爬取的网页
+    start_urls = ["https://www.baidu.com"]
+
+    # 爬取start_url后, 执行的函数. response是起始URL的响应对象
+    def parse(self, response):
+        # pass
+        print("测试程序")
+```
+
+**5. 关闭robots.txt协议**
+> robots.txt协议是一种君子协议, 网站通过该协议告诉爬虫哪些网页可以爬取, 哪些网页不可以爬取. 一般放在"根域名/robots.txt"中
+> [robots协议语法](https://zhuanlan.zhihu.com/p/683759639)
+
+在settings.py中将 ``ROBOTSTXT_OBEY = True`` 注释掉, 即可使scrapy框架无视robots协议爬取网站
+
+
+**6. 运行爬虫文件**
+在项目根目录下, 输入以下指令, 即可运行爬虫文件
+``scrapy crawl 爬虫文件名``
+
+### scrapy项目目录结构
+```python
+my_scrapy_project/
+│
+├── my_scrapy_project/                 项目的 Python 包目录，包含项目的代码和配置。
+│   ├── __init__.py                    使该目录成为一个 Python 包，可以忽略或保留为空文件
+│   ├── items.py                       定义爬取的数据结构。通常使用 Scrapy 提供的 Item 类和 Field 类。
+│   ├── middlewares.py                 定义项目的中间件。中间件可以处理请求和响应，进行预处理或后处理。
+│   ├── pipelines.py                   定义项目的数据管道。管道用于处理和存储爬取的数据。
+│   ├── settings.py                    项目的全局设置文件。配置爬虫的行为、管道、下载延迟等参数。
+│   ├── spiders/                       存放爬虫定义文件的目录。每个爬虫文件都定义了一个具体的网站爬虫。
+│   │   ├── __init__.py    
+│   │   └── example_spider.py          具体的爬虫文件，定义了爬虫的行为和逻辑。
+│   └── __pycache__/
+│
+├── scrapy.cfg                         Scrapy 项目的配置文件，定义了项目的基本设置和配置。
+```
+
+### 爬虫文件中parse函数中response的常用方法
+
+在 Scrapy 爬虫文件中的 `parse` 函数中，`response` 对象代表了一个 HTTP 响应。Scrapy 提供了丰富的方法和属性来处理和解析这个响应对象。以下是 `response` 对象的一些常用方法和属性：
+
+**常用方法**
+
+1. **response.xpath(query)**：
+
+   - 使用 XPath 表达式从响应中提取数据。
+
+   ```python
+   titles = response.xpath('//title/text()').getall()
+   ```
+
+2. **response.css(query)**：
+
+   - 使用 CSS 选择器从响应中提取数据。
+
+   ```python
+   titles = response.css('title::text').getall()
+   ```
+
+3. **response.follow(url, callback)**：
+
+   - 创建一个新的请求，并将其加入爬虫的调度队列中。该方法使用相对 URL 或绝对 URL 并调用指定的回调函数。
+
+   ```python
+   yield response.follow(next_page_url, self.parse)
+   ```
+
+4. **response.follow_all(urls, callback)**：
+
+   - 跟踪多个 URL，并调用指定的回调函数。
+
+   ```python
+   yield from response.follow_all(next_page_urls, self.parse)
+   ```
+
+5. **response.urljoin(url)**：
+
+   - 将相对 URL 转换为绝对 URL。
+
+   ```python
+   absolute_url = response.urljoin(relative_url)
+   ```
+
+6. **response.meta**：
+
+   - 获取请求时传递的元数据。
+
+   ```python
+   some_data = response.meta.get('some_data')
+   ```
+
+7. **response.request**：
+
+   - 获取与该响应相关的请求对象。
+
+   ```python
+   original_request = response.request
+   ```
+
+**常用属性**
+
+1. **response.url**：
+
+   - 获取当前响应的 URL。
+
+   ```python
+   current_url = response.url
+   ```
+
+2. **response.status**：
+
+   - 获取 HTTP 响应状态码。
+
+   ```python
+   status_code = response.status
+   ```
+
+3. **response.headers**：
+
+   - 获取响应头。
+
+   ```python
+   content_type = response.headers.get('Content-Type')
+   ```
+
+4. **response.body**：
+
+   - 获取响应体的原始二进制数据。
+
+   ```python
+   raw_data = response.body
+   ```
+
+5. **response.text**：
+
+   - 获取响应体的文本数据。
+
+   ```python
+   page_content = response.text
+   ```
+
+6. **response.encoding**：
+
+   - 获取或设置响应体的编码。
+
+   ```python
+   encoding = response.encoding
+   response.encoding = 'utf-8'
+   ```
+
+
+
+### Scrapy爬取汽车之家汽车品牌信息
+```python
+import scrapy
+
+
+class AutoSpider(scrapy.Spider):
+    name = "auto"
+    allowed_domains = ["autohome.com.cn"]
+    start_urls = ["https://www.autohome.com.cn/car/0_0-1.1_1.6-0-0-0-0-0-0-0-0/"]
+
+    def parse(self, response):
+        # 获取存放汽车信息的父盒子
+        cars = response.css(".uibox .rank-list dl dd .rank-list-ul li")
+
+        with open("anjuke.txt", "a", encoding="utf-8") as f:
+            for car in cars:
+                # 获取汽车名字
+                name = car.css("h4 a::text").get()
+                # 获取汽车价格
+                price = car.css("div:nth-of-type(1) a::text").get()
+                if name and price:
+                    f.write(f"{name}   {price}\n")
+
+```
+
+
+### Scrapy Shell(了解)
+以下为ChatGpt生成:
+
+Scrapy Shell 是 Scrapy 提供的一个强大的交互式命令行工具，用于调试和测试爬虫。在 Scrapy Shell 中，你可以手动输入命令并立即查看结果，这对调试选择器和分析网页结构非常有帮助。以下是使用 Scrapy Shell 的详细流程笔记：
+
+1. **启动 Scrapy Shell**
+
+在终端中运行以下命令启动 Scrapy Shell：
+
+```
+scrapy shell <测试网站的URL>
+```
+
+例如：
+
+```
+scrapy shell https://www.autohome.com.cn/car/0_0-1.1_1.6-0-0-0-0-0-0-0-0/
+```
+
+2. **通过 Shell 获取网页内容**
+
+Scrapy Shell 启动后，会自动发送请求并加载指定 URL 的内容，你可以在 Shell 中输入各种命令来探索网页内容。
+
+3. **检查页面内容**
+
+首先查看页面的标题，确保页面已正确加载：
+
+```
+response.css('title::text').get()
+```
+
+4. **测试 CSS 选择器**
+
+使用 CSS 选择器提取你感兴趣的内容。比如，要获取所有汽车名称，可以使用以下命令：
+
+```
+response.css('.uibox .rank-list dl dd .rank-list-ul li h4 a::text').getall()
+```
+
+5. **测试 XPath 选择器**
+
+也可以使用 XPath 选择器来提取内容。例如：
+
+```
+response.xpath('//div[@class="uibox"]//dl//dd//ul//li//h4//a/text()').getall()
+```
+
+6. **提取特定元素**
+
+如果想要提取某个特定的元素，如第一个 `div` 元素中的价格信息，可以使用：
+
+```
+response.css('.uibox .rank-list dl dd .rank-list-ul li div:nth-of-type(1) a::text').getall()
+```
+
+**7. 退出 Scrapy Shell**
+
+完成调试后，可以输入 `exit()` 或按 `Ctrl+D` 退出 Scrapy Shell。
+
+
+
+### Scrapy爬取当当网图书(实战案例)
+
+#### 1. 创建当当网爬虫
+在项目根目录下, 终端输入 
+
+```shell
+scrapy  genspider dangdang http://category.dangdang.com/cp01.01.02.00.00.00.html
+```
+
+
+#### 2. 编写图书数据结构
+在items.py中定义爬取的数据结构
+
+```python
+# Define here the models for your scraped items
+#
+# See documentation in:
+# https://docs.scrapy.org/en/latest/topics/items.html
+
+import scrapy
+
+
+# 按照Scrapy框架的规范, 定义每本书的数据结构
+class BookItem(scrapy.Item):
+    title = scrapy.Field()
+    price = scrapy.Field()
+    image = scrapy.Field()
+
+```
+
+
+#### 3. 编写爬虫代码
+在spiders/dangdang.py下, 编写爬虫代码
+
+```python
+import scrapy
+
+# 1. 导入图书item数据结构
+from s_demo.items import BookItem
+
+
+class DangdangSpider(scrapy.Spider):
+    name = "dangdang"
+    allowed_domains = ["category.dangdang.com"]
+
+    # 会依次访问urls数组的url, 并为每个url调用parse方法
+    start_urls = [
+        # 生成式列表, 详见python高级
+        f"http://category.dangdang.com/pg{i}-cp01.01.02.00.00.00.html"
+        for i in range(1, 101)
+    ]
+
+    def parse(self, response):
+        # 找图书信息的父级
+        books = response.css("#search_nature_rg ul li")
+
+        # 1. 创建图书item对象
+        for book in books:
+            # 2. 创建图书item对象
+            item = BookItem()
+
+            # 3. 将数据填充到item对象中
+            item["title"] = book.css("a::attr(title)").get()
+
+            item["price"] = book.css(".price .search_now_price::text").get()
+
+            # 处理特殊情况, 有的图片没用懒加载, 没用懒加载的图片url放在了src属性里, 懒加载的图片放在了data-original里
+            image = book.css("a img::attr(data-original)").get()
+
+            if not image:
+                image = book.css("a img::attr(src)").get()
+
+            item["image"] = "http:" + image
+
+            print(item)
+        # 4. 将item对象提交给管道
+        yield item
+
+```
+
+
+#### 4. 新增管道
+管道类似于拦截器, 爬虫爬出来的数据会交给管道进行处理, 在管道中可以做数据处理的工作
+在 Scrapy 中，Spider 如何知道将其生成的 Item 传递给哪个 Pipeline，主要依赖于以下两个因素：
+
+**1. 配置文件 settings.py 中的 ITEM_PIPELINES 设置：**
+在 Scrapy 项目中，可以通过配置文件 settings.py 明确指定每个 Spider 生成的 Item 应该传递给哪些 Pipeline，并且定义它们的优先级顺序。这个设置是一个字典，键是 Pipeline 的类路径，值是其权重值（0 到 1000 之间的整数，数字越低优先级越高）或者一个字典（包含优先级和其他设置）。
+
+```python
+ITEM_PIPELINES = {
+'myproject.pipelines.SomePipeline': 300,
+'myproject.pipelines.AnotherPipeline': 800,
+}
+```
+在这个示例中，当 Spider 生成的 Item 被 yield 到 Scrapy 中时，Scrapy 将按照设置的优先级依次传递给 SomePipeline 和 AnotherPipeline。
+
+**2. Spider 类中的 custom_settings 属性：**
+除了全局的 settings.py，每个 Spider 类也可以定义自己的 custom_settings 属性，用于指定特定于该 Spider 的配置，包括要使用的 Pipeline。
+
+```python
+class MySpider(scrapy.Spider):
+   name = 'myspider'
+   custom_settings = {
+      'ITEM_PIPELINES': {
+      'myproject.pipelines.MyCustomPipeline': 200,
+   }
+}
+```
+settings.py里的是全局的管道, 每个spider的item都要走一遍这个管道, 
+spider自己custom_settings里的管道是只数据这个spider的. 并且优先级要比全局的高. 我的理解对吗
+
+**3. 在Dangdang Spider中新增管道**
+
+```python
+import scrapy
+
+# 1. 导入图书item数据结构
+from s_demo.items import BookItem
+
+
+class DangdangSpider(scrapy.Spider):
+    # 略
+    custom_settings = {
+        "ITEM_PIPELINES": {"s_demo.pipelines.DangdangPipeline": 300},
+    }
+    # 略
+
+```
+#### 5. 在管道中生成md文档
+
+```python
+# Define your item pipelines here
+#
+# Don't forget to add your pipeline to the ITEM_PIPELINES setting
+# See: https://docs.scrapy.org/en/latest/topics/item-pipeline.html
+
+
+# useful for handling different item types with a single interface
+from itemadapter import ItemAdapter
+
+
+class DangdangPipeline:
+    # 管道开始运行之前会自动调用, 往实例上挂载一个文件流
+    def open_spider(self, spider):
+        self.count = 1
+        self.file = open("books.md", "a", encoding="utf-8")
+        self.file.write("# 当当网言情小说数据\n\n")
+
+    # 管道结束运行之后会自动调用, 关闭文件流
+    def close_spider(self, spider):
+        self.file.close()
+
+    def process_item(self, item, spider):
+
+        self.file.write(f"### {self.count}-{item['title']}\n")
+        self.file.write(f"![{item['title']}]({item['image']})\n\n")
+        self.file.write(f"**Price:** {item['price']}\n\n")
+
+        self.count += 1
+        return item
+
+```
