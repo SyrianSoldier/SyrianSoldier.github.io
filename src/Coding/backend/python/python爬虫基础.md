@@ -1192,6 +1192,7 @@ response.css('.uibox .rank-list dl dd .rank-list-ul li div:nth-of-type(1) a::tex
 #### 1. 创建当当网爬虫
 在项目根目录下, 终端输入 
 
+
 ```shell
 scrapy  genspider dangdang http://category.dangdang.com/cp01.01.02.00.00.00.html
 ```
