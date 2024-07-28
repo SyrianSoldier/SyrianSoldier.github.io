@@ -154,6 +154,32 @@ export default navbar([
   {
     text: "个人",
     icon: "https://api.iconify.design/icon-park-outline/personal-privacy.svg",
-    link:"/Individual/"
+    prefix: "/Individual/",
+    children:[
+      {
+        text: "美食",
+        link: "food/"
+      },
+      {
+        text: "面试",
+        link: "interview/"
+      },
+      {
+        text: "生活日记",
+        link: "LiveDiary/"
+      },
+      {
+        text: "学习日记",
+        link: "StudyDiary/"
+      },
+      {
+        text: "工作日记",
+        link: "WorkDiary/"
+      },
+      {
+        text: "学习方法",
+        link: "StudyMethod/"
+      }
+    ]
   },
 ]);
