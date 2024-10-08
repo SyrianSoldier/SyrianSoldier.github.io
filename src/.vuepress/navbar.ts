@@ -179,6 +179,10 @@ export default navbar([
       {
         text: "学习方法",
         link: "StudyMethod/"
+      },
+      {
+        text: "工作",
+        link: "Wook/"
       }
     ]
   },
