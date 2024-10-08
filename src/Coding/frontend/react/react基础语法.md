@@ -145,10 +145,22 @@ React类组件的生命周期分为三个阶段, 函数组件没有生命周期�
 
 **ReactElement和ReactNode的区别**
 
-ReactElement : returne value of createElement
+React.ReactNode: 它是 React 中最常用来表示 children 属性类型的类型别名。它包含以下几种类型：
+- string（例如文本节点）
+- number
+- JSX.Element
+- ReactElement
+- Array<ReactNode>
+- null
+- undefined
+- boolean
+  所以，使用 React.ReactNode 可以涵盖几乎所有你可以传递给 children 的内容类型。
 
-ReactNode : return value of component (包括基本复杂数据类型,复杂数据类型(不包含对象),ReactElement)
+React.ReactElement vs React.ReactNode
 
+- React.ReactNode: 是一个更宽泛的类型，表示任何可以作为 React 子元素的东西。
+- React.ReactElement: 更具体，表示一个 React 元素实例，通常是 JSX 表达式的返回值。
+  对于 children 属性，推荐使用 React.ReactNode，因为它能够接受更多的类型，适用于各种 React 子元素的场景。
 
 
 ## PropTypes
@@ -577,7 +589,7 @@ export default App;
 >
 > - 2. 当前组件props更新时候, 当前组件会重新render, 所有子组件也会重新render
 >
-> - 3. 当前组件forceUpdate时候, 当前组件重新render, 所有子组件也会重新render, forceUpdate无视当前组件的shouldComponentUpdate
+> - 3. 当前组件forceUpdate时候, 当前组件重新render, 所有子组件也会重新render,forceUpdate无视当前组件的shouldComponentUpdate(但是不无视子组件的SCU)
 >
 > 重新渲染机制: 
 >
@@ -1985,7 +1997,7 @@ store.dispatch(
 > 2. react-redux实现了自动订阅, 更改组件内数据, 刷新视图. 在组件卸载后, 自动卸载订阅事件
 
 > 用法:
-> 1. 在index.js中用<Provider store={store}></Provider>包裹App
+> 1. 在index.js中用`<Provider store={store}></Provider>`包裹App
 > 2. 将类组件用connect(mapStateToProps,mapActionToProps)(组件)包裹
 > 3. mapStateToProps参数为state,mapActionToProps参数为dispatch, 两个函数被要求返回
 >   一个对象, 这个对象会被合并到组件的props中
@@ -2167,13 +2179,157 @@ export const applyMiddleware = (...middleWare) => {
 
 ```
 
+## RTK
+
+### 安装 
+``npm i @reduxjs/toolkit``
+
+基本目录 
+```ts
+| store
+	|-- index.ts
+	|-- user_slice.ts
+	|-- xxx_slice.ts
+```
+### 基本使用
+store/index.ts
+```ts
+import {configureStore} from "@reduxjs/toolkit";
+import user_slice from "./user_slice";
+import counter_slice from "./couter_slice";
+
+// 默认开启redux开发者工具
+const store = configureStore({
+  reducer:{
+    user:user_slice,
+    counter:counter_slice
+  }
+})
+
+export default store
+
+```
+
+counter_slice.ts, 同步action的用法
+```ts
+// @ts-nocheck
+import {createSlice} from "@reduxjs/toolkit";
+
+const initialState = {
+  count: 0
+}
+
+const counterSlice = createSlice({
+  name: "counter", // 只是前缀, 在调试工具中所有的action都会带上这个前缀
+  initialState,
+  // 虽然叫reducers, 这个名字很有迷惑性, 实际上就是定义action_creators的地方, 里边每一个都是action_creator
+  reducers: {
+    // 这里和redux不一样的地方是可以直接修改state, 而不需要返回新的state
+    increment(state, action){
+      state.count += action.payload
+    },
+    decrement(state,action){
+      state.count -= action.payload
+    }
+  }
+})
+
+export const {increment, decrement} = counterSlice.actions
+export default counterSlice.reducer
+
+```
+
+user_slice.ts , 异步action的用法
+```ts
+// @ts-nocheck
+import {createAsyncThunk, createSlice} from "@reduxjs/toolkit";
+import {get_chunk_info} from "../api/chunk";
+
+const initialState = {
+  message: 0
+}
+
+/*
+createAsyncThunk 接受两个参数，第一个是action的名字，第二个是异步函数
+
+异步函数接受两个参数: 第一个是传递的参数，第二个是thunkAPI, 可以解构出dispatch, getState等
+* const fetchUser = createAsyncThunk(
+  'users',
+  async (data, thunkAPI) => {}
+);
+// 使用时传递参数
+dispatch(fetchUser(123));
+* */
+export const get_user_message = createAsyncThunk(
+  "user/get_user_message",
+  async (data, thunkAPI) => {
+    const res = await get_chunk_info()
+    return res.data.title
+  }
+)
+
+const userSlice = createSlice({
+  name: "user",
+  initialState,
+  reducers: {},
+  // 放异步操作的action的地方, 可以链式调用, 一直.addCase
+  extraReducers: (builder) => {
+    builder
+      .addCase(
+        get_user_message.fulfilled,
+        (state, action) => {
+          state.message = action.payload
+        }
+      )
+  }
+})
+
+export const {} = userSlice
+export default userSlice.reducer
+
+```
+app.tsx 调用
+```ts
+//@ts-nocheck
+import React, {useEffect} from 'react'
+import styled from 'styled-components'
+import {useDispatch, useSelector} from "react-redux";
+import {decrement, increment} from "./store/couter_slice";
+import {get_user_message} from "./store/user_slice";
+
+const App = () => {
+  const {count} = useSelector((state) => state.counter)
+  const {message} = useSelector((state) => state.user)
+  const dispatch = useDispatch()
+
+  useEffect(() => {
+    dispatch(get_user_message())
+  }, []);
+
+  return (
+    <div>
+      计数器: {count}
+      <button onClick={() => dispatch(increment(1))}>增加</button>
+      <button onClick={() => dispatch(decrement(1))}>减少</button>
+
+      <hr/>
+      消息: {message}
+    </div>
+  )
+}
+
+export default App
+
+```
+
 ## React-Router
+
 > v6版本特点: 所有API向hooks迁移, 很多特性必须在函数式组件内使用, 想在类组件使用需要使用高级组件处理
 ### 路由基础
 > 1. 下载包: react-router-dom 默认为v6版本
 >   2.应用最外层需要通过HashRouter或者BrowserRouter包裹 
->   3.所有配置的路由必须被<Routes></Routes>包裹
->   4.路由通过<Route path={路径} element={渲染组件} />声明
+>   3.所有配置的路由必须被`<Routes></Routes>`包裹
+>   4.路由通过`<Route path={路径} element={渲染组件} />`声明
 >
 
 ```jsx
@@ -2214,7 +2370,124 @@ class App extends PureComponent {
 export default App;
 
 ```
+### 路由传参
+
+在 `react-router-dom` 中，常见的路由传参方式有三种：**路径参数（Path Params）**、**查询参数（Query Params）** 和 **状态参数（State Params）**。以下是每种方式的详细介绍及示例：
+
+### 1. **路径参数（Path Params）**
+
+路径参数是 URL 的一部分，通常用于标识特定资源。路径参数在定义路由时使用冒号 `:` 作为占位符来标识。
+
+#### 示例：
+
+```jsx
+
+// 1. 定义路由
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import Product from './Product';
+
+function App() {
+  return (
+    <Router>
+      <Routes>
+        <Route path="/product/:id" element={<Product />} />
+      </Routes>
+    </Router>
+  );
+}
+
+// 2. 获取路径参数
+import { useParams } from 'react-router-dom';
+
+function Product() {
+  const { id } = useParams(); // 获取URL中的参数值
+  return <h1>Product ID: {id}</h1>;
+}
+
+
+```
+
+在访问 `/product/123` 时，`id` 的值将为 `123`。
+
+### 2. **查询参数（Query Params）**
+
+查询参数是 URL 中以 `?` 开头的键值对参数，通常用于过滤或排序。
+
+#### 示例：
+
+```jsx
+
+// 1. 定义路由
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import ProductList from './ProductList';
+
+function App() {
+  return (
+    <Router>
+      <Routes>
+        <Route path="/products" element={<ProductList />} />
+      </Routes>
+    </Router>
+  );
+}
+
+// 2. 获取查询参数
+import { useLocation } from 'react-router-dom';
+
+function ProductList() {
+  const location = useLocation();
+  const searchParams = new URLSearchParams(location.search);
+  const category = searchParams.get('category'); // 获取查询参数
+
+  return <h1>Category: {category}</h1>;
+}
+
+```
+
+在访问 `/products?category=electronics` 时，`category` 的值将为 `electronics`。
+
+### 3. **状态参数（State Params）**
+
+状态参数不出现在 URL 中，通常用于在路由跳转时传递非持久化数据。
+
+#### 示例：
+
+```jsx
+
+// 1. 使用 state 传递参数
+import { Link } from 'react-router-dom';
+
+function Home() {
+  return (
+    <div>
+      <Link to="/checkout" state={{ cart: ['item1', 'item2'] }}>
+        Go to Checkout
+      </Link>
+    </div>
+  );
+}
+
+// 2. 获取状态参数
+import { useLocation } from 'react-router-dom';
+
+function Checkout() {
+  const location = useLocation();
+  const { cart } = location.state || {}; // 获取状态参数
+
+  return (
+    <div>
+      <h1>Checkout</h1>
+      <p>Cart Items: {cart?.join(', ')}</p>
+    </div>
+  );
+}
+
+```
+
+在此示例中，使用 `Link` 组件将购物车数据作为 `state` 传递，目标组件可以通过 `useLocation()` 钩子来访问这些状态参数。
+
 ### 配置式路由
+
 > 像vue一样配置路由
 
 ```jsx
@@ -2448,8 +2721,8 @@ export default routes;
 ```
 ### 重定向和路由懒加载和Suspense
 > 1. React.lazy可以懒加载一个路由组件
-> 2. <Navigate to="路径"/> 可以重定向一个组件
-> 3.  当包裹的组件不存在的时候, 渲染指定的内容, 懒加载必须搭配Suspense组件使用, 否则报错
+> 2. `<Navigate to="路径"/> `可以重定向一个组件
+> 3. 当包裹的组件不存在的时候, 渲染指定的内容, 懒加载必须搭配Suspense组件使用, 否则报错
 ```jsx
 //router.js
 import { Navigate } from "react-router-dom";
@@ -2563,8 +2836,33 @@ export default App;
 
 ```
 
+useState的参数为函数时, 该函数只在第一次渲染时候调用, 称为惰性加载
+
+```jsx
+export const usePersistState = (key, initialState) => {
+  const [value, setValue] = useState(() => {
+    // 该函数只在第一次时候被调用, 适合state为需要逻辑计算时候用
+    try {
+      const storedValue = window.localStorage.getItem(key);
+      return storedValue ? JSON.parse(storedValue) : initialState;
+    } catch (e) {
+      return storedValue // parse失败, 返回存储的值
+    }
+  })
+
+  const setLocalStorage = (val) => {
+    setValue(val)
+    window.localStorage.setItem(key, JSON.stringify(val))
+  }
+
+  return [value, setLocalStorage]
+}
+```
+
+
 
 ### useEffect
+
 > useEffect(callback,deps)
 > 1. **页面渲染(包括初渲染和更新)完后**, 会自动调用callback
 > 2. deps可选, 不写的话是每次页面渲染后都会调用callback, 写了的话是页面渲染且依赖项发生变化的时候才会调用callback
@@ -2918,96 +3216,45 @@ export default App;
 
 
 ### 自定义Hooks
-> 练习两个自定义hook useScroll和useLocalStorage
+> 练习自定义hook 
+
+
 
 ```jsx
-//app.jsx
-import React, { useEffect } from "react";
-import useScroll from "./hooks/useScroll";
-import useLocalStorage from "./hooks/useLocalStorage";
+// hook.ts
+import {useState} from "react";
 
-const App = () => {
-  const scroll = useScroll();
-  const [token, setToken] = useLocalStorage("token");
+export const usePersistState = (key, initialState) => {
+  const [value, setValue] = useState(() => {
+    try {
+      const storedValue = window.localStorage.getItem(key);
+      return storedValue ? JSON.parse(storedValue) : initialState;
+    } catch (e) {
+      return storedValue // parse失败, 返回存储的值
+    }
+  })
 
-  useEffect(() => {
-    setTimeout(() => {
-      setToken("token值");
-    }, 1000);
-  }, []);
+  const setLocalStorage = (val) => {
+    setValue(val)
+    window.localStorage.setItem(key, JSON.stringify(val))
+  }
+
+  return [value, setLocalStorage]
+}
+
+// 使用
+const Main = () => {
+  const [count, setCount] = usePersistState('count', 10)
 
   return (
-    <div style={{ height: "1000vh", width: "1000vw" }}>
-      <div style={{ position: "fixed", top: 0 }}>
-        <h1>当前window滚动的X为: {scroll.scrollX}px</h1>
-        <h1>当前window滚动的Y为: {scroll.scrollY}px</h1>
-        <h1>当前token为:{token}</h1>
-      </div>
+    <div>
+      我是父组件
+      {count}
+      <button onClick={() => setCount(count + 1)}>按钮</button>
+      
     </div>
-  );
-};
-
-export default App;
-
-
-```
-```jsx
-// useScroll.js
-import { useEffect, useState } from "react";
-
-const useScroll = () => {
-  const getScrollObj = () => ({
-    scrollX: window.scrollX,
-    scrollY: window.scrollY,
-  });
-
-  const scrollHandle = () => setScroll(getScrollObj());
-
-  const [scroll, setScroll] = useState(getScrollObj());
-
-  useEffect(() => {
-    window.addEventListener("scroll", scrollHandle);
-
-    return () => window.removeEventListener("scroll", scrollHandle);
-  }, []);
-
-  return scroll;
-};
-
-export default useScroll;
-
-// useLocalStorage.js
-
-import { useEffect, useState } from "react";
-/*
- * 使用本地存储, 方便的取JSON数据和存储JSON
- *   - tips: JSON.parse()只能反序列化JSON格式的字符串
- *   - 正确: JSON.parse("111")
- *   - 错误: JSON.parse("aaa"), 因为aaa不是字符串而是变量.正确写法JSON.parse('"aaa"')
- * */
-const useLocalStorage = (key) => {
-  const getItem = (key) => {
-    let val = localStorage.getItem(key);
-
-    try {
-      return JSON.parse(val);
-    } catch {
-      return val;
-    }
-  };
-
-  // 读取本地存储数据
-  const [value, setValue] = useState(getItem(key));
-
-  // 当value变化的时候自动存储到本地存储中, 并且刷新视图
-  useEffect(() => {
-    localStorage.setItem(key, JSON.stringify(value));
-  }, [value]);
-
-  return [value, setValue];
-};
-
-export default useLocalStorage;
+  )
+}
 
 ```
 
