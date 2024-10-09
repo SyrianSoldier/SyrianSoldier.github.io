@@ -1,1 +1,0 @@
-import{_ as t}from"./plugin-vue_export-helper-c27b6911.js";import{o as a,c as o,e,f as r}from"./app-73d39852.js";const c={},_=e("h1",{id:"不等式",tabindex:"-1"},[e("a",{class:"header-anchor",href:"#不等式","aria-hidden":"true"},"#"),r(" 不等式")],-1),s=[_];function n(d,i){return a(),o("div",null,s)}const l=t(c,[["render",n],["__file","不等式.html.vue"]]);export{l as default};
