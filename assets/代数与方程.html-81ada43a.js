@@ -1,1 +1,0 @@
-import{_ as t}from"./plugin-vue_export-helper-c27b6911.js";import{o as _,c as a,e,f as o}from"./app-8ad3651e.js";const r={},c=e("h1",{id:"代数与方程",tabindex:"-1"},[e("a",{class:"header-anchor",href:"#代数与方程","aria-hidden":"true"},"#"),o(" 代数与方程")],-1),s=[c];function n(d,i){return _(),a("div",null,s)}const l=t(r,[["render",n],["__file","代数与方程.html.vue"]]);export{l as default};
