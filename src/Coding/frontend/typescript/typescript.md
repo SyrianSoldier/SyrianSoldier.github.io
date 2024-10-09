@@ -2853,7 +2853,7 @@ type DuplicateProps = InterSection<Props, DefaultProps>
 
 ### 10.9.6 Overwrite
 
-- Overwrite<T,U>就是用U的属性覆盖T的相同的属性
+- Overwrite`<T,U>`就是用U的属性覆盖T的相同的属性
 
 ```typescript
 type Diff<T extends object, U extends object> = Pick<T, SetDifference<keyof T, keyof U>>;

@@ -105,8 +105,21 @@ export function get_by_id(id: number) {
 
 ```tsx
 import React, { useEffect, useState } from 'react'
+//@ts-nocheck
+/* eslint-disable */
+
+import React, { useEffect, useState } from 'react'
 import AdminButton from '@/components/Button/AdminButton'
-import { Form, Modal, SelectProps, Space, Switch, Table,message, TableColumnsType } from 'antd'
+import {
+  Form,
+  Modal,
+  SelectProps,
+  Space,
+  Switch,
+  Table,
+  message,
+  TableColumnsType,
+} from 'antd'
 import ModalForm, { ModalFormColumns } from '@/components/ModalForm'
 import styled from 'styled-components'
 import SearchForm, { SearchFormColumnsType } from '@/components/SearchForm'
@@ -116,7 +129,7 @@ import useInitialStateLoader, {
 } from '@/hooks/useInitialStateLoader'
 import NiceModal from '@ebay/nice-modal-react'
 import { useUpdateEffect } from 'ahooks'
-import { ExclamationCircleOutlined } from "@antd/icons"
+import { ExclamationCircleOutlined } from '@ant-design/icons'
 
 // 表格字段
 export type TableFields = API.模块.get_list['result']
@@ -154,13 +167,13 @@ const useUserInitialStateLoader = () => {
     //     label: item.dictLabel,
     //     value: item.dictValue,
     //   }))
-    },
+    // },
   }
 
   return useInitialStateLoader<InitialState>(initialState, initializers)
 }
 
-const User = () => {
+const 模块 = () => {
   // 初始化页面需要从后端拉取的状态
   const [loaderData] = useUserInitialStateLoader()
 
@@ -170,10 +183,14 @@ const User = () => {
   // 新增/编辑弹框表单相关状态
   const [isEdit, setIsEdit] = useState(false)
   const [addModalFormInitialValues, setAddModalFormInitialValues] =
-    useState<ModalFormQueryParams>({/* 新增表单默认值 */})
+    useState<AddModalFormQueryParams>({
+      /* 新增表单默认值 */
+    })
 
   const [editModalFormInitialValues, setEditModalFormInitialValues] =
-    useState<ModalFormQueryParams>({/* 编辑表单默认值 */})
+    useState<EditModalFormQueryParams>({
+      /* 编辑表单默认值 */
+    })
 
   // 表格相关状态
   const [listLoading, setListLoading] = useState(false)
@@ -207,7 +224,6 @@ const User = () => {
     //   dataIndex: 'nickName',
     //   key: 'nickName',
     // },
-
     // 自定义render
     // {
     //   title: '部门',
@@ -215,49 +231,46 @@ const User = () => {
     //   key: 'deptName',
     //   render: (_, record) => record?.dept?.deptName,
     // },
-  
-    {
-      title: '操作',
-      dataIndex: 'action',
-      key: 'action',
-      render: (_, record) => {
-        if (record.userId !== 1) {
-          return (
-            <Space size={2}>
-              <AdminButton
-                name={'edit'}
-                type={'link'}
-                onClick={() => {
-                  // 1. 根据编辑的id, 查询详情接口, 并设置到编辑表单中
-                  // TODO...
-                  // 2. 设置edit状态
-                  setIsEdit(true)
-                  // 3. 设置编辑默认值
-                  setEditModalFormInitialValues({})
-                }}
-              />
-
-              <AdminButton
-                name={'delete'}
-                type={'link'}
-                onClick={() => {
-                  Modal.confirm({
-                    title: '系统确认',
-                    icon: <ExclamationCircleOutlined />,
-                    content: `是否删除数据编号为${{/* TODO: id */}}的数据项`,
-                    okText: '确认',
-                    cancelText: '取消',
-                    onOk: () => onDelete({/* TODO: 传入id */}),
-                  })
-                }}
-              />
-
-              <AdminButton name={'more'} type={'link'} />
-            </Space>
-          )
-        }
-      },
-    },
+    // {
+    //   title: '操作',
+    //   dataIndex: 'action',
+    //   key: 'action',
+    //   render: (_, record) => {
+    //     if (record.userId !== 1) {
+    //       return (
+    //         <Space size={2}>
+    //           <AdminButton
+    //             name={'edit'}
+    //             type={'link'}
+    //             onClick={() => {
+    //               // 1. 根据编辑的id, 查询详情接口, 并设置到编辑表单中
+    //               // TODO...
+    //               // 2. 设置edit状态
+    //               setIsEdit(true)
+    //               // 3. 设置编辑默认值
+    //               setEditModalFormInitialValues({})
+    //             }}
+    //           />
+    //           <AdminButton
+    //             name={'delete'}
+    //             type={'link'}
+    //             onClick={() => {
+    //               Modal.confirm({
+    //                 title: '系统确认',
+    //                 icon: <ExclamationCircleOutlined />,
+    //                 content: `是否删除数据编号为${{/* TODO: id */}}的数据项`,
+    //                 okText: '确认',
+    //                 cancelText: '取消',
+    //                 onOk: () => onDelete({/* TODO: 传入id */}),
+    //               })
+    //             }}
+    //           />
+    //           <AdminButton name={'more'} type={'link'} />
+    //         </Space>
+    //       )
+    //     }
+    //   },
+    // },
   ]
 
   // 搜索表单配置字段
@@ -271,7 +284,6 @@ const User = () => {
     //     placeholder: '请输入用户名称',
     //   },
     // },
-
     // 下拉框
     // {
     //   type: 'select',
@@ -282,7 +294,6 @@ const User = () => {
     //     placeholder: '请选择用户状态',
     //   },
     // },
-
     // 日期范围选择器
     // {
     //   type: 'dateRange',
@@ -297,40 +308,39 @@ const User = () => {
 
   // 搜索按钮栏配置字段
   const buttonColumns: ButtonColumnsType = [
-    {
-      name: 'add',
-      onClick: () => {
-        setIsEdit(false)
-        setAddModalFormInitialValues(prevState => ({...prevState}))
-      },
-    },
-
-    {
-      name: 'delete',
-      disabled: selectedRowKeys.length === 0,
-      onClick: () => {
-        Modal.confirm({
-          title: '系统确认',
-          icon: <ExclamationCircleOutlined />,
-          content: `是否删除数据编号为${/* TODO: id */}的数据项`,
-          okText: '确认',
-          cancelText: '取消',
-          onOk: async () => {
-            onDelete(/* TODO: id */).then(() =>
-              setSelectedRowKeys([]) // 重置选择的行
-            )
-          },
-        })
-      },
-    },
-    {
-      name: 'import',
-      onClick: () => {},
-    },
-    {
-      name: 'export',
-      onClick: () => {},
-    },
+    // {
+    //   name: 'add',
+    //   onClick: () => {
+    //     setIsEdit(false)
+    //     setAddModalFormInitialValues(prevState => ({...prevState}))
+    //   },
+    // },
+    // {
+    //   name: 'delete',
+    //   disabled: selectedRowKeys.length === 0,
+    //   onClick: () => {
+    //     Modal.confirm({
+    //       title: '系统确认',
+    //       icon: <ExclamationCircleOutlined />,
+    //       content: `是否删除数据编号为${/* TODO: id */}的数据项`,
+    //       okText: '确认',
+    //       cancelText: '取消',
+    //       onOk: async () => {
+    //         onDelete(/* TODO: id */).then(() =>
+    //           setSelectedRowKeys([]) // 重置选择的行
+    //         )
+    //       },
+    //     })
+    //   },
+    // },
+    // {
+    //   name: 'import',
+    //   onClick: () => {},
+    // },
+    // {
+    //   name: 'export',
+    //   onClick: () => {},
+    // },
   ]
 
   // 弹框表单配置字段
@@ -346,7 +356,6 @@ const User = () => {
     //     placeholder: '请输入用户昵称',
     //   },
     // },
-
     // 树选择器 + placeholder + style + treeData + fieldNames
     // {
     //   type: 'treeSelect',
@@ -359,7 +368,6 @@ const User = () => {
     //     fieldNames: { label: 'label', value: 'id' },
     //   },
     // },
-   
     // visible + 多个rules
     // {
     //   type: 'text',
@@ -379,7 +387,6 @@ const User = () => {
     //     },
     //   ],
     // },
-
     // 当前表单项的rules依赖另一个字段rules生成
     // {
     //   type: "text",
@@ -400,7 +407,6 @@ const User = () => {
     //     },
     //   ],
     // },
-
     // 表单联动: 当前表单项依赖另一个表单项的值动态生成
     // {
     //   noStyle: true,
@@ -421,49 +427,45 @@ const User = () => {
 
   // 获取列表数据
   const getList = async () => {
-    try {
-      setListLoading(true)
-
-      const searchParams = transformSearchParams(searchForm.getFieldsValue())
-      const { rows, total } = await get_list({
-        ...searchParams,
-        ...pagination,
-      })
-
-      setList(
-        rows.map(item => ({
-          ...item,
-          key: user.userId,
-        }))
-      )
-      setTotal(total)
-    } catch (e) {
-      console.log(e)
-    } finally {
-      setListLoading(false)
-    }
+    // try {
+    //   setListLoading(true)
+    //   const searchParams = transformSearchParams(searchForm.getFieldsValue())
+    //   const { rows, total } = await get_list({
+    //     ...searchParams,
+    //     ...pagination,
+    //   })
+    //   setList(
+    //     rows.map(item => ({
+    //       ...item,
+    //       key: user.userId,
+    //     }))
+    //   )
+    //   setTotal(total)
+    // } catch (e) {
+    //   console.log(e)
+    // } finally {
+    //   setListLoading(false)
+    // }
   }
 
   // 将搜索表单数据转换为列表查询接口的数据(如果搜索表单需要数据转换, 在这里转换)
-  const transformSearchParams = (
-    values: SearchFields
-  ): SearchParams => {
-    const queryParams = {} as SearchParams
+  // const transformSearchParams = (values: SearchFields): SearchParams => {
+  //   const queryParams = {} as SearchParams
 
-    Object.entries(values).forEach(([key, value]) => {
-      if (typeof value === 'string') {
-        value = value.trim()
-      }
-
-      if (/* TODO: 判断条件 */) {
-        // .. TODO
-      } else {
-        queryParams[key as keyof SearchParams] = value as any
-      }
-    })
-
-    return queryParams
-  }
+  // Object.entries(values).forEach(([key, value]) => {
+  //   if (typeof value === 'string') {
+  //     value = value.trim()
+  //   }
+  //
+  //   if (false /* TODO: 判断条件 */) {
+  //     // .. TODO
+  //   } else {
+  //     queryParams[key as keyof SearchParams] = value as any
+  //   }
+  // })
+  //
+  //   return queryParams
+  // }
 
   // 搜索
   const onSearch = () => {
@@ -477,41 +479,39 @@ const User = () => {
   }
 
   // 删除
-  const onDelete = async (id: string | number) => {
-    try {
-      await del(id)
-      await getList()
-      message.success('删除成功')
-    } catch (e) {
-      console.log(e)
-    }
-  }
+  // const onDelete = async (id: string | number) => {
+  // try {
+  //   await del(id)
+  //   await getList()
+  //   message.success('删除成功')
+  // } catch (e) {
+  //   console.log(e)
+  // }
+  // }
 
   // 新增表单保存
   async function onEditModalFormSave(values: any) {
-    try {
-      await add({ ...values })
-
-      await getUserList()
-    } catch (e) {
-      console.log(e)
-    }
+    // try {
+    //   await add({ ...values })
+    //   await getUserList()
+    // } catch (e) {
+    //   console.log(e)
+    // }
   }
 
   async function onAddModalFormSave(values: any) {
-    try {
-      await edit({
-        ...values,
-      })
-
-      await getList()
-    } catch (e) {
-      console.log(e)
-    }
+    // try {
+    //   await edit({
+    //     ...values,
+    //   })
+    //   await getList()
+    // } catch (e) {
+    //   console.log(e)
+    // }
   }
   // 编辑表单保存
   // 其他函数
- 
+
   return (
     <Styled>
       {/* 搜索表单 */}
@@ -530,7 +530,7 @@ const User = () => {
       <Table
         size={'small'}
         columns={tableColumns}
-        dataSource={userList}
+        dataSource={list}
         loading={listLoading}
         pagination={{
           total,
@@ -569,6 +569,8 @@ const User = () => {
 }
 
 const Styled = styled.div``
-export default User
+export default 模块
+
+
 
 ```
