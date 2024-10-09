@@ -1,0 +1,1 @@
+import{_ as t}from"./plugin-vue_export-helper-c27b6911.js";import{o as a,c as o,e,f as r}from"./app-8ad3651e.js";const c={},s=e("h1",{id:"函数",tabindex:"-1"},[e("a",{class:"header-anchor",href:"#函数","aria-hidden":"true"},"#"),r(" 函数")],-1),_=[s];function n(d,i){return a(),o("div",null,_)}const l=t(c,[["render",n],["__file","函数.html.vue"]]);export{l as default};
