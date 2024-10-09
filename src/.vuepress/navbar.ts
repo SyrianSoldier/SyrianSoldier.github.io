@@ -10,78 +10,78 @@ export default navbar([
     children: [
       {
         text: "前端技术",
-        prefix: "frontend/",
-        children: [
-          {
-            text: "JavaScript",
-            link:"js"
-          },
-          {
-            text: "Vue",
-            link: "vue",
-            // children:[
-            //   {
-            //     text: "vue3语法",
-            //     link: "vue3语法"
-            //   },
-            //   {
-            //     text: "vuex",
-            //     link: "vuex"
-            //   },
-            //   {
-            //     text: "声明式渲染进阶",
-            //     link: "声明式渲染进阶"
-            //   },
-            //   {
-            //     text: "自动注册全局组件",
-            //     link: "自动注册全局组件"
-            //   }
-            // ]
-          },
-          {
-            text: "React",
-            link: "react/",
-            // children:[
-            //   {
-            //     text: "react基础语法",
-            //     link: "react基础语法"
-            //   },
-            // ]
-          },
-          {
-            text: "Webpack",
-            link: "webpack/",
-            // children:[
-            //   {
-            //     text: "splitChunks",
-            //     link: "spliteChunks"
-            //   },
-            // ]
-          },
-        ],
+        link: "frontend/",
+        // children: [
+        //   {
+        //     text: "JavaScript",
+        //     link:"js"
+        //   },
+        //   {
+        //     text: "Vue",
+        //     link: "vue",
+        //     // children:[
+        //     //   {
+        //     //     text: "vue3语法",
+        //     //     link: "vue3语法"
+        //     //   },
+        //     //   {
+        //     //     text: "vuex",
+        //     //     link: "vuex"
+        //     //   },
+        //     //   {
+        //     //     text: "声明式渲染进阶",
+        //     //     link: "声明式渲染进阶"
+        //     //   },
+        //     //   {
+        //     //     text: "自动注册全局组件",
+        //     //     link: "自动注册全局组件"
+        //     //   }
+        //     // ]
+        //   },
+        //   {
+        //     text: "React",
+        //     link: "react/",
+        //     // children:[
+        //     //   {
+        //     //     text: "react基础语法",
+        //     //     link: "react基础语法"
+        //     //   },
+        //     // ]
+        //   },
+        //   {
+        //     text: "Webpack",
+        //     link: "webpack/",
+        //     // children:[
+        //     //   {
+        //     //     text: "splitChunks",
+        //     //     link: "spliteChunks"
+        //     //   },
+        //     // ]
+        //   },
+        // ],
       },
       {
         text: "后端技术",
         icon: "lightbulb",
-        prefix: "backend/",
-        children: [
-          {
-            text: "C++",
-            link: "c++第二版笔记.md"
-          },
-          {
-            text: "Python",
-            link: "python",
-          },
-          {
-            text: "Java",
-            link: "Java",
-          },
-          {
-            text: "prose",
-            link: "prose"
-          }
-        ],
+        link: "backend/",
+        // children: [
+        //   {
+        //     text: "C++",
+        //     link: "c++第二版笔记.md"
+        //   },
+        //   {
+        //     text: "Python",
+        //     link: "python",
+        //   },
+        //   {
+        //     text: "Java",
+        //     link: "Java",
+        //   },
+        //   {
+        //     text: "prose",
+        //     link: "prose"
+        //   }
+        // ],
       },
       {
         text: "Git",
