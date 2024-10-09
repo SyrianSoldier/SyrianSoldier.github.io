@@ -150,7 +150,7 @@ React.ReactNode: 它是 React 中最常用来表示 children 属性类型的类�
 - number
 - JSX.Element
 - ReactElement
-- Array<ReactNode>
+- ``Array<ReactNode>``
 - null
 - undefined
 - boolean
