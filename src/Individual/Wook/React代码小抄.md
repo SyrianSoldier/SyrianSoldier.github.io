@@ -275,6 +275,8 @@ export type EditModalFormQueryParams = API.模块.edit_模块['data']
 
 // 新增/编辑弹框表单相关状态
 const [isEdit, setIsEdit] = useState(false)
+const [addModalForm] = Form.useForm()
+const [editModalForm] = Form.useForm()
 const [addModalFormInitialValues, setAddModalFormInitialValues] =
   useState<AddModalFormQueryParams>({})
 
@@ -283,8 +285,10 @@ const [editModalFormInitialValues, setEditModalFormInitialValues] =
 
 useUpdateEffect(() => {
     if (isEdit) {
+      editModalForm.setFieldsValue(editModalFormInitialValues)
       NiceModal.show('模块-edit-modal')
     } else {
+      addModalForm.setFieldsValue(addModalFormInitialValues)
       NiceModal.show('模块-add-modal')
     }
   }, [isEdit, addModalFormInitialValues, editModalFormInitialValues])
@@ -332,6 +336,13 @@ useUpdateEffect(() => {
           message: '用户名只能包含字母、数字和下划线',
         },
       ],
+    },
+    // 一个字段依赖另一个字段显示和隐藏(被依赖的字段完全受控)
+    {
+      type: 'text',
+      name: 'userName',
+      label: '用户名称',
+      visible: !currentData, // currentData是完全受控的被依赖的字段
     },
     // 当前表单项的rules依赖另一个字段rules生成
     {
@@ -399,6 +410,7 @@ useUpdateEffect(() => {
   <ModalForm
     id="add-modal"
     title="新增用户"
+    form={addModalForm}
     columns={modalFormColumns}
     initialValues={addModalFormInitialValues}
     onSave={onAddModalFormSave}
@@ -407,6 +419,7 @@ useUpdateEffect(() => {
   <ModalForm
     id="edit-modal"
     title="编辑用户"
+    form={editModalForm}
     columns={modalFormColumns}
     initialValues={editModalFormInitialValues}
     onSave={onEditModalFormSave}
