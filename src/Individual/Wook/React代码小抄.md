@@ -267,21 +267,18 @@ const tableColumns: TableColumnsType<TableFields> = [
 
 ```tsx
 // 新增和编辑弹窗表单字段
-export type ModalFormFields = {}
+export type ModalFormFields = Partial<API.模块.get_模块_by_id["result"]["data"]>
 
-// 弹窗表单的查询参数(可能需要对搜索表单的字段进行额外的转换和处理)
-export type AddModalFormQueryParams = ModalFormFields
-export type EditModalFormQueryParams = API.模块.edit_模块['data']
 
 // 新增/编辑弹框表单相关状态
 const [isEdit, setIsEdit] = useState(false)
 const [addModalForm] = Form.useForm()
 const [editModalForm] = Form.useForm()
 const [addModalFormInitialValues, setAddModalFormInitialValues] =
-  useState<AddModalFormQueryParams>({})
+  useState<ModalFormFields>({})
 
 const [editModalFormInitialValues, setEditModalFormInitialValues] =
-  useState<EditModalFormQueryParams>({})
+  useState<ModalFormFields>({})
 
 useUpdateEffect(() => {
     if (isEdit) {
@@ -385,7 +382,7 @@ useUpdateEffect(() => {
   
 
   // 新增表单保存
-  async function onEditModalFormSave(values: any) {
+  async function onEditModalFormSave(values: ModalFormFields) {
     // try {
     //   await add({ ...values })
     //   await getList()
@@ -394,7 +391,7 @@ useUpdateEffect(() => {
     // }
   }
 
-  async function onAddModalFormSave(values: any) {
+  async function onAddModalFormSave(values: ModalFormFields) {
     // try {
     //   await edit({
     //     ...values,
