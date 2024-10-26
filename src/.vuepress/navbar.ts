@@ -183,6 +183,10 @@ export default navbar([
       {
         text: "工作",
         link: "Wook/"
+      },
+      {
+        text: "规划",
+        link: "Plan/"
       }
     ]
   },
