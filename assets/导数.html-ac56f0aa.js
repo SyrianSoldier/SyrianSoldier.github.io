@@ -1,1 +1,0 @@
-import{_ as t}from"./plugin-vue_export-helper-c27b6911.js";import{o as a,c as o,e,f as r}from"./app-2437d3ef.js";const c={},s=e("h1",{id:"导数",tabindex:"-1"},[e("a",{class:"header-anchor",href:"#导数","aria-hidden":"true"},"#"),r(" 导数")],-1),_=[s];function n(d,i){return a(),o("div",null,_)}const l=t(c,[["render",n],["__file","导数.html.vue"]]);export{l as default};
