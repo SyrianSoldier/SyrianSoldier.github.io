@@ -43,53 +43,64 @@ export default {
       this.generateApiCode();
     },
     generateTsDefinition() {
-      const capitalizedModuleName = this.capitalize(this.moduleName);
-      this.tsDefinition = `declare global {
+      const lowerCaseModuleName = this.moduleName.toLowerCase();
+      this.tsDefinition = `type GenAPI<
+  T extends {
+    data: any;
+    params: any;
+    result: any;
+  }
+> = {
+  [key in keyof T]: T[key];
+};
+
+declare global {
   namespace API {
-    namespace ${capitalizedModuleName} {
-      interface add_${this.moduleName} {
-        params: unknown
-        data: unknown
-        result: unknown
-      }
+    namespace ${this.capitalize(this.moduleName)} {
+      export type add_${lowerCaseModuleName} = GenAPI<{
+        params: unknown;
+        data: unknown;
+        result: unknown;
+      }>;
 
-      interface edit_${this.moduleName} {
-        params: unknown
-        data: unknown
-        result: unknown
-      }
+      export type edit_${lowerCaseModuleName} = GenAPI<{
+        params: unknown;
+        data: unknown;
+        result: unknown;
+      }>;
 
-      interface del_${this.moduleName} {
-        params: unknown
-        data: unknown
-        result: unknown
-      }
+      export type del_${lowerCaseModuleName} = GenAPI<{
+        params: unknown;
+        data: unknown;
+        result: unknown;
+      }>;
 
-      interface get_${this.moduleName}_list {
-        params: unknown
-        data: unknown
-        result: unknown
-      }
+      export type get_${lowerCaseModuleName}_list = GenAPI<{
+        params: unknown;
+        data: unknown;
+        result: unknown;
+      }>;
 
-      interface get_${this.moduleName}_by_id {
-        params: unknown
-        data: unknown
-        result: unknown
-      }
+      export type get_${lowerCaseModuleName}_by_id = GenAPI<{
+        params: unknown;
+        data: unknown;
+        result: unknown;
+      }>;
     }
   }
 }
-export {}`;
+export {};`;
     },
     generateApiCode() {
       const capitalizedModuleName = this.capitalize(this.moduleName);
+      const lowerCaseModuleName = this.moduleName.toLowerCase();
       this.apiCode = `import http from '@/utils/request'
 
 const url = '${this.baseUrl}'
 
 // 增
-export function add_${this.moduleName}(data: API.${capitalizedModuleName}.add_${this.moduleName}['data']) {
-  return http.request<API.${capitalizedModuleName}.add_${this.moduleName}['result']>({
+export function add_${lowerCaseModuleName}(data: API.${capitalizedModuleName}.add_${lowerCaseModuleName}['data']) {
+  return http.request<API.${capitalizedModuleName}.add_${lowerCaseModuleName}['result']>({
     method: 'post',
     url: url,
     data,
@@ -97,16 +108,16 @@ export function add_${this.moduleName}(data: API.${capitalizedModuleName}.add_${
 }
 
 // 删
-export function del_${this.moduleName}(id: string | number) {
-  return http.request<API.${capitalizedModuleName}.del_${this.moduleName}['result']>({
+export function del_${lowerCaseModuleName}(id: string | number) {
+  return http.request<API.${capitalizedModuleName}.del_${lowerCaseModuleName}['result']>({
     method: 'delete',
     url: url + \`/\${id}\`,
   })
 }
 
 // 改
-export function edit_${this.moduleName}(data: API.${capitalizedModuleName}.edit_${this.moduleName}['data']) {
-  return http.request<API.${capitalizedModuleName}.edit_${this.moduleName}['result']>({
+export function edit_${lowerCaseModuleName}(data: API.${capitalizedModuleName}.edit_${lowerCaseModuleName}['data']) {
+  return http.request<API.${capitalizedModuleName}.edit_${lowerCaseModuleName}['result']>({
     method: 'put',
     url: url,
     data,
@@ -114,8 +125,8 @@ export function edit_${this.moduleName}(data: API.${capitalizedModuleName}.edit_
 }
 
 // 查
-export function get_${this.moduleName}_list(params: API.${capitalizedModuleName}.get_${this.moduleName}_list['params']) {
-  return http.request<API.${capitalizedModuleName}.get_${this.moduleName}_list['result']>({
+export function get_${lowerCaseModuleName}_list(params: API.${capitalizedModuleName}.get_${lowerCaseModuleName}_list['params']) {
+  return http.request<API.${capitalizedModuleName}.get_${lowerCaseModuleName}_list['result']>({
     method: 'get',
     url: url + '/list',
     params,
@@ -123,8 +134,8 @@ export function get_${this.moduleName}_list(params: API.${capitalizedModuleName}
 }
 
 // 查(详情)
-export function get_${this.moduleName}_by_id(id: number) {
-  return http.request<API.${capitalizedModuleName}.get_${this.moduleName}_by_id['result']>({
+export function get_${lowerCaseModuleName}_by_id(id: number) {
+  return http.request<API.${capitalizedModuleName}.get_${lowerCaseModuleName}_by_id['result']>({
     method: 'get',
     url: url + \`/\${id}\`,
   })
