@@ -1,8 +1,57 @@
 # React代码小抄
 
-
 ## 初始化数据
 
+### useInitialStateLoader
+
+```tsx
+import { useEffect, useState } from 'react'
+
+export type InitializersType<T extends Record<string, any>> = {
+  [K in keyof T]: () => Promise<T[K]>
+}
+
+function useInitialStateLoader<T extends Record<string, any>>(
+  initialState: T,
+  initializers: InitializersType<T>
+) {
+  const [state, setState] = useState<T>(initialState)
+  const [loading, setLoading] = useState(true)
+
+  const initializeStates = async () => {
+    setLoading(true)
+    const newState: Partial<T> = {}
+
+    try {
+      await Promise.all(
+        Object.entries(initializers).map(async ([key, initializer]) => {
+          try {
+            newState[key as keyof T] = await initializer()
+          } catch (error) {
+            console.error(`初始化 ${key} 时出错:`, error)
+          }
+        })
+      )
+
+      setState(prevState => ({ ...prevState, ...newState }))
+    } catch (error) {
+      console.error('初始化状态时出错:', error)
+    } finally {
+      setLoading(false)
+    }
+  }
+
+  useEffect(() => {
+    initializeStates()
+  }, [])
+
+  return [state, setState, loading] as const
+}
+export default useInitialStateLoader
+
+```
+
+### 使用初始化数据
 ```tsx
 import useInitialStateLoader, {
   InitializersType,
@@ -35,6 +84,308 @@ const useUserInitialStateLoader = () => {
   // 初始化页面需要从后端拉取的状态
   const [loaderData] = useUserInitialStateLoader()
 }
+```
+
+## JSON Form
+
+### 源代码
+
+```tsx
+import {
+  FormItemProps,
+  FormProps,
+  InputProps,
+  SelectProps,
+  TimePickerProps,
+  DatePickerProps,
+  TimePicker,
+  DatePicker,
+  Input,
+  Select,
+  Form,
+  InputNumberProps,
+  InputNumber,
+  Radio,
+  Checkbox,
+} from 'antd'
+import React, { ComponentPropsWithoutRef, FC, ReactNode } from 'react'
+import { TreeSelect, TreeSelectProps } from 'antd'
+
+type RenderFunction = (...args: any[]) => ReactNode
+
+type TimeRangeProps = ComponentPropsWithoutRef<typeof TimePicker.RangePicker>
+type DateRangeProps = ComponentPropsWithoutRef<typeof DatePicker.RangePicker>
+type RadioGroupProps = ComponentPropsWithoutRef<typeof Radio.Group>
+type CheckboxGroupProps = ComponentPropsWithoutRef<typeof Checkbox.Group>
+type PasswordProps = ComponentPropsWithoutRef<typeof Input.Password>
+type TextAreaProps = ComponentPropsWithoutRef<typeof Input.TextArea>
+
+export type FormItemType =
+  | 'text' // 文本框
+  | 'select' // 下拉框
+  | 'time' // 时间选择框
+  | 'timeRange' // 时间范围选择框
+  | 'date' // 日期选择框
+  | 'dateRange' // 日期范围选择框
+  | 'number' // 数字输入框
+  | 'radioGroup' // 互斥单选框
+  | 'checkboxGroup' // 多选框组
+  | 'textarea' // 文本域
+  | 'treeSelect' // 树选择
+  | 'password' //密码框
+
+// type字段和FormItem的映射表
+export const FormItemMap: Record<FormItemType, FC> = {
+  text: (props: InputProps) => <Input {...props} />,
+  select: (props: SelectProps) => <Select {...props} />,
+  time: (props: TimePickerProps) => <TimePicker {...props} />,
+  timeRange: (props: TimeRangeProps) => <TimePicker.RangePicker {...props} />,
+  date: (props: DatePickerProps) => <DatePicker {...props} />,
+  dateRange: (props: DateRangeProps) => <DatePicker.RangePicker {...props} />,
+  number: (props: InputNumberProps) => <InputNumber {...props} />,
+  radioGroup: (props: RadioGroupProps) => <Radio.Group {...props} />,
+  checkboxGroup: (props: CheckboxGroupProps) => <Checkbox.Group {...props} />,
+  textarea: (props: TextAreaProps) => <Input.TextArea {...props} />,
+  treeSelect: (props: TreeSelectProps) => <TreeSelect {...props} />,
+  password: (props: PasswordProps) => <Input.Password {...props} />,
+}
+
+export interface JsonFormItem extends FormItemProps {
+  type?: FormItemType
+  render?: RenderFunction
+  inputProps?:
+    | InputProps
+    | SelectProps
+    | TimePickerProps
+    | TimeRangeProps
+    | DatePickerProps
+    | DateRangeProps
+    | InputNumberProps
+    | RadioGroupProps
+    | CheckboxGroupProps
+    | TextAreaProps
+    | TreeSelectProps
+    | PasswordProps
+}
+
+export type JsonFormColumnsType<T> = ({
+  name?: keyof T
+  visible?: boolean
+} & Omit<JsonFormItem, 'name'>)[]
+
+export interface JsonFormProps<T> extends Omit<FormProps, 'children'> {
+  columns: JsonFormColumnsType<T>
+  children?: ReactNode
+}
+
+const JsonForm = <T = Record<string, any>,>({
+  columns,
+  children, //children定义的FormItem默认插入到Form最后
+  ...AntdFormProps
+}: JsonFormProps<T>) => {
+  return (
+    <Form size={'small'} {...AntdFormProps}>
+      {/* JSON渲染的FormItem */}
+      {columns.map((item, index) => {
+        const {
+          type = 'text',
+          render,
+          inputProps,
+          visible = true,
+          ...AntdFormItemProps
+        } = item
+        let component: RenderFunction | ReactNode
+
+        if (!visible) return null
+
+        if (render) {
+          // [antd: Form.Item]  `Form.Item` with a render function must have either `shouldUpdate` or `dependencies`.
+          if (
+            AntdFormItemProps.dependencies ||
+            AntdFormItemProps.shouldUpdate
+          ) {
+            component = render
+          } else {
+            component = render()
+          }
+        } else if (type) {
+          component = FormItemMap[type](inputProps || {})
+        }
+
+        return (
+          // @ts-ignore TODO: 待解决类型冲突
+          <Form.Item key={item.name || index} {...AntdFormItemProps}>
+            {component}
+          </Form.Item>
+        )
+      })}
+
+      {/* 额外的FromItem */}
+      {children}
+    </Form>
+  )
+}
+
+export default JsonForm
+
+```
+
+### JSON Form支持的表单项类型
+
+`FormItemType` 用于定义表单项类型，不同类型会渲染不同的 Ant Design 组件。以下是可用的表单项类型及其描述：
+
+| 类型      | 值                 | 描述      | 对应的组件                    |
+| ------- | ----------------- | ------- | ------------------------ |
+| 文本框     | `'text'`          | 普通文本输入框 | `Input`                  |
+| 下拉框     | `'select'`        | 下拉选择框   | `Select`                 |
+| 时间选择框   | `'time'`          | 时间选择框   | `TimePicker`             |
+| 时间范围选择框 | `'timeRange'`     | 时间范围选择框 | `TimePicker.RangePicker` |
+| 日期选择框   | `'date'`          | 日期选择框   | `DatePicker`             |
+| 日期范围选择框 | `'dateRange'`     | 日期范围选择框 | `DatePicker.RangePicker` |
+| 数字输入框   | `'number'`        | 数字输入框   | `InputNumber`            |
+| 单选框组    | `'radioGroup'`    | 互斥单选框   | `Radio.Group`            |
+| 多选框组    | `'checkboxGroup'` | 多选框组    | `Checkbox.Group`         |
+| 文本域     | `'textarea'`      | 多行文本输入  | `Input.TextArea`         |
+| 树选择     | `'treeSelect'`    | 树形结构选择  | `TreeSelect`             |
+| 密码框     | `'password'`      | 密码输入框   | `Input.Password`         |
+
+### JSON Form基础示例
+
+```jsx
+import { Form } from "antd";
+import JsonForm, { JsonFormColumnsType } from '@/components/JsonForm'
+
+type JSONFormFields = {
+  username: string
+  password: string
+
+  [other_fileds: string]: any
+}
+
+const formColumns:JsonFormColumnsType<JSONFormFields> = [
+  {
+    name: "username",
+    type: "text",
+    label: "用户名",
+    rules: [{ required: true, message: '' }],
+    inputProps: { placeholder: "请输入用户名" },
+  },
+  {
+    name: "password",
+    type: "password",
+    label: "密码",
+    rules: [{ required: true, message: '' }], 
+    inputProps: { placeholder: "请输入密码" },
+  },
+  {
+    name: "birthdate",
+    type: "date",
+    rules: [{ required: true, message: '' }],
+    label: "出生日期",
+  },
+  {
+    name: "appointment",
+    type: "time",
+    rules: [{ required: true, message: '' }],
+    label: "预约时间",
+  },
+  {
+    name: "meetingRange",
+    type: "timeRange",
+    rules: [{ required: true, message: '' }],
+    label: "会议时间范围",
+  },
+  {
+    name: "eventDateRange",
+    type: "dateRange",
+    rules: [{ required: true, message: '' }],
+    label: "事件日期范围",
+  },
+  {
+    name: "age",
+    type: "number",
+    rules: [{ required: true, message: '' }],
+    label: "年龄",
+  },
+  {
+    name: "gender",
+    type: "radioGroup",
+    label: "性别",
+    rules: [{ required: true, message: '' }],
+    inputProps: {
+      options: [
+        { label: "男", value: "M" },
+        { label: "女", value: "F" },
+      ],
+    },
+  },
+  {
+    name: "hobbies",
+    type: "checkboxGroup",
+    label: "爱好",
+    rules: [{ required: true, message: '' }],
+    inputProps: {
+      options: [
+        { label: "阅读", value: "reading" },
+        { label: "运动", value: "sports" },
+        { label: "音乐", value: "music" },
+      ],
+    },
+  },
+  {
+    name: "description",
+    type: "textarea",
+    label: "自我描述",
+    rules: [{ required: true, message: '' }],
+    inputProps: { placeholder: "请输入自我描述" },
+  },
+  {
+    name: "city",
+    type: "select",
+    label: "城市",
+    rules: [{ required: true, message: '' }],
+    inputProps: {
+      options: [
+        { label: "北京", value: "beijing" },
+        { label: "上海", value: "shanghai" },
+      ],
+    },
+  },
+  
+  {
+    name: "category",
+    type: "treeSelect",
+    label: "分类",
+    rules: [{ required: true, message: '' }],
+    inputProps: {
+      treeData: [
+        {
+          title: "分类 1",
+          value: "cat1",
+          children: [
+            {
+              title: "子分类 1-1",
+              value: "cat1-1",
+            },
+          ],
+        },
+        {
+          title: "分类 2",
+          value: "cat2",
+        },
+      ],
+    },
+  },
+]
+
+
+const DemoForm = () => (
+  <JsonForm columns={formColumns} onFinish={(values) => console.log(values)}>
+    <Form.Item label="附加内容">
+      <Input placeholder="额外的表单项" />
+    </Form.Item>
+  </JsonForm>
+);
 ```
 
 ## 搜索表单
