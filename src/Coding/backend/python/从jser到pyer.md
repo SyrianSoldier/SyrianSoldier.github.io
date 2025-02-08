@@ -6,18 +6,18 @@
 
 以下是完善后的表格，加入了简短的实例代码：
 
-| 数据类型   | JS 实例代码                            | Python 实例代码                                        | 备注                                                                                                                                                         |
-| ---------- | -------------------------------------- | ------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| 数值类型   | `let num = 42;`                        | `num = 42`                                             | Python 区分整数和浮点数，JS 不区分                                                                                                                           |
-| 字符串类型 | `"Hello, JS!";`'                       | `"Hello, Python!"`                                     | JS 用双引号、单引号、模板字符串，Python 支持多行字符串                                                                                                       |
-| 布尔类型   | `true/false`                           | `True/False `                                          | 值为 `true` 或 `false`                                                                                                                                       |
-| null类型   | `null/undifined;`                      | ` None`                                                | JS 有两种空值类型(`null和undifined` )，Python 只有 `None`                                                                                                    |
-| 数组类型   | `[1, 2, 3];`                           | list:`[1, 2, 3]`<br />tuple: `(1,)或 (1,2,3)`          | 1. Python 区分可变 `list` 和不可变 `tuple`<br />2. list是可变的, 可以增加, 删除元素, tuple内的元素不可改变                                                   |
-| 集合类型   | `new Set([1, 2, 3]);`                  | `s = {1, 2, 3}`                                        | Python 自带集合类型<br />集合具有以下特点<br />1. 无序性: `{1,2,3}`的集合打印出可以是`{3,1,2}`<br />2. 去重性: `print({1,2,2,3})`的结果为`{1,2,3}`<br />等等 |
-| 对象类型   | `{ key: "value" };`                    | `obj = { "key": "value" }`                             | 1. Python 用 `dict` 表示键值对，类为 `object`<br />2. Python的`dict`中的key需要加双引号                                                                      |
-| 日期类型   | `let now = new Date();`                | `import datetime`<br />`now = datetime.datetime.now()` | Python 需导入 `datetime` 模块                                                                                                                                |
-| 正则表达式 | `let regex = /abc/;`                   | `import re`<br />`regex = re.compile("abc")`           | JS 内建正则类型，Python 使用 `re`                                                                                                                            |
-| 函数类型   | `function add(a, b) { return a + b; }` | `def add(a, b): return a + b`                          | JS 函数是对象，Python 函数是定义的代码块                                                                                                                     |
+| 数据类型   | JS 实例代码                                | Python 实例代码                              | 备注                                       |
+| ------ | -------------------------------------- | ---------------------------------------- | ---------------------------------------- |
+| 数值类型   | `let num = 42;`                        | `num = 42`                               | Python 区分整数和浮点数，JS 不区分                   |
+| 字符串类型  | `"Hello, JS!";`'                       | `"Hello, Python!"`                       | JS 用双引号、单引号、模板字符串，Python 支持多行字符串         |
+| 布尔类型   | `true/false`                           | `True/False `                            | 值为 `true` 或 `false`                      |
+| null类型 | `null/undifined;`                      | ` None`                                  | JS 有两种空值类型(`null和undifined` )，Python 只有 `None` |
+| 数组类型   | `[1, 2, 3];`                           | list:`[1, 2, 3]`<br />tuple: `(1,)或 (1,2,3)` | 1. Python 区分可变 `list` 和不可变 `tuple`<br />2. list是可变的, 可以增加, 删除元素, tuple内的元素不可改变 |
+| 集合类型   | `new Set([1, 2, 3]);`                  | `s = {1, 2, 3}`                          | Python 自带集合类型<br />集合具有以下特点<br />1. 无序性: `{1,2,3}`的集合打印出可以是`{3,1,2}`<br />2. 去重性: `print({1,2,2,3})`的结果为`{1,2,3}`<br />等等 |
+| 对象类型   | `{ key: "value" };`                    | `obj = { "key": "value" }`               | 1. Python 用 `dict` 表示键值对，类为 `object`<br />2. Python的`dict`中的key需要加双引号 |
+| 日期类型   | `let now = new Date();`                | `import datetime`<br />`now = datetime.datetime.now()` | Python 需导入 `datetime` 模块                 |
+| 正则表达式  | `let regex = /abc/;`                   | `import re`<br />`regex = re.compile("abc")` | JS 内建正则类型，Python 使用 `re`                 |
+| 函数类型   | `function add(a, b) { return a + b; }` | `def add(a, b): return a + b`            | JS 函数是对象，Python 函数是定义的代码块                |
 
 
 
@@ -348,73 +348,73 @@ pairs = [(x, y) for x in range(1, 4) for y in range(1, 4)]
 
 #### 6.3.1 ES5
 
-| 操作               | JavaScript 数组方法                 | Python 实现                                                                                                                                                  | 备注                                                                                                                                                                               |
-| ------------------ | ----------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **添加元素**       | `arr.push(4)`                       | `arr.append(4)`                                                                                                                                              |                                                                                                                                                                                    |
-| **删除元素**       | `arr.pop()`                         | `arr.pop(index)`<br />`del arr[index]`                                                                                                                       | Python的`pop`方法不传参默认删除最后一个元素, 传入索引则删除指定索引的元素                                                                                                          |
-| **插入元素**       | `arr.splice(index,0,...新增的元素)` | `list.insert(index, element)`                                                                                                                                |                                                                                                                                                                                    |
-| **获取数组长度**   | `arr.length`                        | `len(arr)`                                                                                                                                                   |                                                                                                                                                                                    |
-| **合并数组**       | `arr.concat(arr2)`                  | `arr + arr2`                                                                                                                                                 | 两者都返回新数组/列表                                                                                                                                                              |
-| **排序**           | `arr.sort()`                        | 升序: `arr.sort()`<br />降序: `arr.sort(reverse=True)` <br />升序:`sorted(arr,key=lambda,)`<br />降序: `sorted_words = sorted(words, key=len, reverse=True)` | 1. `arr.sort()` 是原地排序，`sorted` 返回新的排序列表 <br />2. `sorted`的key参数可以为一个lambda表达式或者函数, 自定义排序的逻辑, 这个函数接收列表中的元素，并返回一个用于排序的值 |
-| **反转数组**       | `arr.reverse()`                     | `arr.reverse()`<br />` arr[::-1]`                                                                                                                            | `arr[::-1]`会返回翻转后的新数组                                                                                                                                                    |
-| **数组切片**       | `arr.slice(start, end)`             | `arr[start:end:step]`                                                                                                                                        | `step`可以定义一个步长, 按步长截取元素                                                                                                                                             |
-| **数组浅拷贝**     | `arr.slice(0)`                      | `arr[:]`                                                                                                                                                     |                                                                                                                                                                                    |
-| **查找元素的索引** | `arr.indexOf(element)`              | `arr.index(element)`                                                                                                                                         |                                                                                                                                                                                    |
-| **数组转字符串**   | `arr.join(",")`                     | `",".join(arr)`                                                                                                                                              |                                                                                                                                                                                    |
-| **扁平化数组**     | `arr.flat()`                        | `arr = [elem for sublist in arr for elem in sublist]`                                                                                                        |                                                                                                                                                                                    |
+| 操作          | JavaScript 数组方法                | Python 实现                                | 备注                                       |
+| ----------- | ------------------------------ | ---------------------------------------- | ---------------------------------------- |
+| **添加元素**    | `arr.push(4)`                  | `arr.append(4)`                          |                                          |
+| **删除元素**    | `arr.pop()`                    | `arr.pop(index)`<br />`del arr[index]`   | Python的`pop`方法不传参默认删除最后一个元素, 传入索引则删除指定索引的元素 |
+| **插入元素**    | `arr.splice(index,0,...新增的元素)` | `list.insert(index, element)`            |                                          |
+| **获取数组长度**  | `arr.length`                   | `len(arr)`                               |                                          |
+| **合并数组**    | `arr.concat(arr2)`             | `arr + arr2`                             | 两者都返回新数组/列表                              |
+| **排序**      | `arr.sort()`                   | 升序: `arr.sort()`<br />降序: `arr.sort(reverse=True)` <br />升序:`sorted(arr,key=lambda,)`<br />降序: `sorted_words = sorted(words, key=len, reverse=True)` | 1. `arr.sort()` 是原地排序，`sorted` 返回新的排序列表 <br />2. `sorted`的key参数可以为一个lambda表达式或者函数, 自定义排序的逻辑, 这个函数接收列表中的元素，并返回一个用于排序的值 |
+| **反转数组**    | `arr.reverse()`                | `arr.reverse()`<br />` arr[::-1]`        | `arr[::-1]`会返回翻转后的新数组                    |
+| **数组切片**    | `arr.slice(start, end)`        | `arr[start:end:step]`                    | `step`可以定义一个步长, 按步长截取元素                  |
+| **数组浅拷贝**   | `arr.slice(0)`                 | `arr[:]`                                 |                                          |
+| **查找元素的索引** | `arr.indexOf(element)`         | `arr.index(element)`                     |                                          |
+| **数组转字符串**  | `arr.join(",")`                | `",".join(arr)`                          |                                          |
+| **扁平化数组**   | `arr.flat()`                   | `arr = [elem for sublist in arr for elem in sublist]` |                                          |
 
 ------
 
 #### 6.3.2 ES6
 
-| 操作             | JavaScript 数组方法     | Python 实现                                                                         | 备注                                                                                                                                                                                                             |
-| ---------------- | ----------------------- | ----------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **filter数组**   | `arr.filter(callback)`  | 方法一: `[x for x in arr if condition]`<br /> 方法二: `list(filter(callback, arr))` |                                                                                                                                                                                                                  |
-| **every函数**    | `arr.every(callback)`   | 方法一: `all(callback(x) for x in arr)`<br />方法二: `all(filter(callback, arr))`   | `all()`函数接受一个可迭代对象作为参数，如果可迭代对象的所有元素都为真，则返回`True`，否则返回`False`。例子:`result = all(x > 0 for x in numbers)`                                                                |
-| **some函数**     | `arr.some(callback)`    | 方法一: `any(callback(x) for x in arr)`<br />方法二: `any(filter(callback, arr))`   | `any()`函数接受一个可迭代对象作为参数，如果可迭代对象的任何元素为真，则返回`True`，否则返回`False`。例子: `result = any(x > 10 for x in numbers)`                                                                |
-| **map数组**      | `arr.map(callback)`     | 方法一: `[callback(x) for x in arr]`<br />方法二: `list(map(callback, arr))`        | 1. `callback`可以是一个def定义的普通函数, 也可以是lambda表达式或者一个自执行的lambda表达式<br />2. 不一定要用`callback`, 简单的需求直接用列表生成式更简单<br />如:`[{"name": name} for name in ["张三","李四"]]` |
-| **find元素**     | `arr.find(callback)`    | `next((x for x in arr if condition), None)`                                         | 若只是检测元素是否在数组中, 请用`element in arr`进行判断                                                                                                                                                         |
-| **includes元素** | `arr.includes(element)` | `element in arr`                                                                    |                                                                                                                                                                                                                  |
-| **reduce**       | `arr.reduce(callback)`  | `from functools import reduce`<br />` reduce(callback, list, [initializer])`        | `callback`的参数和`js`的`reduce callback`的一致                                                                                                                                                                  |
+| 操作             | JavaScript 数组方法         | Python 实现                                | 备注                                       |
+| -------------- | ----------------------- | ---------------------------------------- | ---------------------------------------- |
+| **filter数组**   | `arr.filter(callback)`  | 方法一: `[x for x in arr if condition]`<br /> 方法二: `list(filter(callback, arr))` |                                          |
+| **every函数**    | `arr.every(callback)`   | 方法一: `all(callback(x) for x in arr)`<br />方法二: `all(filter(callback, arr))` | `all()`函数接受一个可迭代对象作为参数，如果可迭代对象的所有元素都为真，则返回`True`，否则返回`False`。例子:`result = all(x > 0 for x in numbers)` |
+| **some函数**     | `arr.some(callback)`    | 方法一: `any(callback(x) for x in arr)`<br />方法二: `any(filter(callback, arr))` | `any()`函数接受一个可迭代对象作为参数，如果可迭代对象的任何元素为真，则返回`True`，否则返回`False`。例子: `result = any(x > 10 for x in numbers)` |
+| **map数组**      | `arr.map(callback)`     | 方法一: `[callback(x) for x in arr]`<br />方法二: `list(map(callback, arr))` | 1. `callback`可以是一个def定义的普通函数, 也可以是lambda表达式或者一个自执行的lambda表达式<br />2. 不一定要用`callback`, 简单的需求直接用列表生成式更简单<br />如:`[{"name": name} for name in ["张三","李四"]]` |
+| **find元素**     | `arr.find(callback)`    | `next((x for x in arr if condition), None)` | 若只是检测元素是否在数组中, 请用`element in arr`进行判断    |
+| **includes元素** | `arr.includes(element)` | `element in arr`                         |                                          |
+| **reduce**     | `arr.reduce(callback)`  | `from functools import reduce`<br />` reduce(callback, list, [initializer])` | `callback`的参数和`js`的`reduce callback`的一致  |
 
 
 
 ## 七、字符串方法
 
-| 操作                     | JavaScript 字符串方法                     | Python 实现                                                                                                                                                  | 备注                                                                                                                                                                            |
-| ------------------------ | ----------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **获取字符串长度**       | `str.length`                              | `len(str)`                                                                                                                                                   |                                                                                                                                                                                 |
-| **获取子字符串**         | `str.slice(start, end)`                   | `str[start:end]`                                                                                                                                             |                                                                                                                                                                                 |
-| **替换字符**             | `str.replace(search, replace)`            | `str.replace(search, replace, count?)`或<br /> `re.sub(正则字符串, 替换内容（可以是字符串或函数）, 待处理的字符串, 替换次数, 正则标志(如忽略大小写,全局等))` | 1. python中的replace不支持正则替换, 正则替换用`re.sub`<br />2. count为替换次数, 默认只替换一次, 即匹配上子串的第一次<br />3. 正则标志是枚举, 如` re.IGNORECASE` ` re.MULTILINE` |
-| **大小写转换**           | `str.toLowerCase()` / `str.toUpperCase()` | `str.lower()` / `str.upper()`                                                                                                                                |                                                                                                                                                                                 |
-| **去除空格**             | `str.trim()`                              | `str.strip()`                                                                                                                                                | `strip()` 可以去除前后空白字符                                                                                                                                                  |
-| **查找子字符串**         | `str.indexOf(search)`                     | `str.find(search)`                                                                                                                                           | 如果未找到子串，JS 返回 -1，Python 返回 -1                                                                                                                                      |
-| **判断是否包含子字符串** | `str.includes(search)`                    | `search in str`                                                                                                                                              |                                                                                                                                                                                 |
-| **字符串分割并转数组**   | `str.split(separator)`                    | `str.split(separator)`                                                                                                                                       | Python的`split`返回一个`list`                                                                                                                                                   |
-| **检查字符串开头**       | `str.startsWith(prefix)`                  | `str.startswith(prefix)`                                                                                                                                     |                                                                                                                                                                                 |
-| **检查字符串结尾**       | `str.endsWith(suffix)`                    | `str.endswith(suffix)`                                                                                                                                       |                                                                                                                                                                                 |
-| **提取字符**             | `str.charAt(index)`                       | `str[index]`                                                                                                                                                 |                                                                                                                                                                                 |
-| **重复字符串**           | `str.repeat(count)`                       | `str * count`                                                                                                                                                | Python 使用 `*` 运算符重复字符串                                                                                                                                                |
+| 操作             | JavaScript 字符串方法                         | Python 实现                                | 备注                                       |
+| -------------- | ---------------------------------------- | ---------------------------------------- | ---------------------------------------- |
+| **获取字符串长度**    | `str.length`                             | `len(str)`                               |                                          |
+| **获取子字符串**     | `str.slice(start, end)`                  | `str[start:end]`                         |                                          |
+| **替换字符**       | `str.replace(search, replace)`           | `str.replace(search, replace, count?)`或<br /> `re.sub(正则字符串, 替换内容（可以是字符串或函数）, 待处理的字符串, 替换次数, 正则标志(如忽略大小写,全局等))` | 1. python中的replace不支持正则替换, 正则替换用`re.sub`<br />2. count为替换次数, 默认只替换一次, 即匹配上子串的第一次<br />3. 正则标志是枚举, 如` re.IGNORECASE` ` re.MULTILINE` |
+| **大小写转换**      | `str.toLowerCase()` / `str.toUpperCase()` | `str.lower()` / `str.upper()`            |                                          |
+| **去除空格**       | `str.trim()`                             | `str.strip()`                            | `strip()` 可以去除前后空白字符                     |
+| **查找子字符串**     | `str.indexOf(search)`                    | `str.find(search)`                       | 如果未找到子串，JS 返回 -1，Python 返回 -1            |
+| **判断是否包含子字符串** | `str.includes(search)`                   | `search in str`                          |                                          |
+| **字符串分割并转数组**  | `str.split(separator)`                   | `str.split(separator)`                   | Python的`split`返回一个`list`                 |
+| **检查字符串开头**    | `str.startsWith(prefix)`                 | `str.startswith(prefix)`                 |                                          |
+| **检查字符串结尾**    | `str.endsWith(suffix)`                   | `str.endswith(suffix)`                   |                                          |
+| **提取字符**       | `str.charAt(index)`                      | `str[index]`                             |                                          |
+| **重复字符串**      | `str.repeat(count)`                      | `str * count`                            | Python 使用 `*` 运算符重复字符串                   |
 
 ## 八、时间方法
 
 > 需要`import datetime`
 
-| 操作                       | JavaScript                             | Python                                                                                                               | 备注                                                                       |
-| -------------------------- | -------------------------------------- | -------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------- |
-| **获取当前时间的时期对象** | `new Date()`                           | `datetime.datetime.now()`                                                                                            |                                                                            |
-| **获取时间戳**             | `Date.now()` 或 `new Date().getTime()` | 秒级时间戳:`datetime.datetime.now().timestamp()`<br />毫秒级时间戳: `int(datetime.datetime.now().timestamp()* 1000)` | JS 的 `getTime()` 返回毫秒，Python 的 `timestamp()` 返回秒                 |
-| **获取年**                 | `date.getFullYear()`                   | `date.year`                                                                                                          |                                                                            |
-| **获取月**                 | `date.getMonth()`（0-11）              | `date.month`（1-12）                                                                                                 | JS 从 0 开始，Python 从 1 开始                                             |
-| **获取日**                 | `date.getDate()`                       | `date.day`                                                                                                           |                                                                            |
-| **获取星期几**             | `date.getDay()`（0=周日）              | `date.weekday()`（0=周一）                                                                                           | JS 以周日为 0，Python 以周一为 0                                           |
-| **获取小时**               | `date.getHours()`                      | `date.hour`                                                                                                          |                                                                            |
-| **获取分钟**               | `date.getMinutes()`                    | `date.minute`                                                                                                        |                                                                            |
-| **获取秒**                 | `date.getSeconds()`                    | `date.second`                                                                                                        |                                                                            |
-| **获取毫秒**               | `date.getMilliseconds()`               | `date.microsecond // 1000`                                                                                           | JS 返回毫秒，Python 需要转换                                               |
-| **格式化日期**             | 一般使用moment                         | `date.strftime("%Y-%m-%d %H:%M:%S")`                                                                                 |                                                                            |
-| **解析日期字符串**         | `new Date("2024-01-01")`               | ` date_obj = datetime.datetime.strptime("2024-01-01", "%Y-%m-%d")`                                                   |                                                                            |
-| **获取时间差**             | `date1 - date2`（毫秒）                | `(date1 - date2).total_seconds()`                                                                                    | 1. `js`和python中都支持Date对象的减法<br />2. `python`此方法返回一个浮点数 |
+| 操作              | JavaScript                            | Python                                   | 备注                                       |
+| --------------- | ------------------------------------- | ---------------------------------------- | ---------------------------------------- |
+| **获取当前时间的时期对象** | `new Date()`                          | `datetime.datetime.now()`                |                                          |
+| **获取时间戳**       | `Date.now()` 或 `new Date().getTime()` | 秒级时间戳:`datetime.datetime.now().timestamp()`<br />毫秒级时间戳: `int(datetime.datetime.now().timestamp()* 1000)` | JS 的 `getTime()` 返回毫秒，Python 的 `timestamp()` 返回秒 |
+| **获取年**         | `date.getFullYear()`                  | `date.year`                              |                                          |
+| **获取月**         | `date.getMonth()`（0-11）               | `date.month`（1-12）                       | JS 从 0 开始，Python 从 1 开始                  |
+| **获取日**         | `date.getDate()`                      | `date.day`                               |                                          |
+| **获取星期几**       | `date.getDay()`（0=周日）                 | `date.weekday()`（0=周一）                   | JS 以周日为 0，Python 以周一为 0                  |
+| **获取小时**        | `date.getHours()`                     | `date.hour`                              |                                          |
+| **获取分钟**        | `date.getMinutes()`                   | `date.minute`                            |                                          |
+| **获取秒**         | `date.getSeconds()`                   | `date.second`                            |                                          |
+| **获取毫秒**        | `date.getMilliseconds()`              | `date.microsecond // 1000`               | JS 返回毫秒，Python 需要转换                      |
+| **格式化日期**       | 一般使用moment                            | `date.strftime("%Y-%m-%d %H:%M:%S")`     |                                          |
+| **解析日期字符串**     | `new Date("2024-01-01")`              | ` date_obj = datetime.datetime.strptime("2024-01-01", "%Y-%m-%d")` |                                          |
+| **获取时间差**       | `date1 - date2`（毫秒）                   | `(date1 - date2).total_seconds()`        | 1. `js`和python中都支持Date对象的减法<br />2. `python`此方法返回一个浮点数 |
 
 ## 九、序列化与反序列化 
 
@@ -455,12 +455,12 @@ print(json.dumps(obj, indent=4))
 
 ## 十、正则
 
-| 功能           | JavaScript                    | Python                            |
-| -------------- | ----------------------------- | --------------------------------- |
-| 是否匹配       | `/regex/.test(str)`           | `re.search(pattern, str)`         |
+| 功能      | JavaScript                    | Python                            |
+| ------- | ----------------------------- | --------------------------------- |
+| 是否匹配    | `/regex/.test(str)`           | `re.search(pattern, str)`         |
 | 提取第一个匹配 | `str.match(/regex/)`          | `re.search(pattern, str).group()` |
-| 提取所有匹配   | `str.matchAll(/regex/g)`      | `re.findall(pattern, str)`        |
-| 替换           | `str.replace(/regex/, "new")` | `re.sub(pattern, "new", str)`     |
+| 提取所有匹配  | `str.matchAll(/regex/g)`      | `re.findall(pattern, str)`        |
+| 替换      | `str.replace(/regex/, "new")` | `re.sub(pattern, "new", str)`     |
 
 
 
@@ -552,17 +552,17 @@ with open('example.txt', 'w') as file:
 
 #### 11.3.4 文件读写模式总结
 
-| 模式    | 描述           | 文件已存在 | 文件不存在 | 是否覆盖 | 使用场景               |
-| ------- | -------------- | ---------- | ---------- | -------- | ---------------------- |
-| `'w'`   | 写模式         | 会覆盖     | 会创建     | 是       | 写入新内容，覆盖文件   |
-| `'a'`   | 追加模式       | 内容追加   | 会创建     | 否       | 向文件末尾追加内容     |
-| `'x'`   | 创建新文件     | 抛出异常   | 会创建     | 否       | 确保文件不存在时才创建 |
-| `'wb'`  | 二进制写模式   | 会覆盖     | 会创建     | 是       | 写入二进制数据         |
-| `'w+'`  | 读写模式       | 会覆盖     | 会创建     | 是       | 读写文件，覆盖内容     |
-| `'a+'`  | 追加读写模式   | 内容追加   | 会创建     | 否       | 读写文件，追加内容     |
-| `'rb'`  | 二进制读模式   | 可读取     | 抛出异常   | 否       | 读取二进制文件         |
-| `'r+'`  | 读写模式       | 不会覆盖   | 抛出异常   | 否       | 读写文件，不创建文件   |
-| `'rb+'` | 二进制读写模式 | 可读写     | 抛出异常   | 否       | 读写二进制文件         |
+| 模式      | 描述      | 文件已存在 | 文件不存在 | 是否覆盖 | 使用场景        |
+| ------- | ------- | ----- | ----- | ---- | ----------- |
+| `'w'`   | 写模式     | 会覆盖   | 会创建   | 是    | 写入新内容，覆盖文件  |
+| `'a'`   | 追加模式    | 内容追加  | 会创建   | 否    | 向文件末尾追加内容   |
+| `'x'`   | 创建新文件   | 抛出异常  | 会创建   | 否    | 确保文件不存在时才创建 |
+| `'wb'`  | 二进制写模式  | 会覆盖   | 会创建   | 是    | 写入二进制数据     |
+| `'w+'`  | 读写模式    | 会覆盖   | 会创建   | 是    | 读写文件，覆盖内容   |
+| `'a+'`  | 追加读写模式  | 内容追加  | 会创建   | 否    | 读写文件，追加内容   |
+| `'rb'`  | 二进制读模式  | 可读取   | 抛出异常  | 否    | 读取二进制文件     |
+| `'r+'`  | 读写模式    | 不会覆盖  | 抛出异常  | 否    | 读写文件，不创建文件  |
+| `'rb+'` | 二进制读写模式 | 可读写   | 抛出异常  | 否    | 读写二进制文件     |
 
 
 
@@ -1058,7 +1058,7 @@ Python 使用 `@staticmethod` 装饰器来定义静态方法。
 
 ```Python
 class Person:
-    count = 0
+    count = 0 # 在python中这么写就是静态属性, 示例属性是在__init__方法里通过self.xxx = xxx定义的属性
 
     @staticmethod
     def increment():
@@ -1454,6 +1454,19 @@ greet_person(*person_info)  # 将元祖结构成单独参数
 ## 十七、包管理工具与环境管理
 
 `conda和pip`,  `npm` 
+
+## 十八、Node.js
+
+| Node.js API              | Python API / 方法                          | 说明                                       |
+| ------------------------ | ---------------------------------------- | ---------------------------------------- |
+| **路径操作**                 |                                          |                                          |
+| `path.join(...paths)`    | `os.path.join(...paths)`                 | 拼接路径，根据平台自动使用正确的分隔符。(windows用`\`, `macos`用`/`) |
+| `path.dirname(path)`     | `os.path.dirname(path)`                  | 获取路径的目录部分。                               |
+| `path.resolve(...paths)` | `os.path.abspath(os.path.join(*paths))` 或 `os.path.realpath(...)` | 生成绝对路径，处理符号链接。                           |
+| `path.extname(path)`     | `os.path.splitext(path)[1]`              | 获取文件扩展名。                                 |
+| **内置变量**                 |                                          |                                          |
+| `__filename`             | `__file__` 或 `os.path.abspath(__file__)` | 1. `nodejs`中 `__filename`返回的是决定路径, `python`中`__file__`不一定返回的是相对路径或者绝对路径. <br />2. 若一定要绝对路径, 请用`os.path.abspath(__file__)` |
+| `__dirname`              | ` os.path.abspath(os.path.dirname(__file__))` | 当前模块所在的目录路径。                             |
 
 
 
