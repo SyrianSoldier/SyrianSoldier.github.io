@@ -887,7 +887,112 @@ def translate_vector(vector, x, y):
 
 ![alt text](2.jpg)
 
-### 5.3 用matplotlib画三维向量
+### 5.3 用matplotlib画图
+
+**画二维图像**
+
+![alt text](image-20.png)
+
+```python
+import matplotlib.pyplot as plt
+import numpy as np
+
+# 创建一个图形和坐标轴
+# Doc: https://matplotlib.org/stable/api/_as_gen/matplotlib.pyplot.subplots.html
+fig, ax = plt.subplots()
+
+# 定义向量
+origin = [0], [0]        # 起点在 (0, 0)
+vector = [3], [2]        # 向量 (3, 2)
+
+# 绘制向量箭头
+# Doc: https://matplotlib.org/stable/api/_as_gen/matplotlib.axes.Axes.quiver.html
+ax.quiver(*origin, *vector, angles='xy', scale_units='xy', scale=1, color='blue')
+
+# 设置坐标轴范围
+# Doc: https://matplotlib.org/stable/api/_as_gen/matplotlib.axes.Axes.set_xlim.html
+# Doc: https://matplotlib.org/stable/api/_as_gen/matplotlib.axes.Axes.set_ylim.html
+ax.set_xlim(0, 5)
+ax.set_ylim(0, 5)
+
+# 设置网格和坐标轴等比例
+# Doc: https://matplotlib.org/stable/api/_as_gen/matplotlib.axes.Axes.grid.html
+# Doc: https://matplotlib.org/stable/api/_as_gen/matplotlib.axes.Axes.set_aspect.html
+ax.grid(True)
+ax.set_aspect('equal')
+
+# 标注向量
+# Doc: https://matplotlib.org/stable/api/_as_gen/matplotlib.axes.Axes.text.html
+ax.text(3.1, 2.1, r'$\vec{v} = [3, 2]$', fontsize=12)
+
+# 添加坐标轴线
+# Doc: https://matplotlib.org/stable/api/_as_gen/matplotlib.axes.Axes.axhline.html
+# Doc: https://matplotlib.org/stable/api/_as_gen/matplotlib.axes.Axes.axvline.html
+ax.axhline(0, color='black', linewidth=1)
+ax.axvline(0, color='black', linewidth=1)
+
+# 设置图标题
+# Doc: https://matplotlib.org/stable/api/_as_gen/matplotlib.pyplot.title.html
+plt.title("2D Vector Visualization")
+
+# 显示图形
+# Doc: https://matplotlib.org/stable/api/_as_gen/matplotlib.pyplot.show.html
+plt.show()
+
+```
+
+
+
+**画三维图像**
+![alt text](image-19.png)
+
+```python
+import numpy as np
+import matplotlib.pyplot as plt
+
+# 创建一个图形和三维坐标轴
+# Doc: https://matplotlib.org/stable/api/figure_api.html#matplotlib.figure.Figure.add_subplot
+fig = plt.figure()
+ax = fig.add_subplot(projection='3d')
+
+# 定义向量的起点和方向
+origin = [0, 0, 0]  # 向量起点
+vector = [3, 2, 1]  # 向量方向
+
+# 绘制三维向量箭头
+# Doc: https://matplotlib.org/stable/api/_as_gen/mpl_toolkits.mplot3d.axes3d.Axes3D.quiver.html
+ax.quiver(*origin, *vector, color='blue', arrow_length_ratio=0.1)
+
+# 设置坐标轴范围
+# Doc: https://matplotlib.org/stable/api/_as_gen/matplotlib.axes.Axes.set_xlim.html
+# Doc: https://matplotlib.org/stable/api/_as_gen/matplotlib.axes.Axes.set_ylim.html
+# Doc: https://matplotlib.org/stable/api/_as_gen/matplotlib.axes.Axes.set_zlim.html
+ax.set_xlim(0, 5)
+ax.set_ylim(0, 5)
+ax.set_zlim(0, 5)
+
+# 设置坐标轴标签
+# Doc: https://matplotlib.org/stable/api/_as_gen/matplotlib.axes.Axes.set_xlabel.html
+# Doc: https://matplotlib.org/stable/api/_as_gen/matplotlib.axes.Axes.set_ylabel.html
+# Doc: https://matplotlib.org/stable/api/_as_gen/matplotlib.axes.Axes.set_zlabel.html
+ax.set_xlabel('X')
+ax.set_ylabel('Y')
+ax.set_zlabel('Z')
+
+# 添加向量标签
+# Doc: https://matplotlib.org/stable/api/_as_gen/matplotlib.axes.Axes.text.html
+ax.text(3.1, 2.1, 1.1, r'$\vec{v} = [3, 2, 1]$', fontsize=12)
+
+# 设置图标题
+# Doc: https://matplotlib.org/stable/api/_as_gen/matplotlib.pyplot.title.html
+plt.title("3D Vector Visualization")
+
+# 显示图形
+# Doc: https://matplotlib.org/stable/api/_as_gen/matplotlib.pyplot.show.html
+plt.show()
+```
+
+
 
 
 
